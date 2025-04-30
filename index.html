@@ -18,12 +18,21 @@
       color: inherit;
     }
 
-    /* Header */
+    /* Header with Canvas Animation */
     .header {
       position: relative;
-      background-color: #fff;
-      height: 80px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      background-color: #008C8C;
+      height: 100px;
+      overflow: hidden;
+    }
+
+    #matrixCanvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100px;
+      z-index: 0;
     }
 
     .header img {
@@ -31,13 +40,14 @@
       bottom: 10px;
       right: 20px;
       height: 60px;
+      z-index: 2;
     }
 
     /* Hero Section */
     .hero {
       background-color: #008C8C;
       color: #fff;
-      padding: 100px 20px;
+      padding: 100px 20px 60px;
       text-align: center;
       animation: fadeIn 2s ease-in;
     }
@@ -52,12 +62,14 @@
     }
 
     .hero a {
+      display: inline-block;
       padding: 15px 30px;
       background-color: #fff;
       color: #008C8C;
       font-size: 18px;
       border-radius: 5px;
       transition: background-color 0.3s ease;
+      margin-top: 20px;
     }
 
     .hero a:hover {
@@ -116,6 +128,8 @@
       border-radius: 5px;
       font-size: 18px;
       transition: background-color 0.3s ease;
+      display: inline-block;
+      margin-top: 20px;
     }
 
     .contact a:hover {
@@ -124,12 +138,8 @@
 
     /* Fade In Animation */
     @keyframes fadeIn {
-      from {
-        opacity: 0;
-      }
-      to {
-        opacity: 1;
-      }
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
 
     /* Responsive */
@@ -152,8 +162,9 @@
 </head>
 <body>
 
-  <!-- Header -->
+  <!-- Header with Code Rain -->
   <div class="header">
+    <canvas id="matrixCanvas"></canvas>
     <img src="found-script-logo-com.png" alt="FoundScript Logo" />
   </div>
 
@@ -191,6 +202,45 @@
     <a href="mailto:info@foundscript.com">Contact Me Now</a>
     <p style="margin-top: 30px; font-size: 14px;">&copy; 2025 FoundScript. All rights reserved.</p>
   </section>
+
+  <!-- Matrix Code Animation -->
+  <script>
+    const canvas = document.getElementById('matrixCanvas');
+    const ctx = canvas.getContext('2d');
+
+    canvas.width = window.innerWidth;
+    canvas.height = 100;
+
+    const letters = '01';
+    const fontSize = 12;
+    const columns = canvas.width / fontSize;
+    const drops = Array(Math.floor(columns)).fill(1);
+
+    function drawMatrix() {
+      ctx.fillStyle = 'rgba(0, 140, 140, 0.1)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.fillStyle = '#ffffff';
+      ctx.font = fontSize + 'px monospace';
+
+      for (let i = 0; i < drops.length; i++) {
+        const text = letters.charAt(Math.floor(Math.random() * letters.length));
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+          drops[i] = 0;
+        }
+        drops[i]++;
+      }
+    }
+
+    setInterval(drawMatrix, 50);
+
+    // Recalculate canvas on resize
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+    });
+  </script>
 
 </body>
 </html>
