@@ -20,133 +20,101 @@
 
     /* Header */
     .header {
+      position: relative;
       background-color: #fff;
-      padding: 15px 30px;
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
+      height: 80px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     }
 
     .header img {
-      height: 50px;
-      width: auto;
+      position: absolute;
+      bottom: 10px;
+      right: 20px;
+      height: 60px;
     }
 
-    /* Hero */
+    /* Hero Section */
     .hero {
-      position: relative;
       background-color: #008C8C;
       color: #fff;
-      padding: 120px 20px 100px;
+      padding: 100px 20px;
       text-align: center;
-      overflow: hidden;
+      animation: fadeIn 2s ease-in;
     }
 
     .hero h1 {
-      font-size: 42px;
-      margin-bottom: 15px;
+      font-size: 44px;
     }
 
     .hero p {
-      font-size: 18px;
+      font-size: 19px;
       margin-bottom: 30px;
     }
 
     .hero a {
-      padding: 14px 28px;
+      padding: 15px 30px;
       background-color: #fff;
       color: #008C8C;
+      font-size: 18px;
       border-radius: 5px;
-      font-size: 16px;
       transition: background-color 0.3s ease;
-      display: inline-block;
     }
 
     .hero a:hover {
       background-color: #f4f4f4;
     }
 
-    /* Code Rain Animation */
-    .code-rain {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100px;
-      pointer-events: none;
-      font-family: monospace;
-      font-size: 14px;
-      color: rgba(255, 255, 255, 0.1);
-      white-space: nowrap;
-      letter-spacing: 2px;
-      z-index: 1;
-    }
-
-    .rain1 {
-      animation: rain 12s linear infinite;
-    }
-    .rain2 {
-      animation: rain 18s linear infinite;
-      top: 20px;
-      color: rgba(255, 255, 255, 0.07);
-    }
-    .rain3 {
-      animation: rain 22s linear infinite;
-      top: 40px;
-      color: rgba(255, 255, 255, 0.05);
-    }
-
-    @keyframes rain {
-      0% { transform: translateY(-100%); }
-      100% { transform: translateY(100%); }
-    }
-
-    /* Services */
+    /* Services Section */
     .services {
       display: flex;
+      justify-content: space-around;
+      align-items: stretch;
       flex-wrap: wrap;
-      justify-content: center;
-      padding: 60px 20px;
+      padding: 70px 20px;
       background-color: #f4f4f4;
-      gap: 20px;
+      gap: 30px;
     }
 
     .service-item {
-      flex: 1 1 250px;
-      max-width: 300px;
-      padding: 25px;
+      text-align: center;
+      width: 30%;
+      padding: 30px 20px;
       background-color: #fff;
       border-radius: 8px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-      text-align: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       transition: transform 0.3s ease;
-      min-height: 220px;
+      min-height: 240px;
     }
 
     .service-item:hover {
-      transform: translateY(-5px);
+      transform: scale(1.05);
     }
 
     .service-item h3 {
       color: #008C8C;
-      margin-bottom: 12px;
+      margin-bottom: 15px;
+      font-size: 22px;
     }
 
-    /* Contact */
+    .service-item p {
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    /* Contact Section */
     .contact {
       background-color: #008C8C;
       color: #fff;
-      padding: 60px 20px;
+      padding: 70px 20px;
       text-align: center;
     }
 
     .contact a {
-      padding: 14px 28px;
+      padding: 15px 30px;
       background-color: #fff;
       color: #008C8C;
       border-radius: 5px;
-      font-size: 16px;
+      font-size: 18px;
       transition: background-color 0.3s ease;
     }
 
@@ -154,21 +122,30 @@
       background-color: #f4f4f4;
     }
 
-    footer {
-      text-align: center;
-      font-size: 14px;
-      color: #999;
-      padding: 20px 0;
+    /* Fade In Animation */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
     }
 
+    /* Responsive */
     @media (max-width: 768px) {
-      .service-item {
-        flex: 1 1 100%;
-        max-width: none;
+      .services {
+        flex-direction: column;
+        align-items: center;
       }
 
-      .hero h1 {
-        font-size: 32px;
+      .service-item {
+        width: 90%;
+      }
+
+      .header img {
+        height: 50px;
+        right: 15px;
       }
     }
   </style>
@@ -180,48 +157,40 @@
     <img src="found-script-logo-com.png" alt="FoundScript Logo" />
   </div>
 
-  <!-- Hero -->
+  <!-- Hero Section -->
   <section class="hero">
-    <div class="code-rain rain1">{ } < > ; () let const function () =></div>
-    <div class="code-rain rain2">&lt;/html&gt; .className() => init() return;</div>
-    <div class="code-rain rain3">const var if else &lt;div&gt; = require()</div>
-
     <h1>Helping You Build Your Digital Identity</h1>
     <p>Web & App Development | Branding | Landing Pages | SEO Optimization</p>
     <a href="mailto:info@foundscript.com">Enquire Now to Receive Full List of Services</a>
   </section>
 
-  <!-- Services -->
+  <!-- Services Section -->
   <section class="services">
     <div class="service-item">
       <h3>Landing Page Design</h3>
-      <p>High-conversion pages tailored to your brand's message and audience goals.</p>
+      <p>We create high-conversion landing pages that speak to your audience and drive results.</p>
     </div>
     <div class="service-item">
       <h3>Branding & Identity</h3>
-      <p>Custom visual identity that creates trust and recognition with your users.</p>
+      <p>Your brand deserves to stand out. Let us craft your visual identity with precision and creativity.</p>
     </div>
     <div class="service-item">
       <h3>SEO Optimization</h3>
-      <p>Targeted SEO strategies to improve visibility and organic reach.</p>
+      <p>Increase your online visibility with tailored SEO strategies that help you rank higher.</p>
     </div>
     <div class="service-item">
       <h3>MVP App Development</h3>
-      <p>Bring your digital concept to life with rapid prototyping and clean UX.</p>
+      <p>Bring your concept to life with lean, efficient app solutions that scale with your vision.</p>
     </div>
   </section>
 
-  <!-- Contact -->
+  <!-- Contact Section -->
   <section class="contact">
     <h2>Let's Work Together</h2>
-    <p>Transform your online presence with a clean, strategic brand and platform.</p>
+    <p>Ready to transform your digital presence? Let’s chat about how we can create a standout brand for you.</p>
     <a href="mailto:info@foundscript.com">Contact Me Now</a>
+    <p style="margin-top: 30px; font-size: 14px;">&copy; 2025 FoundScript. All rights reserved.</p>
   </section>
-
-  <!-- Footer -->
-  <footer>
-    © 2025 FoundScript. All rights reserved.
-  </footer>
 
 </body>
 </html>
