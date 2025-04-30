@@ -1,201 +1,227 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>FoundScript</title>
-    <style>
-        /* Global Styles */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #fff;
-            color: #333;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FoundScript</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #fff;
+      color: #333;
+    }
 
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
 
-        /* Header */
-        .header {
-            background-color: #ffffff;
-            padding: 10px 20px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-        }
+    /* Header */
+    .header {
+      background-color: #fff;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
 
-        .header img {
-            max-height: 60px;
-            height: auto;
-        }
+    .header img {
+      height: 50px;
+      width: auto;
+    }
 
-        /* Hero Section */
-        .hero {
-            background-color: #008C8C;
-            color: #fff;
-            padding: 100px 20px;
-            text-align: center;
-            animation: fadeIn 2s ease-in;
-        }
+    /* Hero */
+    .hero {
+      position: relative;
+      background-color: #008C8C;
+      color: #fff;
+      padding: 120px 20px 100px;
+      text-align: center;
+      overflow: hidden;
+    }
 
-        .hero h1 {
-            font-size: 48px;
-            margin-bottom: 20px;
-        }
+    .hero h1 {
+      font-size: 42px;
+      margin-bottom: 15px;
+    }
 
-        .hero p {
-            font-size: 18px;
-            margin-bottom: 30px;
-        }
+    .hero p {
+      font-size: 18px;
+      margin-bottom: 30px;
+    }
 
-        .hero a {
-            display: inline-block;
-            padding: 15px 30px;
-            background-color: #fff;
-            color: #008C8C;
-            font-size: 18px;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-            margin-top: 20px;
-        }
+    .hero a {
+      padding: 14px 28px;
+      background-color: #fff;
+      color: #008C8C;
+      border-radius: 5px;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+      display: inline-block;
+    }
 
-        .hero a:hover {
-            background-color: #f4f4f4;
-        }
+    .hero a:hover {
+      background-color: #f4f4f4;
+    }
 
-        /* Services Section */
-        .services {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            padding: 50px 20px;
-            background-color: #f4f4f4;
-            justify-content: center;
-        }
+    /* Code Rain Animation */
+    .code-rain {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100px;
+      pointer-events: none;
+      font-family: monospace;
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.1);
+      white-space: nowrap;
+      letter-spacing: 2px;
+      z-index: 1;
+    }
 
-        .service-item {
-            flex: 1 1 300px;
-            max-width: 320px;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-            animation: fadeInUp 1s ease forwards;
-            opacity: 0;
-        }
+    .rain1 {
+      animation: rain 12s linear infinite;
+    }
+    .rain2 {
+      animation: rain 18s linear infinite;
+      top: 20px;
+      color: rgba(255, 255, 255, 0.07);
+    }
+    .rain3 {
+      animation: rain 22s linear infinite;
+      top: 40px;
+      color: rgba(255, 255, 255, 0.05);
+    }
 
-        .service-item:hover {
-            transform: scale(1.05);
-        }
+    @keyframes rain {
+      0% { transform: translateY(-100%); }
+      100% { transform: translateY(100%); }
+    }
 
-        .service-item h3 {
-            color: #008C8C;
-        }
+    /* Services */
+    .services {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 60px 20px;
+      background-color: #f4f4f4;
+      gap: 20px;
+    }
 
-        /* Contact Section */
-        .contact {
-            background-color: #008C8C;
-            color: #fff;
-            padding: 50px 20px;
-            text-align: center;
-        }
+    .service-item {
+      flex: 1 1 250px;
+      max-width: 300px;
+      padding: 25px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+      text-align: center;
+      transition: transform 0.3s ease;
+      min-height: 220px;
+    }
 
-        .contact a {
-            display: inline-block;
-            padding: 15px 30px;
-            background-color: #fff;
-            color: #008C8C;
-            border-radius: 5px;
-            font-size: 18px;
-            transition: background-color 0.3s ease;
-            margin-top: 20px;
-        }
+    .service-item:hover {
+      transform: translateY(-5px);
+    }
 
-        .contact a:hover {
-            background-color: #f4f4f4;
-        }
+    .service-item h3 {
+      color: #008C8C;
+      margin-bottom: 12px;
+    }
 
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
+    /* Contact */
+    .contact {
+      background-color: #008C8C;
+      color: #fff;
+      padding: 60px 20px;
+      text-align: center;
+    }
 
-        @keyframes fadeInUp {
-            0% {
-                transform: translateY(30px);
-                opacity: 0;
-            }
-            100% {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
+    .contact a {
+      padding: 14px 28px;
+      background-color: #fff;
+      color: #008C8C;
+      border-radius: 5px;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
 
-        /* Mobile Styles */
-        @media (max-width: 768px) {
-            .services {
-                flex-direction: column;
-                align-items: stretch;
-            }
+    .contact a:hover {
+      background-color: #f4f4f4;
+    }
 
-            .service-item {
-                width: 100%;
-                margin-bottom: 20px;
-            }
+    footer {
+      text-align: center;
+      font-size: 14px;
+      color: #999;
+      padding: 20px 0;
+    }
 
-            .hero h1 {
-                font-size: 36px;
-            }
+    @media (max-width: 768px) {
+      .service-item {
+        flex: 1 1 100%;
+        max-width: none;
+      }
 
-            .hero p {
-                font-size: 16px;
-            }
-        }
-    </style>
+      .hero h1 {
+        font-size: 32px;
+      }
+    }
+  </style>
 </head>
 <body>
 
-    <!-- Header -->
-    <header class="header">
-        <img src="found-script-logo-com.png" alt="FoundScript Logo" />
-    </header>
+  <!-- Header -->
+  <div class="header">
+    <img src="found-script-logo-com.png" alt="FoundScript Logo" />
+  </div>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <h1>Helping You Build Your Digital Identity</h1>
-        <p>Web & App Development | Branding | Landing Pages | SEO Optimization</p>
-        <a href="mailto:info@foundscript.com">Enquire Now to Receive Full List of Services</a>
-    </section>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="code-rain rain1">{ } < > ; () let const function () =></div>
+    <div class="code-rain rain2">&lt;/html&gt; .className() => init() return;</div>
+    <div class="code-rain rain3">const var if else &lt;div&gt; = require()</div>
 
-    <!-- Services Section -->
-    <section class="services">
-        <div class="service-item">
-            <h3>Landing Page Design</h3>
-            <p>We create high-conversion landing pages that speak to your audience and drive results.</p>
-        </div>
-        <div class="service-item">
-            <h3>Branding & Identity</h3>
-            <p>Your brand deserves to stand out. Let us craft your visual identity with precision and creativity.</p>
-        </div>
-        <div class="service-item">
-            <h3>SEO Optimization</h3>
-            <p>Increase your online visibility with tailored SEO strategies that help you rank higher.</p>
-        </div>
-    </section>
+    <h1>Helping You Build Your Digital Identity</h1>
+    <p>Web & App Development | Branding | Landing Pages | SEO Optimization</p>
+    <a href="mailto:info@foundscript.com">Enquire Now to Receive Full List of Services</a>
+  </section>
 
-    <!-- Contact Section -->
-    <section class="contact">
-        <h2>Let's Work Together</h2>
-        <p>Ready to transform your digital presence? Let’s chat about how we can create a standout brand for you.</p>
-        <a href="mailto:info@foundscript.com">Contact Me Now</a>
-    </section>
+  <!-- Services -->
+  <section class="services">
+    <div class="service-item">
+      <h3>Landing Page Design</h3>
+      <p>High-conversion pages tailored to your brand's message and audience goals.</p>
+    </div>
+    <div class="service-item">
+      <h3>Branding & Identity</h3>
+      <p>Custom visual identity that creates trust and recognition with your users.</p>
+    </div>
+    <div class="service-item">
+      <h3>SEO Optimization</h3>
+      <p>Targeted SEO strategies to improve visibility and organic reach.</p>
+    </div>
+    <div class="service-item">
+      <h3>MVP App Development</h3>
+      <p>Bring your digital concept to life with rapid prototyping and clean UX.</p>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact">
+    <h2>Let's Work Together</h2>
+    <p>Transform your online presence with a clean, strategic brand and platform.</p>
+    <a href="mailto:info@foundscript.com">Contact Me Now</a>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    © 2025 FoundScript. All rights reserved.
+  </footer>
 
 </body>
 </html>
