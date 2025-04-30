@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoundScript</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+            color: #333;
+        }
+        h1, h2 {
+            margin: 0;
+            color: #008C8C; /* Teal */
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Hero Section */
+        .hero {
+            background-color: #008C8C; /* Teal */
+            color: #fff;
+            padding: 100px 20px;
+            text-align: center;
+            animation: fadeIn 2s ease-in;
+        }
+        .hero h1 {
+            font-size: 48px;
+        }
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+        .hero a {
+            padding: 15px 30px;
+            background-color: #fff;
+            color: #008C8C;
+            font-size: 18px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .hero a:hover {
+            background-color: #f4f4f4;
+        }
+
+        /* Services Section */
+        .services {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 50px 20px;
+            background-color: #f4f4f4;
+        }
+        .service-item {
+            text-align: center;
+            width: 30%;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        .service-item:hover {
+            transform: scale(1.05);
+        }
+        .service-item h3 {
+            color: #008C8C;
+        }
+
+        /* Contact Section */
+        .contact {
+            background-color: #008C8C; /* Teal */
+            color: #fff;
+            padding: 50px 20px;
+            text-align: center;
+        }
+        .contact a {
+            padding: 15px 30px;
+            background-color: #fff;
+            color: #008C8C;
+            border-radius: 5px;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+        }
+        .contact a:hover {
+            background-color: #f4f4f4;
+        }
+
+        /* Slick transition for fade-in */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Helping You Build Your Digital Identity</h1>
+        <p>Web & App Development | Branding | Landing Pages | SEO Optimization</p>
+        <a href="mailto:info@yourdomain.com">Enquire Now to Receive Full List of Services</a>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services">
+        <div class="service-item">
+            <h3>Landing Page Design</h3>
+            <p>We create high-conversion landing pages that speak to your audience and drive results.</p>
+        </div>
+        <div class="service-item">
+            <h3>Branding & Identity</h3>
+            <p>Your brand deserves to stand out. Let us craft your visual identity with precision and creativity.</p>
+        </div>
+        <div class="service-item">
+            <h3>SEO Optimization</h3>
+            <p>Increase your online visibility with tailored SEO strategies that help you rank higher.</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact">
+        <h2>Let's Work Together</h2>
+        <p>Ready to transform your digital presence? Let’s chat about how we can create a standout brand for you.</p>
+        <a href="mailto:info@yourdomain.com">Contact Me Now</a>
+    </section>
+
+</body>
+</html>
