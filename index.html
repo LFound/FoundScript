@@ -20,17 +20,17 @@
 
     /* Header */
     .header {
+      position: relative;
       background-color: #fff;
-      padding: 15px 30px;
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
+      height: 80px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     }
 
     .header img {
-      height: 50px;
-      width: auto;
+      position: absolute;
+      bottom: 10px;
+      right: 20px;
+      height: 60px;
     }
 
     /* Hero */
@@ -107,21 +107,21 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      padding: 60px 20px;
+      padding: 70px 20px;
       background-color: #f4f4f4;
-      gap: 20px;
+      gap: 30px;
     }
 
     .service-item {
       flex: 1 1 250px;
       max-width: 300px;
-      padding: 25px;
+      padding: 30px 20px;
       background-color: #fff;
       border-radius: 8px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
       text-align: center;
       transition: transform 0.3s ease;
-      min-height: 220px;
+      min-height: 240px;
     }
 
     .service-item:hover {
@@ -130,14 +130,19 @@
 
     .service-item h3 {
       color: #008C8C;
-      margin-bottom: 12px;
+      margin-bottom: 15px;
+      font-size: 22px;
+    }
+    .service-item p {
+      font-size: 15px;
+      line-height: 1.6;
     }
 
     /* Contact */
     .contact {
       background-color: #008C8C;
       color: #fff;
-      padding: 60px 20px;
+      padding: 70px 20px;
       text-align: center;
     }
 
@@ -168,7 +173,7 @@
       }
 
       .hero h1 {
-        font-size: 32px;
+        font-size: 48px;
       }
     }
   </style>
