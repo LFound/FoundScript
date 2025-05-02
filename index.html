@@ -41,7 +41,40 @@
       right: 20px;
       height: 60px;
     }
+.logo {
+  font-size: 2em;
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
+  margin: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid transparent;
+  animation: typing 2s steps(10, end), blink 0.75s step-end infinite;
+}
 
+/* "Found" is plain and black */
+.found {
+  font-family: Arial, sans-serif;
+  color: black;
+}
+
+/* "Script" is teal and in a script-style font */
+.script {
+  font-family: 'Pacifico', cursive;
+  color: #008C8C;
+}
+
+/* Typing animation */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink {
+  0%, 100% { border-color: transparent }
+  50% { border-color: black }
+}
     /* Hero */
     .hero {
       position: relative;
@@ -193,8 +226,10 @@
 
   <!-- Header -->
   <div class="header">
-    <img src="found-script-logo-com.png" alt="FoundScript Logo" />
-  </div>
+  <h1 class="logo">
+    <span class="found">Found</span><span class="script">Script</span>
+  </h1>
+</div>
 
   <!-- Hero -->
   <section class="hero">
