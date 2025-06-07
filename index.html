@@ -1,288 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>FoundScript</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="FoundScript — Building healthcare driven brands and digital assets. Founder led. Focused. Disciplined.">
+    <title>FoundScript — Healthcare Driven Brand Studio</title>
 
-  <!-- Open Graph Meta Tags -->
-  <meta property="og:title" content="FoundScript - Web Development & Branding">
-  <meta property="og:description" content="FoundScript helps businesses build their online presence through web development, branding, and digital marketing services.">
-  <meta property="og:image" content="https://raw.githubusercontent.com/LFound/FoundScript/refs/heads/main/found-script-meta-logo.png">
-  <meta property="og:url" content="https://www.foundscript.com">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="FoundScript">
+    <!-- Inter font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #fafafa;
+            color: #222222;
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.7;
+        }
+        header {
+            background-color: #0b3c5d;
+            color: #fff;
+            padding: 30px 20px;
+            text-align: center;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 50px 20px;
+        }
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.3em;
+            letter-spacing: 0.5px;
+        }
+        h2 {
+            color: #0b3c5d;
+            font-size: 1.6rem;
+            margin-top: 40px;
+            margin-bottom: 15px;
+        }
+        p {
+            font-size: 1.05rem;
+            margin-bottom: 1.1em;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        ul li {
+            margin-bottom: 10px;
+            font-size: 1.05rem;
+        }
+        a {
+            color: #3b5d50;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        a:hover {
+            color: #2e4d43;
+        }
+        .contact {
+            background-color: #eaeaea;
+            padding: 25px;
+            margin-top: 50px;
+            text-align: center;
+            border-radius: 4px;
+        }
+        footer {
+            background-color: #222222;
+            color: #aaa;
+            text-align: center;
+            padding: 12px;
+            margin-top: 50px;
+            font-size: 0.9rem;
+        }
 
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #fff;
-      color: #333;
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    /* Header */
-    .header {
-      position: relative;
-      background-color: #fff;
-      height: 80px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    }
-
-    .logo {
-      font-size: 2.8em;
-      position: absolute;
-      bottom: 10px;
-      right: 20px;
-      margin: 0;
-      white-space: nowrap;
-    }
-
-    .found span {
-      display: inline-block;
-      opacity: 0;
-      animation: fadeIn 0.4s forwards;
-    }
-
-    .found span:nth-child(1) { animation-delay: 0s; }
-    .found span:nth-child(2) { animation-delay: 0.3s; }
-    .found span:nth-child(3) { animation-delay: 0.6s; }
-    .found span:nth-child(4) { animation-delay: 0.9s; }
-    .found span:nth-child(5) { animation-delay: 1.2s; }
-
-    .script {
-      font-family: 'VT323', monospace;
-      color: #008C8C;
-      font-size: 1.35em;
-      display: inline-block;
-      position: relative;
-      top: 1px;
-      opacity: 0;
-      animation: fadeIn 1.5s forwards;
-      animation-delay: 1.6s;
-      margin-left: -8px;
-    }
-
-    @keyframes fadeIn {
-      to {
-        opacity: 1;
-      }
-    }
-
-    /* Hero */
-    .hero {
-      position: relative;
-      background-color: #008C8C;
-      color: #fff;
-      padding: 120px 20px 100px;
-      text-align: center;
-      overflow: hidden;
-    }
-
-    .hero h1 {
-      font-size: 42px;
-      margin-bottom: 15px;
-    }
-
-    .hero p {
-      font-size: 18px;
-      margin-bottom: 30px;
-    }
-
-    .hero a {
-      padding: 14px 28px;
-      background-color: #fff;
-      color: #008C8C;
-      border-radius: 5px;
-      font-size: 16px;
-      transition: background-color 0.3s ease;
-      display: inline-block;
-    }
-
-    .hero a:hover {
-      background-color: #f4f4f4;
-    }
-
-    /* Code Rain Animation */
-    .code-rain {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100px;
-      pointer-events: none;
-      font-family: monospace;
-      font-size: 14px;
-      white-space: nowrap;
-      letter-spacing: 2px;
-      z-index: 1;
-      opacity: 0.25;
-    }
-
-    .rain1 {
-      animation: rain 12s linear infinite;
-      animation-delay: 0s;
-    }
-    .rain2 {
-      animation: rain 16s linear infinite;
-      top: 20px;
-      color: rgba(255, 255, 255, 0.18);
-      animation-delay: 0s;
-    }
-    .rain3 {
-      animation: rain 20s linear infinite;
-      top: 40px;
-      color: rgba(255, 255, 255, 0.12);
-      animation-delay: 0s;
-    }
-
-    @keyframes rain {
-      0% { transform: translateY(-100%); }
-      100% { transform: translateY(100%); }
-    }
-
-    /* Services */
-    .services {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      padding: 70px 20px;
-      background-color: #f4f4f4;
-      gap: 30px;
-    }
-
-    .service-item {
-      flex: 1 1 250px;
-      max-width: 300px;
-      padding: 30px 20px;
-      background-color: #fff;
-      border-radius: 8px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-      text-align: center;
-      transition: transform 0.3s ease;
-      min-height: 240px;
-    }
-
-    .service-item:hover {
-      transform: translateY(-5px);
-    }
-
-    .service-item h3 {
-      color: #008C8C;
-      margin-bottom: 15px;
-      font-size: 22px;
-    }
-
-    .service-item p {
-      font-size: 15px;
-      line-height: 1.6;
-    }
-
-    /* Contact */
-    .contact {
-      background-color: #008C8C;
-      color: #fff;
-      padding: 70px 20px;
-      text-align: center;
-    }
-
-    .contact a {
-      margin-top: 20px;
-      display: inline-block;
-      padding: 14px 28px;
-      background-color: #fff;
-      color: #008C8C;
-      border-radius: 5px;
-      font-size: 16px;
-      transition: background-color 0.3s ease;
-    }
-
-    .contact a:hover {
-      background-color: #f4f4f4;
-    }
-
-    footer {
-      text-align: center;
-      font-size: 14px;
-      color: #999;
-      padding: 20px 0;
-    }
-
-    @media (max-width: 768px) {
-      .service-item {
-        flex: 1 1 100%;
-        max-width: none;
-      }
-
-      .hero h1 {
-        font-size: 48px;
-      }
-    }
-  </style>
+        /* MOBILE POLISH */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            h2 {
+                font-size: 1.4rem;
+            }
+            .container {
+                padding: 30px 15px;
+            }
+            p, ul li {
+                font-size: 1rem;
+            }
+        }
+    </style>
 </head>
+
 <body>
 
-  <!-- Header -->
-  <div class="header">
-    <h1 class="logo">
-      <span class="found">
-        <span>F</span><span>o</span><span>u</span><span>n</span><span>d</span>
-      </span>
-      <span class="script">Script</span>
-    </h1>
-  </div>
+<header>
+    <h1>FoundScript</h1>
+    <p>Founder led. Healthcare driven. Structuring brands for long term value.</p>
+</header>
 
-  <!-- Hero -->
-  <section class="hero">
-    <div class="code-rain rain1">{ } < > ; () let const function () =></div>
-    <div class="code-rain rain2">&lt;/html&gt; .className() => init() return;</div>
-    <div class="code-rain rain3">const var if else &lt;div&gt; = require()</div>
+<div class="container">
 
-    <h1>Helping You Build Your Digital Identity</h1>
-    <p>Web & App Development | Branding | Landing Pages | SEO Optimization</p>
-    <a href="mailto:info@foundscript.com">Enquire Now to Receive Full List of Services</a>
-  </section>
+    <section>
+        <h2>About the Founder</h2>
+        <p>I am a healthcare driven commercial founder with deep market, regulatory and operational insight across the UK healthcare sector. My background spans clinical care, pharma operations, WDA management and SME scaling with a strong network across healthcare, pharmacy and wellness sectors.</p>
+        <p>I focus on building structured, scalable and sellable brand and digital assets. Solving real market needs and driving value through disciplined execution. I lead the commercial vision and execution strategy bringing in technical and specialist partners where required to ensure best in class delivery.</p>
+        <p>We are selectively raising for current portfolio opportunities with aligned investors who share our healthcare first vision.</p>
+    </section>
 
-  <!-- Services -->
-  <section class="services">
-    <div class="service-item">
-      <h3>Landing Page Design</h3>
-      <p>High-conversion pages tailored to your brand's message and audience goals.</p>
-    </div>
-    <div class="service-item">
-      <h3>Branding & Identity</h3>
-      <p>Custom visual identity that creates trust and recognition with your users.</p>
-    </div>
-    <div class="service-item">
-      <h3>SEO Optimization</h3>
-      <p>Targeted SEO strategies to improve visibility and organic reach.</p>
-    </div>
-    <div class="service-item">
-      <h3>MVP App Development</h3>
-      <p>Bring your digital concept to life with rapid prototyping and clean UX.</p>
-    </div>
-  </section>
+    <section>
+        <h2>Our Focus</h2>
+        <p>FoundScript develops healthcare driven brands and digital assets with a disciplined focus on:</p>
+        <ul>
+            <li>Healthcare and wellness consumer brands</li>
+            <li>Health driven beauty</li>
+            <li>Healthcare SaaS and compliance tools</li>
+            <li>Private healthcare loyalty and engagement platforms</li>
+        </ul>
+        <p>Our current portfolio includes brands in active development with investor facing opportunities available selectively. We operate with a disciplined healthcare driven approach building assets for long term value realisation and market scalability.</p>
+    </section>
 
-  <!-- Contact -->
-  <section class="contact">
-    <h2>Let's Work Together</h2>
-    <p>Transform your online presence with a clean, strategic brand and platform.</p>
-    <a href="mailto:info@foundscript.com">Contact Us Now</a>
-  </section>
+    <section class="contact">
+        <h2>Contact</h2>
+        <p>Investor conversations welcome. Private decks and further detail available upon request.</p>
+        <p><a href="mailto:info@foundscript.com">info@foundscript.com</a></p>
+    </section>
 
-  <!-- Footer -->
-  <footer>
-    © 2025 FoundScript. All rights reserved.
-  </footer>
+</div>
+
+<footer>
+    &copy; 2025 FoundScript. All rights reserved.
+</footer>
 
 </body>
 </html>
