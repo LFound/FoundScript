@@ -6,19 +6,15 @@
   <title>FoundScript — Precision System Design</title>
   <meta name="description" content="FoundScript works behind the scenes to improve performance in complex systems — bespoke design, logic tuning and control across AI, quantum, energy and life sciences.">
   <meta name="author" content="FoundScript Ltd" />
-  <meta property="og:title" content="FoundScript — Precision System Design" />
-  <meta property="og:description" content="Bespoke outcomes for complex systems — partner-led and IP protected.">
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://www.foundscript.com" />
 
   <style>
     :root{
-      --bg: #111c2f;
+      --bg: #162940;
       --fg: #ffffff;
-      --fg-muted: #d8dbe3;
+      --fg-muted: #dce1ea;
       --accent: #6fd3ff;
-      --grid: rgba(110,180,255,0.035);
-      --panel: rgba(255,255,255,0.05);
+      --grid: rgba(110,180,255,0.06);
+      --panel: rgba(255,255,255,0.08);
       --rule: rgba(255,255,255,0.10);
     }
 
@@ -32,8 +28,6 @@
       background-image: radial-gradient(circle, var(--grid) 1px, transparent 1px);
       background-size: 28px 28px;
       background-attachment: fixed;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
     }
 
     body::before {
@@ -54,7 +48,7 @@
       text-align: center;
       padding: 72px 20px 44px;
       border-bottom: 1px solid var(--rule);
-      background: linear-gradient(180deg, rgba(17,28,47,0.92), rgba(17,28,47,0.75) 70%, rgba(17,28,47,0.40));
+      background: linear-gradient(180deg, rgba(22,41,64,0.92), rgba(22,41,64,0.75) 70%, rgba(22,41,64,0.40));
       backdrop-filter: saturate(120%) blur(2px);
     }
 
@@ -62,6 +56,7 @@
       font-size: clamp(2rem, 2.4rem, 3rem);
       margin: 0 0 10px 0;
       font-weight: 700;
+      text-shadow: 0 0 6px rgba(111,211,255,0.1);
     }
 
     .sub1 {
@@ -150,31 +145,22 @@
       border-top: 1px solid rgba(255,255,255,0.08);
     }
 
-    /* Animations */
     @media (prefers-reduced-motion: no-preference) {
       body {
         animation: latticePulse 28s ease-in-out infinite alternate;
       }
-
-      header {
-        animation: fadeDown 600ms ease-out both;
-      }
-
-      .contact {
-        animation: fadeUp 700ms ease-out 60ms both;
-      }
+      header { animation: fadeDown 600ms ease-out both; }
+      .contact { animation: fadeUp 700ms ease-out 60ms both; }
     }
 
     @keyframes fadeDown {
       from { opacity: 0; transform: translateY(-8px); }
       to   { opacity: 1; transform: translateY(0); }
     }
-
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(8px); }
       to   { opacity: 1; transform: translateY(0); }
     }
-
     @keyframes latticePulse {
       from { background-size: 28px 28px; }
       to   { background-size: 31px 31px; }
@@ -197,7 +183,6 @@
 
   <main>
     <p class="note">This site is being restructured to reflect ongoing partner work and internal R&amp;D.</p>
-
     <section class="contact" aria-labelledby="contact-title">
       <h2 id="contact-title">Contact</h2>
       <p>For introductions, private overview access or licensing discussions:</p>
