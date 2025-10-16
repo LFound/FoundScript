@@ -3,196 +3,240 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>FoundScript — Precision System Design</title>
-  <meta name="description" content="FoundScript works behind the scenes to improve performance in complex systems. Bespoke design, logic tuning and control across AI, quantum, energy and life sciences.">
+  <title>FoundScript — Engineered precision</title>
+  <meta name="description" content="FoundScript develops timing-first control systems for AI, photonics, energy and life sciences. Partner-led, IP-protected, and built in the UK." />
   <meta name="author" content="FoundScript Ltd" />
+  <meta name="color-scheme" content="dark light" />
 
+  <!--
+    Single-file, no dependencies. Modern CSS only.
+    Colour system from brand notes:
+    Midnight Blue  #0A0E2A  (bg)
+    Electric Blue  #2FB7FF  (accent)
+    Violet Grad    #6B2FFF → #D64DFF (secondary)
+    Soft White     #E8E8E8  (fg)
+  -->
   <style>
     :root{
-      --bg: #162940;
-      --fg: #ffffff;
-      --fg-muted: #dce1ea;
-      --accent: #6fd3ff;
-      --grid: rgba(110,180,255,0.06);
-      --panel: rgba(255,255,255,0.08);
-      --rule: rgba(255,255,255,0.10);
+      --bg: #0A0E2A;               /* Midnight Blue */
+      --fg: #E8E8E8;               /* Soft White */
+      --fg-dim: #C9CED8;
+      --accent: #2FB7FF;           /* Electric Blue */
+      --violet-a: #6B2FFF;         /* Gradient start */
+      --violet-b: #D64DFF;         /* Gradient end */
+      --panel: rgba(255,255,255,0.06);
+      --rule: rgba(255,255,255,0.12);
+      --ring: rgba(47,183,255,0.1);
+      --shadow: 0 10px 30px rgba(0,0,0,0.35);
+      --radius-xl: 18px;
     }
 
-    html, body { height: 100%; margin: 0; padding: 0; }
-
-    body {
-      background: var(--bg);
-      color: var(--fg);
+    /* Base */
+    html, body { height: 100%; }
+    * { box-sizing: border-box; }
+    body{
+      margin:0; color:var(--fg);
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-      line-height: 1.8;
-      background-image: radial-gradient(circle, var(--grid) 1px, transparent 1px);
-      background-size: 28px 28px;
-      background-attachment: fixed;
+      line-height:1.75; background: var(--bg);
+      overflow-x: hidden;
     }
 
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      background:
-        radial-gradient(1200px 800px at 70% -10%, rgba(111,211,255,0.08), transparent 60%),
-        radial-gradient(900px 600px at -10% 30%, rgba(111,211,255,0.05), transparent 55%),
-        linear-gradient(180deg, rgba(0,0,0,0.25), transparent 25%, rgba(0,0,0,0.15) 75%, rgba(0,0,0,0.35));
-      z-index: 0;
-    }
+    a{ color:var(--fg); text-underline-offset: 3px; }
+    a:hover, a:focus{ color: var(--accent); outline:none; }
 
-    header {
-      position: relative;
-      z-index: 1;
-      text-align: center;
-      padding: 72px 20px 44px;
+    /* --- HERO --- */
+    .hero{
+      position:relative; isolation:isolate;
+      padding: clamp(56px, 8vw, 96px) 20px 56px;
+      text-align:center;
       border-bottom: 1px solid var(--rule);
-      background: linear-gradient(180deg, rgba(22,41,64,0.92), rgba(22,41,64,0.75) 70%, rgba(22,41,64,0.40));
-      backdrop-filter: saturate(120%) blur(2px);
+      background:
+        radial-gradient(1200px 600px at 85% -10%, rgba(107,47,255,0.25), transparent 60%),
+        radial-gradient(900px 520px at -10% 30%, rgba(214,77,255,0.18), transparent 55%),
+        linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0) 35%);
     }
 
-    h1 {
-      font-size: clamp(2rem, 2.4rem, 3rem);
-      margin: 0 0 10px 0;
-      font-weight: 700;
-      text-shadow: 0 0 6px rgba(111,211,255,0.1);
+    .hero h1{
+      margin: 0 0 8px; font-size: clamp(2.2rem, 5.8vw, 4rem);
+      letter-spacing: 0.3px; font-weight: 700;
+      text-shadow: 0 0 18px rgba(47,183,255,0.18);
     }
 
-    .sub1 {
-      max-width: 820px;
-      margin: 0 auto 8px;
-      font-size: 1.15rem;
+    .tagline{ font-size: clamp(1.05rem, 2.2vw, 1.25rem); margin: 6px auto 14px; max-width: 900px; }
+    .subline{ color:var(--fg-dim); font-style: italic; max-width: 860px; margin: 0 auto 22px; }
+
+    .cta{
+      display:inline-flex; align-items:center; gap:10px;
+      padding: 12px 18px; border-radius: 999px; border:1px solid rgba(255,255,255,0.16);
+      background: linear-gradient(90deg, var(--violet-a), var(--violet-b));
+      color:#09111E; font-weight: 700; text-decoration:none; box-shadow: var(--shadow);
+    }
+    .cta:hover{ filter: brightness(1.06); }
+
+    /* Lattice backdrop (SVG) */
+    .lattice{
+      position:absolute; inset:0; z-index:-1; opacity: 0.45; pointer-events:none;
+      background-image: url('data:image/svg+xml;utf8,\
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600">\
+          <defs>\
+            <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">\
+              <stop offset="0%" stop-color="%236B2FFF"/>\
+              <stop offset="100%" stop-color="%23D64DFF"/>\
+            </linearGradient>\
+          </defs>\
+          <g fill="none" stroke="url(%23g)" stroke-opacity="0.25">\
+            <path d="M0 520 L200 420 L400 520 L600 420 L800 520 L1000 420 L1200 520"/>\
+            <path d="M0 360 L200 260 L400 360 L600 260 L800 360 L1000 260 L1200 360"/>\
+            <path d="M0 200 L200 100 L400 200 L600 100 L800 200 L1000 100 L1200 200"/>\
+          </g>\
+          <g fill="%232FB7FF" fill-opacity="0.25">\
+            <circle cx="200" cy="100" r="3"/><circle cx="400" cy="200" r="3"/>\
+            <circle cx="600" cy="100" r="3"/><circle cx="800" cy="200" r="3"/>\
+            <circle cx="1000" cy="100" r="3"/><circle cx="200" cy="420" r="3"/>\
+            <circle cx="400" cy="520" r="3"/><circle cx="600" cy="420" r="3"/>\
+            <circle cx="800" cy="520" r="3"/><circle cx="1000" cy="420" r="3"/>\
+          </g>\
+        </svg>');
+      background-size: cover; background-position: center;
+      mask-image: radial-gradient(1200px 520px at 50% 20%, black 35%, transparent 70%);
     }
 
-    .sub2 {
-      max-width: 820px;
-      margin: 0 auto 18px;
-      font-size: 1.05rem;
-      color: var(--fg-muted);
-      font-style: italic;
+    /* Badges */
+    .badges{ display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin-top: 14px; }
+    .badge{
+      padding: 7px 12px; border-radius: 999px; font-size: .9rem; color: var(--fg-dim);
+      border: 1px solid rgba(255,255,255,0.14); background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(3px) saturate(120%);
     }
 
-    .pills {
-      margin-top: 8px;
+    /* --- SECTIONS --- */
+    main{ padding: 36px 18px 80px; }
+
+    .grid{
+      display:grid; gap: 18px; max-width: 1120px; margin: 0 auto;
+      grid-template-columns: repeat(12, 1fr);
     }
 
-    .pill {
-      display: inline-block;
-      padding: 7px 14px;
-      margin: 6px 6px 0;
-      font-size: 0.9rem;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 999px;
+    .card{
+      grid-column: span 12; padding: 22px 20px; border-radius: var(--radius-xl);
+      border: 1px solid var(--rule); background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+      box-shadow: var(--shadow);
     }
 
-    main {
-      position: relative;
-      z-index: 1;
-      padding: 26px 20px 80px;
+    .kicker{ display:inline-block; font-size:.85rem; letter-spacing:.12em; text-transform:uppercase; opacity:.8; margin-bottom:6px; }
+    h2{ margin: 6px 0 8px; font-size: clamp(1.3rem, 2.4vw, 1.6rem); }
+    p{ margin: 10px 0; color: var(--fg-dim); }
+
+    /* Focus tiles */
+    .tiles{ display:grid; gap:16px; grid-template-columns: repeat(12, 1fr); margin-top: 10px; }
+    .tile{
+      grid-column: span 12; border:1px solid var(--rule); border-radius: 16px; padding:18px; background: var(--panel);
+    }
+    .tile h3{ margin: 6px 0 6px; font-size: 1.05rem; }
+    .tile ul{ padding-left: 18px; margin: 6px 0 0; }
+
+    /* Contact panel */
+    .contact{
+      display:grid; gap:14px; grid-template-columns: 1fr; align-items:center; text-align:center;
+      padding: 24px 20px; margin-top: 22px;
+      border: 1px solid var(--rule); border-radius: var(--radius-xl); background: var(--panel);
+    }
+    .contact a.btn{ display:inline-block; padding: 10px 16px; border-radius:999px; border:1px solid rgba(255,255,255,0.16); text-decoration:none; background: rgba(47,183,255,0.12); }
+
+    /* Footer */
+    footer{ border-top:1px solid var(--rule); color:#9AA3B2; text-align:center; padding: 16px 12px; font-size:.95rem; }
+
+    /* Responsive */
+    @media (min-width: 720px){
+      .card.col-6{ grid-column: span 6; }
+      .tile.col-6{ grid-column: span 6; }
+      .tile.col-4{ grid-column: span 4; }
+      .contact{ grid-template-columns: 1fr auto; text-align:left; }
     }
 
-    .note {
-      text-align: center;
-      color: var(--fg-muted);
-      font-style: italic;
-      margin: 12px auto 0;
-      max-width: 860px;
+    /* Motion */
+    @media (prefers-reduced-motion: no-preference){
+      .hero{ animation: fadeDown .6s ease-out both; }
+      .lattice{ animation: shimmer 18s ease-in-out infinite alternate; }
+      .card, .tile, .contact{ animation: fadeUp .6s ease-out .05s both; }
     }
-
-    .contact {
-      background: var(--panel);
-      border: 1px solid var(--rule);
-      padding: 28px 24px;
-      margin: 54px auto 52px;
-      max-width: 720px;
-      border-radius: 12px;
-      text-align: center;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
-    }
-
-    .contact h2 {
-      margin: 0 0 10px;
-      font-size: 1.25rem;
-    }
-
-    .contact p {
-      margin: 10px 0;
-      color: var(--fg-muted);
-    }
-
-    .contact a {
-      color: var(--fg);
-      text-decoration: underline;
-      text-underline-offset: 3px;
-    }
-
-    .contact a:hover,
-    .contact a:focus {
-      color: var(--accent);
-      outline: none;
-    }
-
-    footer {
-      position: relative;
-      z-index: 1;
-      background: #0b1220;
-      color: #9aa3b2;
-      text-align: center;
-      padding: 16px 12px 18px;
-      font-size: 0.92rem;
-      border-top: 1px solid rgba(255,255,255,0.08);
-    }
-
-    @media (prefers-reduced-motion: no-preference) {
-      body {
-        animation: latticePulse 28s ease-in-out infinite alternate;
-      }
-      header { animation: fadeDown 600ms ease-out both; }
-      .contact { animation: fadeUp 700ms ease-out 60ms both; }
-    }
-
-    @keyframes fadeDown {
-      from { opacity: 0; transform: translateY(-8px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(8px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes latticePulse {
-      from { background-size: 28px 28px; }
-      to   { background-size: 31px 31px; }
-    }
+    @keyframes fadeDown{ from{opacity:0; transform: translateY(-8px);} to{opacity:1; transform:none;} }
+    @keyframes fadeUp{ from{opacity:0; transform: translateY(8px);} to{opacity:1; transform:none;} }
+    @keyframes shimmer{ from{ opacity:.38; } to{ opacity:.55; } }
   </style>
 </head>
-
 <body>
-  <header>
-    <h1>FoundScript</h1>
-    <p class="sub1">Precision performance design for complex systems.</p>
-    <p class="sub2">Bespoke outcomes for AI, quantum, energy and life sciences. Partner‑led and IP‑protected.</p>
-    <div class="pills" aria-label="Focus areas">
-      <span class="pill">System Design</span>
-      <span class="pill">Logic Tuning</span>
-      <span class="pill">Cross‑Domain IP</span>
-      <span class="pill">Performance Engineering</span>
+  <header class="hero">
+    <div class="lattice" aria-hidden="true"></div>
+    <h1>FOUNDSCRIPT</h1>
+    <p class="tagline">Engineered precision for complex systems.</p>
+    <p class="subline">Timing‑first control across AI, photonics, energy and life sciences — partner‑led and IP‑protected.</p>
+    <a class="cta" href="mailto:info@foundscript.com?subject=FoundScript%20Private%20Overview">Request private overview</a>
+    <div class="badges" aria-label="Signals">
+      <span class="badge">UK patent filed</span>
+      <span class="badge">Selective pilots open</span>
+      <span class="badge">Built in the UK</span>
     </div>
   </header>
 
   <main>
-    <p class="note">This site is being restructured to reflect ongoing partner work and internal R&amp;D.</p>
-    <section class="contact" aria-labelledby="contact-title">
-      <h2 id="contact-title">Contact</h2>
-      <p>For introductions, private overview access or licensing discussions:</p>
-      <p>✉️ <a href="mailto:info@foundscript.com">info@foundscript.com</a></p>
-      <p>🌐 <a href="https://www.foundscript.com" rel="noopener">www.foundscript.com</a></p>
+    <section class="grid" aria-labelledby="why">
+      <article class="card col-6">
+        <span class="kicker">Approach</span>
+        <h2 id="why">Precision through timing</h2>
+        <p>We tune and stabilise behaviour in difficult systems, using a proprietary timing substrate that improves coherence, latency, and control without adding complexity. Outputs are delivered as designs, code, or licensed modules.</p>
+      </article>
+      <article class="card col-6">
+        <span class="kicker">Outcomes</span>
+        <h2>Measured performance gains</h2>
+        <p>Projects focus on real gains — better Q‑factors and dispersion in photonics, more stable inference in AI, cleaner control in energy, and timing benefits in life‑science systems. Evidence packs are provided under NDA.</p>
+      </article>
+    </section>
+
+    <section class="grid" aria-labelledby="focus">
+      <article class="card" style="margin-top: 8px;">
+        <span class="kicker">Focus areas</span>
+        <h2 id="focus">Where FoundScript delivers</h2>
+        <div class="tiles">
+          <div class="tile col-4">
+            <h3>AI systems</h3>
+            <ul>
+              <li>Timing‑aware inference wrappers</li>
+              <li>FastAPI modules for production</li>
+              <li>Stability and latency tuning</li>
+            </ul>
+          </div>
+          <div class="tile col-4">
+            <h3>Quantum & photonics</h3>
+            <ul>
+              <li>Programmable light‑field structures</li>
+              <li>Ring & interferometer optimisation</li>
+              <li>FDTD/EM simulation hand‑off</li>
+            </ul>
+          </div>
+          <div class="tile col-4">
+            <h3>Energy & life sciences</h3>
+            <ul>
+              <li>Control timing for stability</li>
+              <li>Sensor‑driven adaptation</li>
+              <li>Evidence packs under NDA</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="contact" style="margin-top:18px;">
+          <div>
+			<strong>Enquiries & licensing</strong><br />
+			info@foundscript.com · (+44) 020 3951 3929 · www.foundscript.com
+		</div>
+          <a class="btn" href="mailto:info@foundscript.com?subject=FoundScript%20Licensing">Start a private intro</a>
+        </div>
+      </article>
     </section>
   </main>
 
   <footer>
-    &copy; 2025 FoundScript Ltd. All rights reserved.
+    © 2025 FoundScript Ltd. Registered in England & Wales. All rights reserved.
   </footer>
 </body>
 </html>
