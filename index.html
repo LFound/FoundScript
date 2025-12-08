@@ -3,36 +3,26 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>FoundScript — Timing stability layer</title>
-  <meta name="description" content="FoundScript develops a patent-pending timing stability layer for distributed and low latency systems. External, lightweight API that improves latency and execution consistency without touching data or trading logic." />
+  <title>FoundScript — Deterministic Timing Layer (DTL)</title>
+  <meta name="description" content="FoundScript develops a deterministic timing layer (DTL) for distributed, trading and AI systems. External, lightweight API that stabilises drift, jitter and tail behaviour without touching data or business logic." />
   <meta name="author" content="FoundScript Ltd" />
   <meta name="color-scheme" content="dark light" />
 
-  <!--
-    Single-file, no dependencies. Modern CSS only.
-    Colour system from brand notes:
-    Midnight Blue  #0A0E2A  (bg)
-    Electric Blue  #2FB7FF  (accent)
-    Violet Grad    #6B2FFF → #D64DFF (secondary)
-    Soft White     #E8E8E8  (fg)
-  -->
   <style>
     :root{
-      --bg: #0A0E2A;               /* Midnight Blue */
-      --fg: #E8E8E8;               /* Soft White */
+      --bg: #0A0E2A;
+      --fg: #E8E8E8;
       --fg-dim: #C9CED8;
-      --accent: #2FB7FF;           /* Electric Blue */
-      --violet-a: #6B2FFF;         /* Gradient start */
-      --violet-b: #D64DFF;         /* Gradient end */
+      --accent: #2FB7FF;
+      --violet-a: #6B2FFF;
+      --violet-b: #D64DFF;
       --panel: rgba(255,255,255,0.06);
       --rule: rgba(255,255,255,0.12);
-      --ring: rgba(47,183,255,0.1);
       --shadow: 0 10px 30px rgba(0,0,0,0.35);
       --radius-xl: 18px;
     }
 
-    /* Base */
-    html, body { height: 100%; }
+    html, body { height: 100%; scroll-behavior: smooth; }
     * { box-sizing: border-box; }
     body{
       margin:0; color:var(--fg);
@@ -44,10 +34,34 @@
     a{ color:var(--fg); text-underline-offset: 3px; }
     a:hover, a:focus{ color: var(--accent); outline:none; }
 
+    /* --- TOP NAV --- */
+    .topnav {
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      padding: 10px 20px;
+      background: rgba(10,14,42,0.7);
+      backdrop-filter: blur(10px) saturate(140%);
+      z-index: 9999;
+      display: flex;
+      gap: 26px;
+      font-size: 0.95rem;
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+    }
+    .topnav a {
+      color: var(--fg-dim);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .topnav a:hover {
+      color: var(--accent);
+    }
+
     /* --- HERO --- */
     .hero{
-      position:relative; isolation:isolate;
-      padding: clamp(56px, 8vw, 96px) 20px 56px;
+      position:relative;
+      padding: clamp(96px, 10vw, 120px) 20px 56px; /* offset nav height */
       text-align:center;
       border-bottom: 1px solid var(--rule);
       background:
@@ -67,13 +81,14 @@
 
     .cta{
       display:inline-flex; align-items:center; gap:10px;
-      padding: 12px 18px; border-radius: 999px; border:1px solid rgba(255,255,255,0.16);
+      padding: 12px 18px; border-radius: 999px;
+      border:1px solid rgba(255,255,255,0.16);
       background: linear-gradient(90deg, var(--violet-a), var(--violet-b));
       color:#09111E; font-weight: 700; text-decoration:none; box-shadow: var(--shadow);
     }
     .cta:hover{ filter: brightness(1.06); }
 
-    /* Lattice backdrop (SVG) */
+    /* Backdrop lattice */
     .lattice{
       position:absolute; inset:0; z-index:-1; opacity: 0.45; pointer-events:none;
       background-image: url('data:image/svg+xml;utf8,\
@@ -85,9 +100,9 @@
             </linearGradient>\
           </defs>\
           <g fill="none" stroke="url(%23g)" stroke-opacity="0.25">\
-            <path d="M0 520 L200 420 L400 520 L600 420 L800 520 L1000 420 L1200 520"/>\
-            <path d="M0 360 L200 260 L400 360 L600 260 L800 360 L1000 260 L1200 360"/>\
-            <path d="M0 200 L200 100 L400 200 L600 100 L800 200 L1000 100 L1200 200"/>\
+            <path d="M0 520 L200 420 L400 520 L600 420 L800 520 L1000 420 L1200 520" />\
+            <path d="M0 360 L200 260 L400 360 L600 260 L800 360 L1000 260 L1200 360" />\
+            <path d="M0 200 L200 100 L400 200 L600 100 L800 200 L1000 100 L1200 200" />\
           </g>\
           <g fill="%232FB7FF" fill-opacity="0.25">\
             <circle cx="200" cy="100" r="3"/><circle cx="400" cy="200" r="3"/>\
@@ -97,11 +112,11 @@
             <circle cx="800" cy="520" r="3"/><circle cx="1000" cy="420" r="3"/>\
           </g>\
         </svg>');
-      background-size: cover; background-position: center;
+      background-size: cover;
+      background-position: center;
       mask-image: radial-gradient(1200px 520px at 50% 20%, black 35%, transparent 70%);
     }
 
-    /* Badges */
     .badges{ display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin-top: 14px; }
     .badge{
       padding: 7px 12px; border-radius: 999px; font-size: .9rem; color: var(--fg-dim);
@@ -109,7 +124,7 @@
       backdrop-filter: blur(3px) saturate(120%);
     }
 
-    /* --- SECTIONS --- */
+    /* --- CONTENT --- */
     main{ padding: 36px 18px 80px; }
 
     .grid{
@@ -119,7 +134,8 @@
 
     .card{
       grid-column: span 12; padding: 22px 20px; border-radius: var(--radius-xl);
-      border: 1px solid var(--rule); background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+      border: 1px solid var(--rule);
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
       box-shadow: var(--shadow);
     }
 
@@ -127,70 +143,77 @@
     h2{ margin: 6px 0 8px; font-size: clamp(1.3rem, 2.4vw, 1.6rem); }
     p{ margin: 10px 0; color: var(--fg-dim); }
 
-    /* Focus tiles */
     .tiles{ display:grid; gap:16px; grid-template-columns: repeat(12, 1fr); margin-top: 10px; }
     .tile{
-      grid-column: span 12; border:1px solid var(--rule); border-radius: 16px; padding:18px; background: var(--panel);
+      grid-column: span 12; border:1px solid var(--rule);
+      border-radius: 16px; padding:18px; background: var(--panel);
     }
-    .tile h3{ margin: 6px 0 6px; font-size: 1.05rem; }
-    .tile ul{ padding-left: 18px; margin: 6px 0 0; }
+    .tile ul{ padding-left: 18px; }
 
-    /* Contact panel */
+    /* --- CONTACT / SUPPORT --- */
     .contact{
       display:grid; gap:14px; grid-template-columns: 1fr; align-items:center; text-align:center;
       padding: 24px 20px; margin-top: 22px;
       border: 1px solid var(--rule); border-radius: var(--radius-xl); background: var(--panel);
     }
-    .contact a.btn{ display:inline-block; padding: 10px 16px; border-radius:999px; border:1px solid rgba(255,255,255,0.16); text-decoration:none; background: rgba(47,183,255,0.12); }
 
-    /* Footer */
-    footer{ border-top:1px solid var(--rule); color:#9AA3B2; text-align:center; padding: 16px 12px; font-size:.95rem; }
+    .contact a.btn{
+      display:inline-block; padding: 10px 16px; border-radius:999px;
+      border:1px solid rgba(255,255,255,0.16); text-decoration:none;
+      background: rgba(47,183,255,0.12);
+    }
 
-    /* Responsive */
+    footer{
+      border-top:1px solid var(--rule); color:#9AA3B2;
+      text-align:center; padding: 16px 12px; font-size:.95rem;
+    }
+
     @media (min-width: 720px){
       .card.col-6{ grid-column: span 6; }
-      .tile.col-6{ grid-column: span 6; }
       .tile.col-4{ grid-column: span 4; }
       .contact{ grid-template-columns: 1fr auto; text-align:left; }
     }
-
-    /* Motion */
-    @media (prefers-reduced-motion: no-preference){
-      .hero{ animation: fadeDown .6s ease-out both; }
-      .lattice{ animation: shimmer 18s ease-in-out infinite alternate; }
-      .card, .tile, .contact{ animation: fadeUp .6s ease-out .05s both; }
-    }
-    @keyframes fadeDown{ from{opacity:0; transform: translateY(-8px);} to{opacity:1; transform:none;} }
-    @keyframes fadeUp{ from{opacity:0; transform: translateY(8px);} to{opacity:1; transform:none;} }
-    @keyframes shimmer{ from{ opacity:.38; } to{ opacity:.55; } }
   </style>
 </head>
-<body>
+
+<body id="top">
+
+  <!-- SIMPLE TOP NAV -->
+  <nav class="topnav">
+    <a href="#top">Home</a>
+    <a href="#why">DTL</a>
+    <a href="#support">Support</a>
+  </nav>
+
   <header class="hero">
     <div class="lattice" aria-hidden="true"></div>
-    <h1>FOUNDSCRIPT</h1>
-    <p class="tagline">Timing stability layer for distributed and low latency systems.</p>
-    <p class="subline">Patent-pending external timing layer that improves latency and execution consistency without touching your data or trading logic. Lightweight API, designed to sit cleanly alongside regulatory and compliance constraints.</p>
-    <a class="cta" href="mailto:info@foundscript.com?subject=FoundScript%20Timing%20Layer">Discuss a timing layer evaluation</a>
-    <div class="badges" aria-label="Signals">
-      <span class="badge">Patent-pending timing layer</span>
-      <span class="badge">Benchmark tests available under NDA</span>
-      <span class="badge">R&amp;D collaborations open</span>
+    <h1>FOUNDSCRIPT DTL</h1>
+    <p class="tagline">Deterministic timing layer for distributed and low latency systems.</p>
+    <p class="subline">External timing layer that stabilises drift, jitter and long tail behaviour without touching your data, trading logic or model internals. Delivered as a lightweight API or sidecar, designed to sit cleanly alongside regulatory and compliance constraints.</p>
+
+    <a class="cta" href="mailto:info@foundscript.com?subject=FoundScript%20DTL">Discuss a DTL evaluation</a>
+
+    <div class="badges">
+      <span class="badge">Deterministic Timing Layer</span>
+      <span class="badge">Patent pending architecture</span>
+      <span class="badge">Benchmarks under NDA</span>
     </div>
   </header>
 
   <main>
+
     <section class="grid" aria-labelledby="why">
       <article class="card col-6">
         <span class="kicker">Approach</span>
-        <h2 id="why">External, lightweight and non-invasive</h2>
-        <p>The timing stability layer sits outside your existing stack and wraps around processes. It observes and stabilises how events move through the system, without modifying payloads, business logic or exchange timestamps.</p>
-        <p>It is delivered as a low weight API or sidecar service. No changes to core infrastructure are required; integration is designed to be reversible and straightforward to trial.</p>
+        <h2 id="why">External, lightweight and non invasive</h2>
+        <p>The deterministic timing layer sits outside your existing stack and wraps around processes. It observes and stabilises how events move through the system, without modifying payloads, business logic or exchange timestamps.</p>
+        <p>DTL is delivered as a low weight API or sidecar service. No changes to core infrastructure are required; integration is designed to be reversible and straightforward to trial.</p>
       </article>
+
       <article class="card col-6">
         <span class="kicker">Behaviour</span>
         <h2>Drift, jitter and tail behaviour</h2>
-        <p>The layer focuses on timing behaviour between events. It targets drift, jitter and long tail latency, aiming to keep flows inside a tighter and more predictable window under load.</p>
+        <p>DTL focuses on timing behaviour between events. It targets drift, jitter and long tail latency, aiming to keep flows inside a tighter and more predictable window under load.</p>
         <p>Early benchmark tests show reductions in variance and tail heavy behaviour while keeping median timings broadly unchanged. Detailed result packs are available under discussion and NDA.</p>
       </article>
     </section>
@@ -198,47 +221,66 @@
     <section class="grid" aria-labelledby="focus">
       <article class="card" style="margin-top: 8px;">
         <span class="kicker">Deployment and use</span>
-        <h2 id="focus">Where the layer is being explored</h2>
+        <h2 id="focus">Where DTL is being explored</h2>
+
         <div class="tiles">
           <div class="tile col-4">
-            <h3>Low latency and trading systems</h3>
+            <h3>Trading and low latency systems</h3>
             <ul>
-              <li>Timing layer evaluated alongside market data feeds and pipelines</li>
-              <li>Focus on tail latency, jitter and throughput stability</li>
-              <li>Designed to sit outside trading logic and risk controls</li>
+              <li>Evaluated alongside market data feeds and execution paths</li>
+              <li>Targets tail latency, jitter and throughput stability</li>
+              <li>Clean separation from trading logic and risk controls</li>
             </ul>
           </div>
+
           <div class="tile col-4">
-            <h3>Distributed and real time workloads</h3>
+            <h3>Distributed, AI and real time workloads</h3>
             <ul>
               <li>Cloud and message driven workflows</li>
-              <li>XR and real time data paths</li>
-              <li>Simulated quantum and high complexity pipelines</li>
+              <li>AI inference and model serving</li>
+              <li>XR, simulation and high complexity pipelines</li>
             </ul>
           </div>
+
           <div class="tile col-4">
-            <h3>R&amp;D and Konfer collaborations</h3>
+            <h3>R&amp;D collaborations</h3>
             <ul>
-              <li>Study of drift and jitter behaviour in distributed systems</li>
-              <li>Joint investigation of execution consistency</li>
-              <li>Pilot deployments with engineering teams and academic groups</li>
+              <li>Study of drift and jitter in distributed systems</li>
+              <li>Investigation of execution consistency and timing stability</li>
+              <li>Pilot deployments with engineering and academic teams</li>
             </ul>
           </div>
         </div>
 
         <div class="contact" style="margin-top:18px;">
           <div>
-            <strong>Enquiries, pilots and research</strong><br />
-            info@foundscript.com · +44 20 3951 3929
+            <strong>Enquiries and customer support</strong><br />
+            For pilots, research and operational support, email:<br />
+            <strong>info@foundscript.com</strong> · +44 20 3951 3929<br />
+            Typical response time: 1–2 business days.
           </div>
-          <a class="btn" href="mailto:info@foundscript.com?subject=FoundScript%20Timing%20Layer%20Intro">Start a private intro</a>
+          <a class="btn" href="mailto:info@foundscript.com?subject=FoundScript%20DTL%20Support">Email support</a>
         </div>
+
       </article>
     </section>
+
+    <section class="grid" aria-labelledby="support">
+      <article class="card" style="margin-top: 8px;">
+        <span class="kicker">Support</span>
+        <h2 id="support">Support and contact</h2>
+        <p>FoundScript provides email based support for customers and evaluation partners. For any questions about DTL, integration, benchmarks or incidents, please contact:</p>
+        <p><strong>info@foundscript.com</strong></p>
+        <p>Support requests are acknowledged and triaged within one to two business days. For production customers, response expectations can be defined in contract.</p>
+      </article>
+    </section>
+
   </main>
 
   <footer>
-    © 2025 FoundScript Ltd. Registered in England & Wales. All rights reserved.
+    © 2025 FoundScript Ltd. Registered in England and Wales. All rights reserved.<br />
+    Support and enquiries: <a href="mailto:info@foundscript.com">info@foundscript.com</a>
   </footer>
+
 </body>
 </html>
