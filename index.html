@@ -16,10 +16,11 @@
       --accent: #2FB7FF;           /* Electric Blue */
       --violet-a: #6B2FFF;         /* Gradient start */
       --violet-b: #D64DFF;         /* Gradient end */
-      --panel: rgba(255,255,255,0.06);
-      --rule: rgba(255,255,255,0.12);
-      --ring: rgba(47,183,255,0.1);
+      --panel: rgba(255,255,255,0.08); /* slightly more glass */
+      --rule: rgba(255,255,255,0.14);
+      --ring: rgba(47,183,255,0.10);
       --shadow: 0 10px 30px rgba(0,0,0,0.35);
+      --shadow-strong: 0 14px 36px rgba(0,0,0,0.42);
       --radius-xl: 18px;
     }
 
@@ -45,6 +46,7 @@
       padding:10px 20px;
       background: rgba(10,14,42,0.75);
       backdrop-filter: blur(10px) saturate(140%);
+      -webkit-backdrop-filter: blur(10px) saturate(140%);
       z-index:9999;
       display:flex;
       gap:24px;
@@ -98,6 +100,7 @@
       gap:12px;
       margin-top: 10px;
       margin-bottom: 10px;
+      width: 100%;
     }
 
     .cta{
@@ -105,21 +108,25 @@
       padding: 12px 24px; border-radius: 999px; border:1px solid rgba(255,255,255,0.16);
       background: linear-gradient(90deg, var(--violet-a), var(--violet-b));
       color:#09111E; font-weight: 700; text-decoration:none; box-shadow: var(--shadow);
-      min-width: 260px;
+      min-width: 280px; /* align with marketplace button */
+      max-width: 92vw;
+      white-space: nowrap;
     }
     .cta:hover{ filter: brightness(1.06); }
 
     .marketplace-cta{
       display:inline-flex; align-items:center; justify-content:center;
-      padding: 9px 20px;
+      padding: 10px 24px;
       border-radius:999px;
       border:1px solid rgba(255,255,255,0.22);
-      background: rgba(255,255,255,0.04);
+      background: rgba(255,255,255,0.05);
       color:var(--fg-dim);
       font-weight:600;
       font-size:0.95rem;
       text-decoration:none;
-      min-width: 260px;
+      min-width: 280px; /* match CTA */
+      max-width: 92vw;
+      white-space: nowrap;
     }
     .marketplace-cta:hover{
       color:var(--accent);
@@ -155,20 +162,6 @@
       mask-image: radial-gradient(1200px 520px at 50% 20%, black 35%, transparent 70%);
     }
 
-    /* Badges */
-    .badges{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      justify-content:center;
-      margin-top: 10px;
-    }
-    .badge{
-      padding: 7px 12px; border-radius: 999px; font-size: .9rem; color: var(--fg-dim);
-      border: 1px solid rgba(255,255,255,0.14); background: rgba(255,255,255,0.05);
-      backdrop-filter: blur(3px) saturate(120%);
-    }
-
     /* --- SECTIONS --- */
     main{ padding: 36px 18px 80px; }
 
@@ -177,41 +170,105 @@
       grid-template-columns: repeat(12, 1fr);
     }
 
+    /* Glass cards */
     .card{
-      grid-column: span 12; padding: 22px 20px; border-radius: var(--radius-xl);
-      border: 1px solid var(--rule); background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
-      box-shadow: var(--shadow);
+      grid-column: span 12;
+      padding: 22px 20px;
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--rule);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
+      backdrop-filter: blur(6px) saturate(115%);
+      -webkit-backdrop-filter: blur(6px) saturate(115%);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.08),
+        var(--shadow);
+      transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
     }
 
-    .kicker{ display:inline-block; font-size:.85rem; letter-spacing:.12em; text-transform:uppercase; opacity:.8; margin-bottom:6px; }
+    /* Optional: restrained hover lift */
+    @media (hover:hover){
+      .card:hover{
+        transform: translateY(-2px);
+        box-shadow:
+          inset 0 1px 0 rgba(255,255,255,0.10),
+          var(--shadow-strong);
+        border-color: rgba(255,255,255,0.18);
+      }
+    }
+
+    .kicker{
+      display:inline-block;
+      font-size:.85rem;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      opacity:.85;
+      margin-bottom:6px;
+    }
     h2{ margin: 6px 0 8px; font-size: clamp(1.3rem, 2.4vw, 1.6rem); }
     p{ margin: 10px 0; color: var(--fg-dim); }
 
     /* Focus tiles */
     .tiles{ display:grid; gap:16px; grid-template-columns: repeat(12, 1fr); margin-top: 10px; }
     .tile{
-      grid-column: span 12; border:1px solid var(--rule); border-radius: 16px; padding:18px; background: var(--panel);
+      grid-column: span 12;
+      border: 1px solid var(--rule);
+      border-radius: 16px;
+      padding: 18px;
+      background: rgba(255,255,255,0.06);
+      backdrop-filter: blur(6px) saturate(115%);
+      -webkit-backdrop-filter: blur(6px) saturate(115%);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.08),
+        0 8px 18px rgba(0,0,0,0.22);
     }
     .tile h3{ margin: 6px 0 6px; font-size: 1.05rem; }
-    .tile ul{ padding-left: 18px; margin: 6px 0 0; }
+    .tile ul{ padding-left: 18px; margin: 6px 0 0; color: var(--fg-dim); }
 
     /* Contact panel */
     .contact{
-      display:grid; gap:14px; grid-template-columns: 1fr; align-items:center; text-align:center;
+      display:grid; gap:14px; grid-template-columns: 1fr;
+      align-items:center; text-align:center;
       padding: 24px 20px; margin-top: 22px;
-      border: 1px solid var(--rule); border-radius: var(--radius-xl); background: var(--panel);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius-xl);
+      background: rgba(255,255,255,0.06);
+      backdrop-filter: blur(6px) saturate(115%);
+      -webkit-backdrop-filter: blur(6px) saturate(115%);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.08),
+        0 8px 18px rgba(0,0,0,0.22);
     }
-    .contact a.btn{ display:inline-block; padding: 10px 16px; border-radius:999px; border:1px solid rgba(255,255,255,0.16); text-decoration:none; background: rgba(47,183,255,0.12); }
+    .contact a.btn{
+      display:inline-block;
+      padding: 10px 16px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,0.16);
+      text-decoration:none;
+      background: rgba(47,183,255,0.12);
+    }
+    .contact a.btn:hover{
+      border-color: rgba(47,183,255,0.40);
+      background: rgba(47,183,255,0.16);
+    }
 
     /* Footer */
-    footer{ border-top:1px solid var(--rule); color:#9AA3B2; text-align:center; padding: 16px 12px; font-size:.95rem; }
+    footer{
+      border-top:1px solid var(--rule);
+      color:#9AA3B2;
+      text-align:center;
+      padding: 16px 12px;
+      font-size:.95rem;
+    }
+    footer a{ color:#9AA3B2; }
+    footer a:hover{ color: var(--accent); }
 
     /* Responsive */
     @media (min-width: 720px){
       .card.col-6{ grid-column: span 6; }
-      .tile.col-6{ grid-column: span 6; }
       .tile.col-4{ grid-column: span 4; }
       .contact{ grid-template-columns: 1fr auto; text-align:left; }
+      .hero-ctas{ max-width: 520px; margin-left:auto; margin-right:auto; }
     }
 
     /* Motion */
@@ -225,6 +282,7 @@
     @keyframes shimmer{ from{ opacity:.38; } to{ opacity:.55; } }
   </style>
 </head>
+
 <body id="top">
   <nav class="topnav">
     <a href="#top">Home</a>
@@ -254,6 +312,7 @@
         <p>The deterministic timing layer sits outside your existing stack and wraps around processes. It observes and stabilises how events move through the system, without modifying payloads, business logic or exchange timestamps.</p>
         <p>DTL is delivered as a low weight API or sidecar service. No changes to core infrastructure are required; integration is designed to be reversible and straightforward to trial.</p>
       </article>
+
       <article class="card col-6">
         <span class="kicker">Behaviour</span>
         <h2>Drift, jitter and tail behaviour</h2>
@@ -266,6 +325,7 @@
       <article class="card" style="margin-top: 8px;">
         <span class="kicker">Deployment and use</span>
         <h2 id="focus">Where DTL is being explored</h2>
+
         <div class="tiles">
           <div class="tile col-4">
             <h3>Low latency and trading systems</h3>
@@ -275,6 +335,7 @@
               <li>Designed to sit outside trading logic and risk controls</li>
             </ul>
           </div>
+
           <div class="tile col-4">
             <h3>Distributed and real time workloads</h3>
             <ul>
@@ -283,6 +344,7 @@
               <li>Simulated quantum and high complexity pipelines</li>
             </ul>
           </div>
+
           <div class="tile col-4">
             <h3>R&amp;D and Konfer collaborations</h3>
             <ul>
@@ -293,7 +355,7 @@
           </div>
         </div>
 
-        <div class="contact" style="margin-top:18px;" id="support">
+        <div class="contact" id="support">
           <div>
             <strong>Support, pilots and research</strong><br />
             For evaluations, pilots or operational support, email:<br />
@@ -307,7 +369,7 @@
   </main>
 
   <footer>
-    © 2025 FoundScript Ltd. Registered in England & Wales. All rights reserved.<br />
+    © 2025 FoundScript Ltd. Registered in England &amp; Wales. All rights reserved.<br />
     <a href="/privacy.html">Privacy Policy</a> ·
     <a href="/terms.html">Service Terms</a>
   </footer>
