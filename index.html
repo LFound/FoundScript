@@ -3,13 +3,212 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <title>FoundScript | Deterministic timing layer (DTL)</title>
 
-  <meta name="description" content="FoundScript develops a deterministic timing layer (DTL) for high throughput, event driven and distributed systems. External lightweight API that stabilises drift, jitter and tail behaviour without touching payloads or business logic." />
+  <meta name="description" content="FoundScript develops a deterministic timing layer (DTL) for real time, event driven and distributed systems. External lightweight API that stabilises drift, jitter and tail behaviour under load without touching payloads or business logic." />
 
   <meta name="author" content="FoundScript Ltd" />
   <meta name="color-scheme" content="dark light" />
-  ...
+
+  <style>
+    :root{
+      --bg:#0A0E2A;
+      --fg:#E8E8E8;
+      --fg-dim:#C9CED8;
+      --accent:#2FB7FF;
+      --violet-a:#6B2FFF;
+      --violet-b:#D64DFF;
+      --panel:rgba(255,255,255,0.08);
+      --rule:rgba(255,255,255,0.14);
+      --shadow:0 10px 30px rgba(0,0,0,0.35);
+      --shadow-strong:0 14px 36px rgba(0,0,0,0.42);
+      --radius-xl:18px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{margin:0;height:100%}
+    body{
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      background:var(--bg);
+      color:var(--fg);
+      line-height:1.75;
+      padding-top:56px;
+    }
+
+    a{color:var(--fg);text-underline-offset:3px}
+    a:hover{color:var(--accent)}
+
+    /* NAV */
+    .topnav{
+      position:fixed;
+      top:0;left:0;right:0;
+      display:flex;
+      gap:24px;
+      padding:12px 20px;
+      background:rgba(10,14,42,0.8);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid rgba(255,255,255,0.12);
+      z-index:1000;
+      font-size:0.95rem;
+    }
+    .topnav a{text-decoration:none;color:var(--fg-dim)}
+    .topnav a:hover{color:var(--accent)}
+
+    /* HERO */
+    .hero{
+      text-align:center;
+      padding:clamp(64px,8vw,96px) 20px 56px;
+      border-bottom:1px solid var(--rule);
+      background:
+        radial-gradient(900px 480px at 80% -10%, rgba(107,47,255,0.25), transparent 60%),
+        radial-gradient(900px 520px at -10% 30%, rgba(214,77,255,0.18), transparent 55%);
+    }
+
+    .hero h1{
+      margin:0 0 10px;
+      font-size:clamp(2.2rem,5.8vw,3.8rem);
+      font-weight:700;
+      letter-spacing:0.3px;
+    }
+
+    .tagline{
+      max-width:900px;
+      margin:0 auto 12px;
+      font-size:clamp(1.05rem,2.2vw,1.25rem);
+    }
+
+    .subline{
+      max-width:860px;
+      margin:0 auto 22px;
+      color:var(--fg-dim);
+      font-style:italic;
+    }
+
+    .hero-ctas{
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+      align-items:center;
+      margin-top:10px;
+    }
+
+    .cta{
+      padding:12px 24px;
+      border-radius:999px;
+      background:linear-gradient(90deg,var(--violet-a),var(--violet-b));
+      color:#0B1024;
+      font-weight:700;
+      text-decoration:none;
+      box-shadow:var(--shadow);
+      min-width:280px;
+      text-align:center;
+    }
+
+    .marketplace-cta{
+      padding:10px 24px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,0.22);
+      background:rgba(255,255,255,0.05);
+      color:var(--fg-dim);
+      text-decoration:none;
+      min-width:280px;
+      text-align:center;
+      font-size:0.95rem;
+    }
+
+    /* MAIN */
+    main{padding:36px 18px 80px}
+
+    .grid{
+      max-width:1120px;
+      margin:0 auto;
+      display:grid;
+      gap:18px;
+      grid-template-columns:repeat(12,1fr);
+    }
+
+    .card{
+      grid-column:span 12;
+      padding:22px 20px;
+      border-radius:var(--radius-xl);
+      border:1px solid var(--rule);
+      background:linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.04));
+      box-shadow:var(--shadow);
+    }
+
+    @media(min-width:720px){
+      .col-6{grid-column:span 6}
+      .tile.col-4{grid-column:span 4}
+      .hero-ctas{max-width:520px;margin:0 auto}
+    }
+
+    .kicker{
+      font-size:.85rem;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      opacity:.85;
+    }
+
+    h2{
+      margin:6px 0 8px;
+      font-size:clamp(1.3rem,2.4vw,1.6rem);
+    }
+
+    p{margin:10px 0;color:var(--fg-dim)}
+
+    /* TILES */
+    .tiles{
+      display:grid;
+      gap:16px;
+      grid-template-columns:repeat(12,1fr);
+      margin-top:12px;
+    }
+
+    .tile{
+      grid-column:span 12;
+      padding:18px;
+      border-radius:16px;
+      border:1px solid var(--rule);
+      background:rgba(255,255,255,0.06);
+      box-shadow:0 8px 18px rgba(0,0,0,0.22);
+    }
+
+    .tile h3{margin:6px 0;font-size:1.05rem}
+    .tile ul{padding-left:18px;color:var(--fg-dim)}
+
+    /* CONTACT */
+    .contact{
+      margin-top:22px;
+      padding:22px;
+      border-radius:var(--radius-xl);
+      border:1px solid var(--rule);
+      background:rgba(255,255,255,0.06);
+      display:grid;
+      gap:14px;
+      text-align:center;
+    }
+
+    .contact .btn{
+      display:inline-block;
+      padding:10px 16px;
+      border-radius:999px;
+      background:rgba(47,183,255,0.12);
+      border:1px solid rgba(255,255,255,0.16);
+      text-decoration:none;
+    }
+
+    /* FOOTER */
+    footer{
+      text-align:center;
+      padding:16px 12px;
+      font-size:.95rem;
+      color:#9AA3B2;
+      border-top:1px solid var(--rule);
+    }
+    footer a{color:#9AA3B2}
+    footer a:hover{color:var(--accent)}
+  </style>
 </head>
 
 <body id="top">
@@ -20,71 +219,75 @@
   </nav>
 
   <header class="hero">
-    <div class="lattice" aria-hidden="true"></div>
-
     <h1>FoundScript DTL</h1>
-
     <p class="tagline">Deterministic timing for real time, event driven systems under load.</p>
-
     <p class="subline">
-      External timing layer that reduces variance amplification between call and execution, improving flow predictability under bursty conditions without touching payloads or business logic. Delivered as a lightweight API or sidecar service.
+      External timing layer that reduces variance amplification between call and execution, improving flow predictability under bursty conditions without touching payloads or business logic.
     </p>
 
     <div class="hero-ctas">
       <a class="cta" href="mailto:info@foundscript.com?subject=FoundScript%20DTL">Discuss a DTL evaluation</a>
-      <a class="marketplace-cta" href="https://marketplace.microsoft.com/en-us/product/saas/foundscript.foundscript-dtl?tab=Overview" target="_blank" rel="noopener">
+      <a class="marketplace-cta" href="https://marketplace.microsoft.com/en-us/product/saas/foundscript.foundscript-dtl" target="_blank" rel="noopener">
         View on Microsoft Marketplace
       </a>
     </div>
   </header>
 
   <main>
-    <section class="grid" aria-labelledby="why">
+    <section class="grid">
       <article class="card col-6">
         <span class="kicker">Approach</span>
         <h2 id="why">External, lightweight and non invasive</h2>
-        <p>The deterministic timing layer sits outside your existing stack and wraps around processes. It observes and stabilises how events move through the system without modifying payloads, business logic or timestamps.</p>
-        <p>DTL is delivered as a lightweight API or sidecar service. No changes to core infrastructure are required; integration is designed to be reversible and straightforward to trial.</p>
+        <p>
+          The deterministic timing layer sits outside your existing stack and wraps around processes. It observes and stabilises how events move through the system without modifying payloads, business logic or timestamps.
+        </p>
+        <p>
+          DTL is delivered as a lightweight API or sidecar service. Integration is reversible and designed to be straightforward to trial.
+        </p>
       </article>
 
       <article class="card col-6">
         <span class="kicker">Behaviour</span>
         <h2>Drift, jitter and tail behaviour</h2>
-        <p>DTL focuses on timing behaviour between events. It targets drift, jitter and long tail latency, aiming to keep flows inside a tighter and more predictable window under bursty load.</p>
-        <p>Evaluation packs cover variance and tail behaviour in representative workloads. Details are shared under NDA where needed.</p>
+        <p>
+          DTL focuses on timing behaviour between events. It targets drift, jitter and long tail latency, keeping flows inside a tighter and more predictable window under bursty load.
+        </p>
+        <p>
+          Evaluation packs cover variance and tail behaviour in representative workloads. Details shared under NDA where required.
+        </p>
       </article>
     </section>
 
-    <section class="grid" aria-labelledby="focus">
-      <article class="card" style="margin-top: 8px;">
+    <section class="grid">
+      <article class="card">
         <span class="kicker">Deployment and use</span>
-        <h2 id="focus">Where DTL is being explored</h2>
+        <h2>Where DTL is being explored</h2>
 
         <div class="tiles">
           <div class="tile col-4">
             <h3>Distributed and real time workloads</h3>
             <ul>
-              <li>Cloud and message driven workflows</li>
-              <li>High throughput event pipelines and state updates</li>
-              <li>Failure recovery, retry behaviour and burst handling</li>
+              <li>Event driven cloud systems</li>
+              <li>High throughput pipelines</li>
+              <li>Retry and failure recovery behaviour</li>
             </ul>
           </div>
 
           <div class="tile col-4">
             <h3>Latency sensitive systems</h3>
             <ul>
-              <li>Workloads where tail behaviour matters more than medians</li>
-              <li>Execution consistency under bursty conditions</li>
-              <li>Designed to sit outside core logic and controls</li>
+              <li>Execution consistency under burst load</li>
+              <li>Tail behaviour and determinism</li>
+              <li>Non intrusive boundary insertion</li>
             </ul>
           </div>
 
           <div class="tile col-4">
-            <h3>R&amp;D and Konfer collaborations</h3>
+            <h3>Research and pilot evaluations</h3>
             <ul>
-              <li>Study of drift and jitter in event driven systems</li>
-              <li>Joint investigation of determinism under load</li>
-              <li>Pilot evaluations with engineering teams and academic groups</li>
+              <li>Academic and industry pilots</li>
+              <li>Stress behaviour studies</li>
+              <li>Exploratory technical validation</li>
             </ul>
           </div>
         </div>
@@ -92,9 +295,8 @@
         <div class="contact" id="support">
           <div>
             <strong>Support, evaluations and research</strong><br />
-            For evaluations, pilots or operational support, email:<br />
-            <strong>info@foundscript.com</strong><br />
-            Typical response time is one to two business days.
+            For evaluations or pilot discussions:<br />
+            <strong>info@foundscript.com</strong>
           </div>
           <a class="btn" href="mailto:info@foundscript.com?subject=FoundScript%20DTL%20Support">Email support</a>
         </div>
@@ -104,8 +306,7 @@
 
   <footer>
     © 2025 FoundScript Ltd. Registered in England &amp; Wales. All rights reserved.<br />
-    <a href="/privacy.html">Privacy Policy</a> ·
-    <a href="/terms.html">Service Terms</a>
+    <a href="/privacy.html">Privacy Policy</a> · <a href="/terms.html">Service Terms</a>
   </footer>
 </body>
 </html>
