@@ -3,22 +3,30 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>FoundScript — DTL Access (AWS Marketplace)</title>
-  <meta name="description" content="Onboarding page for FoundScript Deterministic Timing Layer (DTL) subscribers from AWS Marketplace." />
+  <title>FoundScript | DTL Access</title>
+  <meta name="description" content="DTL Access is an operating mode of FoundScript DTL focused on keeping systems accessible under extreme load, congestion and stress conditions by stabilising timing behaviour without touching data or core logic." />
   <meta name="author" content="FoundScript Ltd" />
   <meta name="color-scheme" content="dark light" />
 
+  <!-- Favicons -->
+  <link rel="icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
   <style>
     :root{
-      --bg: #0A0E2A;               /* Midnight Blue */
-      --fg: #E8E8E8;               /* Soft White */
+      --bg: #0A0E2A;
+      --fg: #E8E8E8;
       --fg-dim: #C9CED8;
-      --accent: #2FB7FF;           /* Electric Blue */
-      --violet-a: #6B2FFF;         /* Gradient start */
-      --violet-b: #D64DFF;         /* Gradient end */
-      --panel: rgba(255,255,255,0.06);
-      --rule: rgba(255,255,255,0.12);
+      --accent: #2FB7FF;
+      --violet-a: #6B2FFF;
+      --violet-b: #D64DFF;
+      --panel: rgba(255,255,255,0.08);
+      --rule: rgba(255,255,255,0.14);
+      --ring: rgba(47,183,255,0.10);
       --shadow: 0 10px 30px rgba(0,0,0,0.35);
+      --shadow-strong: 0 14px 36px rgba(0,0,0,0.42);
       --radius-xl: 18px;
     }
 
@@ -26,19 +34,16 @@
     * { box-sizing: border-box; }
 
     body{
-      margin:0;
-      color:var(--fg);
+      margin:0; color:var(--fg);
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-      line-height:1.75;
-      background: var(--bg);
+      line-height:1.75; background: var(--bg);
       overflow-x: hidden;
-      padding-top: 52px; /* space for fixed nav */
+      padding-top: 52px;
     }
 
     a{ color:var(--fg); text-underline-offset: 3px; }
     a:hover, a:focus{ color: var(--accent); outline:none; }
 
-    /* Top nav (matching main site) */
     .topnav{
       width:100%;
       position:fixed;
@@ -46,6 +51,7 @@
       padding:10px 20px;
       background: rgba(10,14,42,0.75);
       backdrop-filter: blur(10px) saturate(140%);
+      -webkit-backdrop-filter: blur(10px) saturate(140%);
       z-index:9999;
       display:flex;
       gap:24px;
@@ -57,98 +63,339 @@
       text-decoration:none;
       font-weight:500;
     }
-    .topnav a:hover{
-      color:var(--accent);
-    }
+    .topnav a:hover{ color:var(--accent); }
 
-    .wrap{
-      max-width: 720px;
-      margin: 72px auto 60px;
-      padding: 26px 22px 26px;
-      border-radius: var(--radius-xl);
-      border: 1px solid var(--rule);
+    .hero{
+      position:relative; isolation:isolate;
+      padding: clamp(56px, 8vw, 96px) 20px 56px;
+      text-align:center;
+      border-bottom: 1px solid var(--rule);
       background:
-        radial-gradient(600px 300px at 80% 0%, rgba(107,47,255,0.18), transparent 60%),
-        radial-gradient(520px 260px at 0% 40%, rgba(214,77,255,0.12), transparent 55%),
-        rgba(8,10,32,0.96);
-      box-shadow: var(--shadow);
+        radial-gradient(1200px 600px at 85% -10%, rgba(107,47,255,0.25), transparent 60%),
+        radial-gradient(900px 520px at -10% 30%, rgba(214,77,255,0.18), transparent 55%),
+        linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0) 35%);
     }
 
-    h1{
-      margin-top: 0;
-      margin-bottom: 8px;
-      font-size: clamp(1.7rem, 2.6vw, 2rem);
-      letter-spacing: 0.3px;
-      font-weight: 700;
-      text-shadow: 0 0 14px rgba(47,183,255,0.18);
+    .hero h1{
+      margin: 0 0 8px; font-size: clamp(2.2rem, 5.8vw, 4rem);
+      letter-spacing: 0.3px; font-weight: 700;
+      text-shadow: 0 0 18px rgba(47,183,255,0.18);
     }
 
     .tagline{
-      margin: 4px 0 16px;
-      color: var(--fg-dim);
-      font-size: 1.02rem;
+      font-size: clamp(1.05rem, 2.2vw, 1.25rem);
+      margin: 10px auto 10px;
+      max-width: 900px;
+    }
+    .subline{
+      color:var(--fg-dim);
+      font-style: italic;
+      max-width: 900px;
+      margin: 0 auto 22px;
     }
 
-    p{
-      margin: 10px 0;
-      color: var(--fg-dim);
+    .hero-ctas{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:12px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      width: 100%;
     }
 
-    ul{
-      margin: 8px 0 12px;
-      padding-left: 20px;
-      color: var(--fg-dim);
+    .cta{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding: 12px 24px; border-radius: 999px; border:1px solid rgba(255,255,255,0.16);
+      background: linear-gradient(90deg, var(--violet-a), var(--violet-b));
+      color:#09111E; font-weight: 700; text-decoration:none; box-shadow: var(--shadow);
+      min-width: 280px;
+      max-width: 92vw;
+      white-space: nowrap;
+    }
+    .cta:hover{ filter: brightness(1.06); }
+
+    .marketplace-cta{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding: 10px 24px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,0.22);
+      background: rgba(255,255,255,0.05);
+      color:var(--fg-dim);
+      font-weight:600;
+      font-size:0.95rem;
+      text-decoration:none;
+      min-width: 280px;
+      max-width: 92vw;
+      white-space: nowrap;
+    }
+    .marketplace-cta:hover{
+      color:var(--accent);
+      border-color:var(--accent);
+      background: rgba(47,183,255,0.10);
     }
 
-    .email{
-      font-weight: 600;
-      color: var(--accent);
+    .support-badge{
+      margin-top: 18px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:14px;
+      opacity:0.85;
+    }
+    .support-badge .support-text{
+      font-size:0.85rem;
+      letter-spacing:0.08em;
+      text-transform:uppercase;
+      color:var(--fg-dim);
+    }
+    .support-badge img{
+      height:36px;
+      width:auto;
+      max-width:92vw;
+    }
+
+    .lattice{
+      position:absolute; inset:0; z-index:-1; opacity: 0.45; pointer-events:none;
+      background-image: url('data:image/svg+xml;utf8,\
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600">\
+          <defs>\
+            <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">\
+              <stop offset="0%" stop-color="%236B2FFF"/>\
+              <stop offset="100%" stop-color="%23D64DFF"/>\
+            </linearGradient>\
+          </defs>\
+          <g fill="none" stroke="url(%23g)" stroke-opacity="0.25">\
+            <path d="M0 520 L200 420 L400 520 L600 420 L800 520 L1000 420 L1200 520"/>\
+            <path d="M0 360 L200 260 L400 360 L600 260 L800 360 L1000 260 L1200 360"/>\
+            <path d="M0 200 L200 100 L400 200 L600 100 L800 200 L1000 100 L1200 200"/>\
+          </g>\
+          <g fill="%232FB7FF" fill-opacity="0.25">\
+            <circle cx="200" cy="100" r="3"/><circle cx="400" cy="200" r="3"/>\
+            <circle cx="600" cy="100" r="3"/><circle cx="800" cy="200" r="3"/>\
+            <circle cx="1000" cy="100" r="3"/><circle cx="200" cy="420" r="3"/>\
+            <circle cx="400" cy="520" r="3"/><circle cx="600" cy="420" r="3"/>\
+            <circle cx="800" cy="520" r="3"/><circle cx="1000" cy="420" r="3"/>\
+          </g>\
+        </svg>');
+      background-size: cover; background-position: center;
+      mask-image: radial-gradient(1200px 520px at 50% 20%, black 35%, transparent 70%);
+    }
+
+    main{ padding: 36px 18px 80px; }
+
+    .grid{
+      display:grid; gap: 18px; max-width: 1120px; margin: 0 auto;
+      grid-template-columns: repeat(12, 1fr);
+    }
+
+    .card{
+      grid-column: span 12;
+      padding: 22px 20px;
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--rule);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
+      backdrop-filter: blur(6px) saturate(115%);
+      -webkit-backdrop-filter: blur(6px) saturate(115%);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.08),
+        var(--shadow);
+      transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+    }
+
+    @media (hover:hover){
+      .card:hover{
+        transform: translateY(-2px);
+        box-shadow:
+          inset 0 1px 0 rgba(255,255,255,0.10),
+          var(--shadow-strong);
+        border-color: rgba(255,255,255,0.18);
+      }
+    }
+
+    .kicker{
+      display:inline-block;
+      font-size:.85rem;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      opacity:.85;
+      margin-bottom:6px;
+    }
+    h2{ margin: 6px 0 8px; font-size: clamp(1.3rem, 2.4vw, 1.6rem); }
+    p{ margin: 10px 0; color: var(--fg-dim); }
+
+    .tiles{ display:grid; gap:16px; grid-template-columns: repeat(12, 1fr); margin-top: 10px; }
+    .tile{
+      grid-column: span 12;
+      border: 1px solid var(--rule);
+      border-radius: 16px;
+      padding: 18px;
+      background: rgba(255,255,255,0.06);
+      backdrop-filter: blur(6px) saturate(115%);
+      -webkit-backdrop-filter: blur(6px) saturate(115%);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.08),
+        0 8px 18px rgba(0,0,0,0.22);
+    }
+    .tile h3{ margin: 6px 0 6px; font-size: 1.05rem; }
+    .tile ul{ padding-left: 18px; margin: 6px 0 0; color: var(--fg-dim); }
+
+    .contact{
+      display:grid; gap:14px; grid-template-columns: 1fr;
+      align-items:center; text-align:center;
+      padding: 24px 20px; margin-top: 22px;
+      border: 1px solid var(--rule);
+      border-radius: var(--radius-xl);
+      background: rgba(255,255,255,0.06);
+      backdrop-filter: blur(6px) saturate(115%);
+      -webkit-backdrop-filter: blur(6px) saturate(115%);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.08),
+        0 8px 18px rgba(0,0,0,0.22);
+    }
+    .contact a.btn{
+      display:inline-block;
+      padding: 10px 16px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,0.16);
+      text-decoration:none;
+      background: rgba(47,183,255,0.12);
+    }
+    .contact a.btn:hover{
+      border-color: rgba(47,183,255,0.40);
+      background: rgba(47,183,255,0.16);
     }
 
     footer{
       border-top:1px solid var(--rule);
       color:#9AA3B2;
       text-align:center;
-      padding: 16px 12px 20px;
+      padding: 16px 12px;
       font-size:.95rem;
     }
+    footer a{ color:#9AA3B2; }
+    footer a:hover{ color: var(--accent); }
+
+    @media (min-width: 720px){
+      .card.col-6{ grid-column: span 6; }
+      .tile.col-4{ grid-column: span 4; }
+      .contact{ grid-template-columns: 1fr auto; text-align:left; }
+      .hero-ctas{ max-width: 560px; margin-left:auto; margin-right:auto; }
+    }
+
+    @media (prefers-reduced-motion: no-preference){
+      .hero{ animation: fadeDown .6s ease-out both; }
+      .lattice{ animation: shimmer 18s ease-in-out infinite alternate; }
+      .card, .tile, .contact{ animation: fadeUp .6s ease-out .05s both; }
+    }
+    @keyframes fadeDown{ from{opacity:0; transform: translateY(-8px);} to{opacity:1; transform:none;} }
+    @keyframes fadeUp{ from{opacity:0; transform: translateY(8px);} to{opacity:1; transform:none;} }
+    @keyframes shimmer{ from{ opacity:.38; } to{ opacity:.55; } }
   </style>
 </head>
+
 <body id="top">
   <nav class="topnav">
-    <a href="/">Home</a>
-    <a href="/#support">Support</a>
+    <a href="/index.html">Home</a>
+    <a href="#overview">DTL Access</a>
+    <a href="#support">Support</a>
   </nav>
 
+  <header class="hero">
+    <div class="lattice" aria-hidden="true"></div>
+    <h1>DTL Access</h1>
+    <p class="tagline">Access certainty under extreme load and stress conditions.</p>
+    <p class="subline">An operating mode of FoundScript DTL focused on keeping systems accessible when congestion, burst load or adverse conditions cause timing collapse. It stabilises execution behaviour without touching payloads, business logic or authoritative timestamps.</p>
+
+    <div class="hero-ctas">
+      <a class="cta" href="mailto:info@foundscript.com?subject=DTL%20Access%20Evaluation">Discuss a DTL Access evaluation</a>
+      <a class="marketplace-cta" href="https://marketplace.microsoft.com/en-us/product/saas/foundscript.foundscript-dtl?tab=Overview" target="_blank" rel="noopener">
+        View on Microsoft Marketplace
+      </a>
+    </div>
+
+    <div class="support-badge" aria-label="Supported by Innovate UK Business Growth">
+      <span class="support-text">Supported by</span>
+      <img
+        src="/innovate-uk-business-growth.png"
+        alt="Innovate UK Business Growth logo"
+        loading="lazy"
+        decoding="async"
+      />
+    </div>
+  </header>
+
   <main>
-    <section class="wrap">
-      <h1>DTL Access — AWS Marketplace</h1>
-      <p class="tagline">
-        Thank you for subscribing to the FoundScript Deterministic Timing Layer (DTL) via AWS Marketplace.
-      </p>
+    <section class="grid" aria-labelledby="overview">
+      <article class="card col-6">
+        <span class="kicker">Overview</span>
+        <h2 id="overview">Designed for graceful degradation</h2>
+        <p>When systems experience burst load, congestion or adverse conditions, failures often emerge as timing collapse rather than simple capacity limits. Retries amplify, queues grow unpredictable and critical workflows can stall even when infrastructure remains online.</p>
+        <p>DTL Access is designed to stabilise timing behaviour across critical execution paths so systems degrade in a controlled and predictable way rather than failing abruptly.</p>
+      </article>
 
-      <p>You will shortly receive an email from the FoundScript team with:</p>
-      <ul>
-        <li>Your API access details</li>
-        <li>Onboarding and integration steps</li>
-        <li>Any agreed pilot or evaluation configuration</li>
-      </ul>
+      <article class="card col-6">
+        <span class="kicker">What it is</span>
+        <h2>An operating mode of DTL</h2>
+        <p>DTL Access uses the same external, lightweight deployment model as FoundScript DTL. It sits alongside your stack as an API or sidecar service and can be trialled with clear rollback behaviour and minimal operational risk.</p>
+        <p>It does not replace security controls and it does not block attacks. It focuses on execution timing behaviour so access remains reliable when conditions become unstable.</p>
+      </article>
+    </section>
 
-      <p>
-        For support or questions, please email<br>
-        <span class="email">info@foundscript.com</span>
-      </p>
+    <section class="grid" aria-labelledby="failuremodes">
+      <article class="card" style="margin-top: 8px;">
+        <span class="kicker">Stress behaviour</span>
+        <h2 id="failuremodes">Common failure modes under load</h2>
 
-      <p>
-        If you reached this page in error or you would like to discuss a DTL evaluation outside AWS Marketplace,
-        you can also contact us at <span class="email">info@foundscript.com</span>.
-      </p>
+        <div class="tiles">
+          <div class="tile col-4">
+            <h3>Retry amplification</h3>
+            <ul>
+              <li>Retries and backoffs drift out of sync</li>
+              <li>Traffic becomes bursty and self reinforcing</li>
+              <li>Critical paths stall behind tail behaviour</li>
+            </ul>
+          </div>
+
+          <div class="tile col-4">
+            <h3>Auth and session cascades</h3>
+            <ul>
+              <li>Login and token flows become unstable</li>
+              <li>Dependency chains amplify latency tails</li>
+              <li>Temporary loss of access becomes likely</li>
+            </ul>
+          </div>
+
+          <div class="tile col-4">
+            <h3>Queue and dependency collapse</h3>
+            <ul>
+              <li>Queues stop behaving predictably</li>
+              <li>Long tail stalls spread across services</li>
+              <li>Recovery takes longer than expected</li>
+            </ul>
+          </div>
+        </div>
+
+        <p style="margin-top:14px;">DTL Access targets timing behaviour that drives these cascades. It focuses on stability and tail control under stress, preserving access without trading away baseline performance.</p>
+
+        <div class="contact" id="support">
+          <div>
+            <strong>Support, pilots and research</strong><br />
+            For evaluations, pilots or operational support, email:<br />
+            <strong>info@foundscript.com</strong><br />
+            Typical response time is one to two business days.
+          </div>
+          <a class="btn" href="mailto:info@foundscript.com?subject=DTL%20Access%20Support">Email support</a>
+        </div>
+      </article>
     </section>
   </main>
 
   <footer>
     © 2025 FoundScript Ltd. Registered in England &amp; Wales. All rights reserved.<br />
-    Support: <a href="mailto:info@foundscript.com">info@foundscript.com</a>
+    <a href="/privacy.html">Privacy Policy</a> ·
+    <a href="/terms.html">Service Terms</a>
   </footer>
 </body>
 </html>
