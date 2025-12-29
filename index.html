@@ -140,6 +140,29 @@
       background: rgba(47,183,255,0.10);
     }
 
+    /* Innovate UK support badge */
+    .support-badge{
+      margin-top: 18px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:14px;
+      opacity:0.85;
+    }
+
+    .support-badge .support-text{
+      font-size:0.85rem;
+      letter-spacing:0.08em;
+      text-transform:uppercase;
+      color:var(--fg-dim);
+    }
+
+    .support-badge img{
+      height:36px;
+      width:auto;
+      max-width:92vw;
+    }
+
     /* Lattice backdrop (SVG) */
     .lattice{
       position:absolute; inset:0; z-index:-1; opacity: 0.45; pointer-events:none;
@@ -308,6 +331,18 @@
         View on Microsoft Marketplace
       </a>
     </div>
+
+    <!-- Innovate UK support -->
+    <div class="support-badge" aria-label="Supported by Innovate UK Business Growth">
+      <span class="support-text">Supported by</span>
+      <img
+        src="/assets/innovate-uk-business-growth.png"
+        alt="Innovate UK Business Growth logo"
+        loading="lazy"
+        decoding="async"
+      />
+    </div>
+
   </header>
 
   <main>
