@@ -44,6 +44,11 @@
       --accent: #2FB7FF;
       --violet-a: #6B2FFF;
       --violet-b: #D64DFF;
+
+      /* DTL Access accent */
+      --access: #3EE6C3;                 /* teal accent for Access mode */
+      --access-2: rgba(62,230,195,0.16); /* soft teal glow */
+
       --rule: rgba(255,255,255,0.14);
       --panel: rgba(255,255,255,0.06);
       --panel-strong: rgba(255,255,255,0.085);
@@ -99,6 +104,18 @@
         radial-gradient(820px 520px at -10% 20%, rgba(47,183,255,0.16), transparent 58%),
         linear-gradient(180deg, rgba(0,0,0,0.40), rgba(0,0,0,0) 40%);
     }
+
+    /* subtle access-only line in hero, feels like a different mode */
+    .hero::after{
+      content:"";
+      position:absolute;
+      left:0; right:0; bottom:-1px;
+      height:2px;
+      background: linear-gradient(90deg, rgba(62,230,195,0.0), rgba(62,230,195,0.65), rgba(214,77,255,0.0));
+      opacity:0.9;
+      pointer-events:none;
+    }
+
     .hero-inner{
       max-width: 1120px;
       margin: 0 auto;
@@ -107,18 +124,35 @@
       grid-template-columns: 1fr;
       align-items: start;
     }
+
     .hero h1{
       margin: 0;
       font-size: clamp(2.0rem, 5.0vw, 3.2rem);
       letter-spacing: 0.2px;
       font-weight: 760;
     }
+
+    /* Operating mode chip next to title */
+    .mode-chip{
+      display:inline-block;
+      margin-left: 10px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(62,230,195,0.35);
+      background: rgba(62,230,195,0.08);
+      color: var(--fg-dim);
+      font-size: 0.82rem;
+      letter-spacing: 0.06em;
+      vertical-align: middle;
+    }
+
     .tagline{
       margin: 6px 0 0;
       font-size: 1.05rem;
       color: var(--fg-dim);
       max-width: 900px;
     }
+
     .hero-badges{
       display:flex;
       flex-wrap:wrap;
@@ -134,6 +168,12 @@
       color: var(--fg-dim);
     }
 
+    /* Make the first badge subtly "Access" */
+    .badge.access-badge{
+      border-color: rgba(62,230,195,0.35);
+      background: rgba(62,230,195,0.06);
+    }
+
     .hero-ctas{
       display:flex;
       flex-wrap:wrap;
@@ -141,19 +181,24 @@
       margin-top: 10px;
       align-items:center;
     }
+
+    /* Access-mode primary CTA (distinct colour) */
     .cta{
       display:inline-flex; align-items:center; justify-content:center;
       padding: 12px 18px;
       border-radius: 999px;
       border:1px solid rgba(255,255,255,0.16);
-      background: linear-gradient(90deg, var(--violet-a), var(--violet-b));
+      background: linear-gradient(90deg, var(--access), var(--violet-b));
       color:#09111E;
       font-weight: 740;
       text-decoration:none;
-      box-shadow: var(--shadow);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.35), 0 0 0 6px rgba(62,230,195,0.06);
       white-space: nowrap;
     }
-    .cta:hover{ filter: brightness(1.06); }
+    .cta:hover{
+      filter: brightness(1.05);
+      box-shadow: 0 14px 36px rgba(0,0,0,0.42), 0 0 0 7px rgba(62,230,195,0.10);
+    }
 
     .ghost{
       display:inline-flex; align-items:center; justify-content:center;
@@ -201,7 +246,7 @@
     }
     p{ margin: 8px 0; color: var(--fg-dim); }
 
-    /* Drop-down hover items (distinct from homepage tiles) */
+    /* Drop-down hover items */
     .dropgrid{
       display:grid;
       gap: 12px;
@@ -252,9 +297,10 @@
       flex: 0 0 auto;
     }
 
+    /* Access accent when open */
     details[open] .chev{
       transform: rotate(-135deg);
-      border-color: rgba(47,183,255,0.90);
+      border-color: var(--access);
     }
 
     .drop-body{
@@ -269,14 +315,14 @@
       color: var(--fg-dim);
     }
 
-    /* Optional: open on hover for devices with hover */
+    /* Hover accent uses Access colour */
     @media (hover:hover){
       details.drop{ transition: border-color .15s ease, background .15s ease; }
       details.drop:hover{
-        border-color: rgba(47,183,255,0.35);
+        border-color: rgba(62,230,195,0.35);
         background: rgba(255,255,255,0.055);
       }
-      details.drop:hover .sum-title{ color: var(--accent); }
+      details.drop:hover .sum-title{ color: var(--access); }
     }
 
     /* Support block */
@@ -298,11 +344,11 @@
       border-radius:999px;
       border:1px solid rgba(255,255,255,0.16);
       text-decoration:none;
-      background: rgba(47,183,255,0.12);
+      background: rgba(62,230,195,0.12);
     }
     .support a.btn:hover{
-      border-color: rgba(47,183,255,0.40);
-      background: rgba(47,183,255,0.16);
+      border-color: rgba(62,230,195,0.40);
+      background: rgba(62,230,195,0.16);
     }
 
     footer{
@@ -351,11 +397,11 @@
   <header class="hero">
     <div class="hero-inner">
       <div>
-        <h1>DTL Access</h1>
+        <h1>DTL Access <span class="mode-chip">operating mode</span></h1>
         <p class="tagline">Keeps systems accessible under extreme load by stabilising timing behaviour and tails.</p>
 
         <div class="hero-badges" aria-label="Key properties">
-          <span class="badge">Operating mode of FoundScript DTL</span>
+          <span class="badge access-badge">DTL Access mode</span>
           <span class="badge">External and lightweight</span>
           <span class="badge">Reversible deployment</span>
         </div>
