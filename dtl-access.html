@@ -4,22 +4,22 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>FoundScript | DTL Access</title>
-  <meta name="description" content="DTL Access is an operating mode of the FoundScript Deterministic Timing Layer (DTL) focused on access stability and operational resilience in distributed and real time systems under extreme load and stress conditions." />
+  <meta name="description" content="DTL Access is an operating mode of FoundScript DTL that preserves access stability under extreme load by controlling timing behaviour, tails and execution drift without touching data or application logic." />
   <meta name="author" content="FoundScript Ltd" />
   <meta name="color-scheme" content="dark light" />
   <link rel="canonical" href="https://foundscript.com/dtl-access.html" />
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="FoundScript | DTL Access" />
-  <meta property="og:description" content="Access stability and operational resilience under extreme load. An operating mode of the FoundScript Deterministic Timing Layer (DTL)." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://foundscript.com/dtl-access.html" />
-  
   <!-- Favicons -->
   <link rel="icon" href="/favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <!-- Open Graph (image optional) -->
+  <meta property="og:title" content="FoundScript | DTL Access" />
+  <meta property="og:description" content="Access stability under extreme load. An operating mode of FoundScript DTL for controlling timing behaviour and tails." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://foundscript.com/dtl-access.html" />
 
   <!-- Structured data -->
   <script type="application/ld+json">
@@ -27,7 +27,7 @@
     "@context":"https://schema.org",
     "@type":"WebPage",
     "name":"FoundScript DTL Access",
-    "description":"DTL Access is an operating mode of the FoundScript Deterministic Timing Layer (DTL) focused on access stability and operational resilience in distributed and real time systems under extreme load and stress conditions.",
+    "description":"DTL Access is an operating mode of FoundScript DTL that preserves access stability under extreme load by controlling timing behaviour, tails and execution drift without touching data or application logic.",
     "publisher":{
       "@type":"Organization",
       "name":"FoundScript Ltd",
@@ -44,8 +44,9 @@
       --accent: #2FB7FF;
       --violet-a: #6B2FFF;
       --violet-b: #D64DFF;
-      --panel: rgba(255,255,255,0.08);
       --rule: rgba(255,255,255,0.14);
+      --panel: rgba(255,255,255,0.06);
+      --panel-strong: rgba(255,255,255,0.085);
       --shadow: 0 10px 30px rgba(0,0,0,0.35);
       --shadow-strong: 0 14px 36px rgba(0,0,0,0.42);
       --radius-xl: 18px;
@@ -57,7 +58,8 @@
     body{
       margin:0; color:var(--fg);
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-      line-height:1.75; background: var(--bg);
+      line-height:1.7;
+      background: var(--bg);
       overflow-x: hidden;
       padding-top: 56px;
     }
@@ -89,187 +91,42 @@
 
     /* HERO */
     .hero{
-      position:relative; isolation:isolate;
-      padding: clamp(56px, 8vw, 92px) 20px 48px;
-      text-align:center;
+      position:relative;
+      padding: clamp(54px, 7vw, 84px) 20px 34px;
       border-bottom: 1px solid var(--rule);
       background:
-        radial-gradient(1100px 620px at 70% -10%, rgba(107,47,255,0.28), transparent 62%),
-        radial-gradient(760px 520px at -10% 25%, rgba(47,183,255,0.18), transparent 55%),
-        linear-gradient(180deg, rgba(0,0,0,0.38), rgba(0,0,0,0) 35%);
+        radial-gradient(900px 520px at 70% -10%, rgba(107,47,255,0.26), transparent 62%),
+        radial-gradient(820px 520px at -10% 20%, rgba(47,183,255,0.16), transparent 58%),
+        linear-gradient(180deg, rgba(0,0,0,0.40), rgba(0,0,0,0) 40%);
     }
-
-    /* Different backdrop emphasis to avoid "copy paste" */
-    .mesh{
-      position:absolute; inset:0; z-index:-1; pointer-events:none;
-      opacity: 0.35;
-      background-image: url('data:image/svg+xml;utf8,\
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600">\
-          <defs>\
-            <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">\
-              <stop offset="0%" stop-color="%232FB7FF"/>\
-              <stop offset="100%" stop-color="%23D64DFF"/>\
-            </linearGradient>\
-          </defs>\
-          <g fill="none" stroke="url(%23g)" stroke-opacity="0.22">\
-            <path d="M0 120 C220 40, 360 220, 600 160 C820 110, 980 240, 1200 150" />\
-            <path d="M0 320 C220 240, 360 420, 600 360 C820 310, 980 440, 1200 350" />\
-            <path d="M0 520 C220 440, 360 620, 600 560 C820 510, 980 640, 1200 550" />\
-          </g>\
-          <g fill="%23FFFFFF" fill-opacity="0.10">\
-            <circle cx="180" cy="150" r="3"/><circle cx="420" cy="260" r="3"/>\
-            <circle cx="680" cy="170" r="3"/><circle cx="900" cy="290" r="3"/>\
-            <circle cx="1040" cy="210" r="3"/><circle cx="260" cy="450" r="3"/>\
-            <circle cx="520" cy="520" r="3"/><circle cx="780" cy="430" r="3"/>\
-            <circle cx="980" cy="520" r="3"/>\
-          </g>\
-        </svg>');
-      background-size: cover; background-position: center;
-      mask-image: radial-gradient(1100px 520px at 50% 18%, black 36%, transparent 72%);
-    }
-
-    .hero h1{
-      margin: 0 0 10px;
-      font-size: clamp(2.1rem, 5.6vw, 3.7rem);
-      letter-spacing: 0.3px;
-      font-weight: 760;
-      text-shadow: 0 0 18px rgba(214,77,255,0.14);
-    }
-
-    .tagline{
-      font-size: clamp(1.05rem, 2.2vw, 1.22rem);
-      margin: 8px auto 12px;
-      max-width: 980px;
-    }
-
-    .subline{
-      color:var(--fg-dim);
-      font-style: italic;
-      max-width: 980px;
-      margin: 0 auto 22px;
-    }
-
-    .hero-ctas{
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      gap:12px;
-      margin-top: 12px;
-      width: 100%;
-    }
-
-    .cta{
-      display:inline-flex; align-items:center; justify-content:center; gap:10px;
-      padding: 12px 24px; border-radius: 999px; border:1px solid rgba(255,255,255,0.16);
-      background: linear-gradient(90deg, var(--violet-a), var(--violet-b));
-      color:#09111E; font-weight: 750; text-decoration:none; box-shadow: var(--shadow);
-      min-width: 300px;
-      max-width: 92vw;
-      white-space: nowrap;
-    }
-    .cta:hover{ filter: brightness(1.06); }
-
-    .marketplace-cta{
-      display:inline-flex; align-items:center; justify-content:center;
-      padding: 10px 24px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,0.22);
-      background: rgba(255,255,255,0.05);
-      color:var(--fg-dim);
-      font-weight:600;
-      font-size:0.95rem;
-      text-decoration:none;
-      min-width: 300px;
-      max-width: 92vw;
-      white-space: nowrap;
-    }
-    .marketplace-cta:hover{
-      color:var(--accent);
-      border-color:var(--accent);
-      background: rgba(47,183,255,0.10);
-    }
-
-    .support-badge{
-      margin-top: 18px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:14px;
-      opacity:0.85;
-    }
-    .support-badge .support-text{
-      font-size:0.85rem;
-      letter-spacing:0.08em;
-      text-transform:uppercase;
-      color:var(--fg-dim);
-    }
-    .support-badge img{
-      height:36px;
-      width:auto;
-      max-width:92vw;
-    }
-
-    main{ padding: 34px 18px 82px; }
-
-    .grid{
-      display:grid;
-      gap: 18px;
+    .hero-inner{
       max-width: 1120px;
       margin: 0 auto;
-      grid-template-columns: repeat(12, 1fr);
+      display:grid;
+      gap:18px;
+      grid-template-columns: 1fr;
+      align-items: start;
     }
-
-    /* Cards */
-    .card{
-      grid-column: span 12;
-      padding: 22px 20px;
-      border-radius: var(--radius-xl);
-      border: 1px solid var(--rule);
-      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
-      backdrop-filter: blur(6px) saturate(115%);
-      -webkit-backdrop-filter: blur(6px) saturate(115%);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), var(--shadow);
-      transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+    .hero h1{
+      margin: 0;
+      font-size: clamp(2.0rem, 5.0vw, 3.2rem);
+      letter-spacing: 0.2px;
+      font-weight: 760;
     }
-
-    @media (hover:hover){
-      .card:hover{
-        transform: translateY(-2px);
-        box-shadow: inset 0 1px 0 rgba(255,255,255,0.10), var(--shadow-strong);
-        border-color: rgba(255,255,255,0.18);
-      }
+    .tagline{
+      margin: 6px 0 0;
+      font-size: 1.05rem;
+      color: var(--fg-dim);
+      max-width: 900px;
     }
-
-    .kicker{
-      display:inline-block;
-      font-size:.85rem;
-      letter-spacing:.12em;
-      text-transform:uppercase;
-      opacity:.85;
-      margin-bottom:6px;
-    }
-
-    h2{
-      margin: 6px 0 8px;
-      font-size: clamp(1.28rem, 2.4vw, 1.58rem);
-    }
-
-    h3{
-      margin: 6px 0 8px;
-      font-size: 1.06rem;
-    }
-
-    p{ margin: 10px 0; color: var(--fg-dim); }
-
-    /* Key points row (distinct from index page) */
-    .pill-row{
+    .hero-badges{
       display:flex;
       flex-wrap:wrap;
       gap:10px;
-      margin-top: 12px;
+      margin-top: 10px;
     }
-    .pill{
-      border: 1px solid rgba(255,255,255,0.16);
+    .badge{
+      border: 1px solid rgba(255,255,255,0.14);
       background: rgba(255,255,255,0.05);
       border-radius: 999px;
       padding: 8px 12px;
@@ -277,66 +134,165 @@
       color: var(--fg-dim);
     }
 
-    /* Tiles */
-    .tiles{
+    .hero-ctas{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top: 10px;
+      align-items:center;
+    }
+    .cta{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding: 12px 18px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,0.16);
+      background: linear-gradient(90deg, var(--violet-a), var(--violet-b));
+      color:#09111E;
+      font-weight: 740;
+      text-decoration:none;
+      box-shadow: var(--shadow);
+      white-space: nowrap;
+    }
+    .cta:hover{ filter: brightness(1.06); }
+
+    .ghost{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding: 11px 18px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,0.20);
+      background: rgba(255,255,255,0.04);
+      color:var(--fg-dim);
+      font-weight:600;
+      text-decoration:none;
+      white-space: nowrap;
+    }
+    .ghost:hover{
+      color:var(--accent);
+      border-color:var(--accent);
+      background: rgba(47,183,255,0.10);
+    }
+
+    main{ padding: 26px 18px 80px; }
+
+    .wrap{
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    /* Compact panels */
+    .panel{
+      border: 1px solid var(--rule);
+      background: var(--panel);
+      border-radius: var(--radius-xl);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), var(--shadow);
+      padding: 18px;
+    }
+
+    .grid{
       display:grid;
-      gap:16px;
-      grid-template-columns: repeat(12, 1fr);
+      gap: 16px;
+      grid-template-columns: 1fr;
+      margin-top: 16px;
+    }
+
+    h2{
+      margin: 0 0 8px;
+      font-size: 1.2rem;
+    }
+    p{ margin: 8px 0; color: var(--fg-dim); }
+
+    /* Drop-down hover items (distinct from homepage tiles) */
+    .dropgrid{
+      display:grid;
+      gap: 12px;
+      grid-template-columns: 1fr;
       margin-top: 12px;
     }
 
-    .tile{
-      grid-column: span 12;
-      border: 1px solid var(--rule);
+    details.drop{
+      border: 1px solid rgba(255,255,255,0.14);
       border-radius: 16px;
-      padding: 18px;
-      background: rgba(255,255,255,0.06);
-      backdrop-filter: blur(6px) saturate(115%);
-      -webkit-backdrop-filter: blur(6px) saturate(115%);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 8px 18px rgba(0,0,0,0.22);
+      background: rgba(255,255,255,0.05);
+      overflow:hidden;
     }
 
-    .tile ul{
-      padding-left: 18px;
-      margin: 8px 0 0;
+    summary{
+      list-style:none;
+      cursor:pointer;
+      padding: 14px 16px;
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap: 12px;
+      user-select:none;
+    }
+    summary::-webkit-details-marker{ display:none; }
+
+    .sum-left{
+      display:flex;
+      flex-direction:column;
+      gap:2px;
+    }
+    .sum-title{
+      font-weight: 680;
+      color: var(--fg);
+    }
+    .sum-sub{
+      font-size: 0.95rem;
       color: var(--fg-dim);
     }
 
-    /* Simple "How it works" steps (distinct) */
-    .steps{
-      display:grid;
-      gap:12px;
-      margin-top: 10px;
-    }
-    .step{
-      border: 1px solid rgba(255,255,255,0.14);
-      border-radius: 16px;
-      padding: 16px;
-      background: rgba(255,255,255,0.04);
-    }
-    .step strong{
-      color: var(--fg);
-      display:block;
-      margin-bottom: 6px;
+    .chev{
+      width: 10px; height: 10px;
+      border-right: 2px solid rgba(255,255,255,0.55);
+      border-bottom: 2px solid rgba(255,255,255,0.55);
+      transform: rotate(45deg);
+      transition: transform .15s ease, border-color .15s ease;
+      margin-right: 2px;
+      flex: 0 0 auto;
     }
 
-    /* Contact */
-    .contact{
+    details[open] .chev{
+      transform: rotate(-135deg);
+      border-color: rgba(47,183,255,0.90);
+    }
+
+    .drop-body{
+      padding: 0 16px 14px;
+      border-top: 1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .drop-body ul{
+      margin: 10px 0 0;
+      padding-left: 18px;
+      color: var(--fg-dim);
+    }
+
+    /* Optional: open on hover for devices with hover */
+    @media (hover:hover){
+      details.drop{ transition: border-color .15s ease, background .15s ease; }
+      details.drop:hover{
+        border-color: rgba(47,183,255,0.35);
+        background: rgba(255,255,255,0.055);
+      }
+      details.drop:hover .sum-title{ color: var(--accent); }
+    }
+
+    /* Support block */
+    .support{
+      margin-top: 18px;
       display:grid;
       gap:14px;
-      grid-template-columns: 1fr;
       align-items:center;
       text-align:center;
-      padding: 24px 20px;
-      margin-top: 18px;
+      padding: 18px;
       border: 1px solid var(--rule);
       border-radius: var(--radius-xl);
-      background: rgba(255,255,255,0.06);
-      backdrop-filter: blur(6px) saturate(115%);
-      -webkit-backdrop-filter: blur(6px) saturate(115%);
+      background: var(--panel-strong);
       box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 8px 18px rgba(0,0,0,0.22);
     }
-    .contact a.btn{
+    .support a.btn{
       display:inline-block;
       padding: 10px 16px;
       border-radius:999px;
@@ -344,7 +300,7 @@
       text-decoration:none;
       background: rgba(47,183,255,0.12);
     }
-    .contact a.btn:hover{
+    .support a.btn:hover{
       border-color: rgba(47,183,255,0.40);
       background: rgba(47,183,255,0.16);
     }
@@ -359,25 +315,21 @@
     footer a{ color:#9AA3B2; }
     footer a:hover{ color: var(--accent); }
 
-    /* Responsive */
-    @media (min-width: 720px){
-      .card.col-6{ grid-column: span 6; }
-      .tile.col-4{ grid-column: span 4; }
-      .contact{ grid-template-columns: 1fr auto; text-align:left; }
-      .hero-ctas{ max-width: 600px; margin-left:auto; margin-right:auto; }
+    @media (min-width: 860px){
+      .hero-inner{ grid-template-columns: 1.25fr 0.75fr; gap: 26px; align-items:center; }
+      .hero-ctas{ justify-content:flex-start; }
+      .grid{ grid-template-columns: 1fr 1fr; }
+      .dropgrid{ grid-template-columns: 1fr 1fr; }
+      .support{ grid-template-columns: 1fr auto; text-align:left; }
     }
 
-    /* Motion */
     @media (prefers-reduced-motion: no-preference){
-      .hero{ animation: fadeDown .6s ease-out both; }
-      .mesh{ animation: shimmer 16s ease-in-out infinite alternate; }
-      .card, .tile, .contact{ animation: fadeUp .6s ease-out .05s both; }
+      .hero{ animation: fadeDown .55s ease-out both; }
+      .panel, details.drop, .support{ animation: fadeUp .55s ease-out .04s both; }
     }
     @keyframes fadeDown{ from{opacity:0; transform: translateY(-8px);} to{opacity:1; transform:none;} }
     @keyframes fadeUp{ from{opacity:0; transform: translateY(8px);} to{opacity:1; transform:none;} }
-    @keyframes shimmer{ from{ opacity:.28; } to{ opacity:.42; } }
 
-    /* Visually hidden (accessibility and SEO) */
     .sr-only{
       position:absolute;
       width:1px; height:1px;
@@ -392,132 +344,142 @@
   <nav class="topnav">
     <a href="/index.html">DTL</a>
     <a href="#top">DTL Access</a>
-    <a href="#how">How it works</a>
+    <a href="#behaviour">Behaviour</a>
     <a href="#support">Support</a>
   </nav>
 
   <header class="hero">
-    <div class="mesh" aria-hidden="true"></div>
+    <div class="hero-inner">
+      <div>
+        <h1>DTL Access</h1>
+        <p class="tagline">Keeps systems accessible under extreme load by stabilising timing behaviour and tails.</p>
 
-    <h1>DTL Access</h1>
-    <p class="tagline">Access stability and operational resilience under extreme load in distributed and real time systems.</p>
-    <p class="subline">DTL Access is an operating mode of the FoundScript Deterministic Timing Layer. It stabilises execution behaviour during congestion, burst load and stress events without touching payloads, business logic or authoritative timestamps.</p>
+        <div class="hero-badges" aria-label="Key properties">
+          <span class="badge">Operating mode of FoundScript DTL</span>
+          <span class="badge">External and lightweight</span>
+          <span class="badge">Reversible deployment</span>
+        </div>
 
-    <div class="hero-ctas">
-      <a class="cta" href="mailto:info@foundscript.com?subject=DTL%20Access%20Evaluation">Discuss a DTL Access evaluation</a>
-      <a class="marketplace-cta" href="https://marketplace.microsoft.com/en-us/product/saas/foundscript.foundscript-dtl?tab=Overview" target="_blank" rel="noopener">
-        View on Microsoft Marketplace
-      </a>
-    </div>
+        <div class="hero-ctas">
+          <a class="cta" href="mailto:info@foundscript.com?subject=DTL%20Access%20Evaluation">Discuss a DTL Access evaluation</a>
+          <a class="ghost" href="https://marketplace.microsoft.com/en-us/product/saas/foundscript.foundscript-dtl?tab=Overview" target="_blank" rel="noopener">
+            View on Microsoft Marketplace
+          </a>
+        </div>
+      </div>
 
-    <div class="support-badge" aria-label="Supported by Innovate UK Business Growth">
-      <span class="support-text">Supported by</span>
-      <img
-        src="/innovate-uk-business-growth.png"
-        alt="Innovate UK Business Growth logo"
-        loading="lazy"
-        decoding="async"
-      />
+      <div class="panel" aria-label="One minute summary">
+        <span class="sr-only">One minute summary</span>
+        <h2>One minute summary</h2>
+        <p>When systems fail under load, infrastructure may still be online. The break is often timing collapse across retries, queues and dependent services.</p>
+        <p>DTL Access dampens these cascades by stabilising execution timing so critical workflows remain usable during stress events.</p>
+      </div>
     </div>
   </header>
 
   <main>
-    <!-- Intent statement for SEO and AI -->
-    <h2 class="sr-only">DTL Access overview</h2>
-
-    <section class="grid" aria-labelledby="why-access">
-      <article class="card">
-        <span class="kicker">Why DTL Access exists</span>
-        <h2 id="why-access">Availability failures are often timing failures</h2>
-        <p>Under extreme load, systems frequently become inaccessible while infrastructure remains online. Failure emerges as timing collapse across retries, queues and dependent services, which amplifies tails and destabilises critical workflows.</p>
-        <p>DTL Access is designed to stabilise this behaviour so systems degrade predictably and remain usable during stress events.</p>
-
-        <div class="pill-row" aria-label="Key properties">
-          <span class="pill">External and lightweight</span>
-          <span class="pill">Non invasive integration</span>
-          <span class="pill">Reversible deployment</span>
-          <span class="pill">Tail control under stress</span>
-        </div>
-      </article>
-    </section>
-
-    <section class="grid" aria-labelledby="how">
-      <article class="card col-6">
-        <span class="kicker">What it is</span>
-        <h2>DTL Access as an operating mode of the Deterministic Timing Layer</h2>
-        <p>DTL Access uses the same deployment model as FoundScript DTL. It sits alongside your stack as an API or sidecar service and can be trialled with clear rollback behaviour and minimal operational risk.</p>
-        <p>It does not replace security controls and it does not block attacks. It focuses on execution timing behaviour so access remains stable when conditions become unstable.</p>
-      </article>
-
-      <article class="card col-6">
-        <span class="kicker">Design goal</span>
-        <h2 id="how">Controlled degradation rather than abrupt failure</h2>
-        <p>DTL Access aims to reduce tail amplification and timing drift during stress so critical paths behave predictably. The objective is stable execution and access continuity while preserving baseline performance characteristics.</p>
-
-        <div class="steps" aria-label="How it works steps">
-          <div class="step">
-            <strong>Observe</strong>
-            <span>Monitor execution timing behaviour across selected paths and dependencies.</span>
-          </div>
-          <div class="step">
-            <strong>Stabilise</strong>
-            <span>Apply deterministic timing control to reduce drift, jitter and long tail stalls under load.</span>
-          </div>
-          <div class="step">
-            <strong>Recover</strong>
-            <span>Support predictable recovery by dampening cascades and reducing self reinforcing retry behaviour.</span>
-          </div>
-        </div>
-      </article>
-    </section>
-
-    <section class="grid" aria-labelledby="failuremodes">
-      <article class="card" style="margin-top: 8px;">
-        <span class="kicker">Stress behaviour</span>
-        <h2 id="failuremodes">Common failure modes under load</h2>
-
-        <div class="tiles">
-          <div class="tile col-4">
-            <h3>Retry amplification</h3>
-            <ul>
-              <li>Retries and backoffs drift out of sync</li>
-              <li>Traffic becomes bursty and self reinforcing</li>
-              <li>Critical paths stall behind tail behaviour</li>
-            </ul>
-          </div>
-
-          <div class="tile col-4">
-            <h3>Auth and session cascades</h3>
-            <ul>
-              <li>Login and token flows become unstable</li>
-              <li>Dependency chains amplify latency tails</li>
-              <li>Temporary loss of access becomes likely</li>
-            </ul>
-          </div>
-
-          <div class="tile col-4">
-            <h3>Queue and dependency collapse</h3>
-            <ul>
-              <li>Queues stop behaving predictably</li>
-              <li>Long tail stalls spread across services</li>
-              <li>Recovery takes longer than expected</li>
-            </ul>
-          </div>
+    <div class="wrap">
+      <section class="grid" aria-labelledby="behaviour">
+        <div class="panel">
+          <h2 id="behaviour">What it does</h2>
+          <p>Stabilises execution timing during congestion and burst load so access remains reliable. Targets tails, jitter and drift that amplify failure cascades.</p>
+          <p>It does not replace security controls. It does not block attacks. It keeps behaviour predictable when conditions become unstable.</p>
         </div>
 
-        <p style="margin-top:14px;">DTL Access targets timing behaviour that drives these cascades. It focuses on stability and tail control under stress, preserving access without trading away baseline performance.</p>
-
-        <div class="contact" id="support">
-          <div>
-            <strong>Support, pilots and research</strong><br />
-            For evaluations, pilots or operational support, email:<br />
-            <strong>info@foundscript.com</strong><br />
-            Typical response time is one to two business days.
-          </div>
-          <a class="btn" href="mailto:info@foundscript.com?subject=DTL%20Access%20Support">Email support</a>
+        <div class="panel">
+          <h2>How it is deployed</h2>
+          <p>Delivered as a low weight API or sidecar service. Sits alongside your stack. Does not modify payloads, business logic or authoritative timestamps.</p>
+          <p>Designed to be straightforward to trial with clear rollback behaviour and minimal operational risk.</p>
         </div>
-      </article>
-    </section>
+      </section>
+
+      <section class="panel" style="margin-top:16px;" aria-labelledby="failuremodes">
+        <h2 id="failuremodes">Failure modes it targets</h2>
+        <p>Short, practical patterns seen in real distributed systems under stress.</p>
+
+        <div class="dropgrid">
+          <details class="drop">
+            <summary>
+              <span class="sum-left">
+                <span class="sum-title">Retry amplification</span>
+                <span class="sum-sub">Bursty traffic and self reinforcing load</span>
+              </span>
+              <span class="chev" aria-hidden="true"></span>
+            </summary>
+            <div class="drop-body">
+              <ul>
+                <li>Retries drift out of sync</li>
+                <li>Backoffs stop behaving predictably</li>
+                <li>Tail stalls spread across services</li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="drop">
+            <summary>
+              <span class="sum-left">
+                <span class="sum-title">Auth and session cascades</span>
+                <span class="sum-sub">Critical flows fail first during stress</span>
+              </span>
+              <span class="chev" aria-hidden="true"></span>
+            </summary>
+            <div class="drop-body">
+              <ul>
+                <li>Login and token flows become unstable</li>
+                <li>Dependency chains amplify latency tails</li>
+                <li>Temporary loss of access becomes likely</li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="drop">
+            <summary>
+              <span class="sum-left">
+                <span class="sum-title">Queue and dependency collapse</span>
+                <span class="sum-sub">Long tail stalls become systemic</span>
+              </span>
+              <span class="chev" aria-hidden="true"></span>
+            </summary>
+            <div class="drop-body">
+              <ul>
+                <li>Queues stop behaving predictably</li>
+                <li>Stalls spread through dependent services</li>
+                <li>Recovery takes longer than expected</li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="drop">
+            <summary>
+              <span class="sum-left">
+                <span class="sum-title">Graceful degradation</span>
+                <span class="sum-sub">Stable execution rather than hard failure</span>
+              </span>
+              <span class="chev" aria-hidden="true"></span>
+            </summary>
+            <div class="drop-body">
+              <ul>
+                <li>Reduce tail amplification under stress</li>
+                <li>Preserve baseline performance characteristics</li>
+                <li>Keep critical paths usable during adverse conditions</li>
+              </ul>
+            </div>
+          </details>
+        </div>
+
+        <p style="margin-top:12px;">DTL Access focuses on stability and tail control under stress, preserving access without trading away baseline performance.</p>
+      </section>
+
+      <div class="support" id="support">
+        <div>
+          <strong>Support, pilots and research</strong><br />
+          For evaluations, pilots or operational support, email:<br />
+          <strong>info@foundscript.com</strong><br />
+          Typical response time is one to two business days.
+        </div>
+        <a class="btn" href="mailto:info@foundscript.com?subject=DTL%20Access%20Support">Email support</a>
+      </div>
+    </div>
   </main>
 
   <footer>
