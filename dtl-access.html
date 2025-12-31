@@ -51,7 +51,7 @@
         "name":"Does DTL Access block attacks or replace security controls?",
         "acceptedAnswer":{
           "@type":"Answer",
-          "text":"No. DTL Access does not filter traffic, inspect payloads, or enforce security policy. It operates alongside existing security controls to help maintain predictable system behaviour during stress."
+          "text":"No. DTL Access does not filter traffic, inspect payloads or enforce security policy. It operates alongside existing security controls to help maintain predictable system behaviour during stress."
         }
       },
       {
@@ -67,15 +67,15 @@
         "name":"What problem does DTL Access address during incidents?",
         "acceptedAnswer":{
           "@type":"Answer",
-          "text":"It targets timing driven cascade behaviour such as retry amplification, tail latency propagation, and queue or dependency collapse which often causes loss of access even when infrastructure remains online."
+          "text":"It targets timing driven cascade behaviour such as retry amplification, tail latency propagation and queue or dependency collapse which often causes loss of access even when infrastructure remains online."
         }
       },
       {
         "@type":"Question",
-        "name":"Does DTL Access change application logic, data, or authoritative timestamps?",
+        "name":"Does DTL Access change application logic, data or authoritative timestamps?",
         "acceptedAnswer":{
           "@type":"Answer",
-          "text":"No. It does not modify payloads, business logic, or authoritative timestamps."
+          "text":"No. It does not modify payloads, business logic or authoritative timestamps."
         }
       },
       {
@@ -91,7 +91,7 @@
         "name":"What should be measured in an evaluation?",
         "acceptedAnswer":{
           "@type":"Answer",
-          "text":"Measure access success rates for critical paths, tail latency under stress, retry amplification behaviour, queue stability, and time to recovery after burst events."
+          "text":"Measure access success rates for critical paths, tail latency under stress, retry amplification behaviour, queue stability and time to recovery after burst events."
         }
       }
     ]
@@ -477,8 +477,8 @@
       </div>
 
       <div class="panel" aria-label="One minute summary">
-        <h2>One minute summary</h2>
-        <p>Many outages are not hard failures. Infrastructure may still be online, but access is lost when retries, queues and dependent services fall out of sync and tail latency dominates recovery.</p>
+        <h2>Quick summary</h2>
+        <p>Many outages are not hard failures. Infrastructure may still be online but access is lost when retries, queues and dependent services fall out of sync and tail latency dominates recovery.</p>
         <p>DTL Access is designed to dampen these cascades by stabilising execution timing so critical workflows remain usable under stress.</p>
         <p>It does not block attacks or replace security controls. It keeps behaviour predictable when conditions become unstable.</p>
       </div>
@@ -505,7 +505,7 @@
 
       <section class="panel" id="regulatory" style="margin-top:16px;" aria-labelledby="regulatory-title">
         <h2 id="regulatory-title">Operational resilience and regulation context</h2>
-        <p>Frameworks such as the EU Digital Operational Resilience Act (DORA), UK PRA and FCA operational resilience guidance, and NIS2 emphasise maintaining access to critical services during cyber incidents and severe but plausible scenarios.</p>
+        <p>Frameworks such as the EU Digital Operational Resilience Act (DORA), UK PRA and FCA operational resilience guidance and NIS2 emphasise maintaining access to critical services during cyber incidents and severe but plausible scenarios.</p>
         <p>These approaches focus on outcomes such as availability, graceful degradation and predictable behaviour rather than prescribing specific technical controls.</p>
         <p>DTL Access is designed to address timing driven failure modes that commonly cause loss of access during incidents. It can be used as part of a broader operational resilience and cyber security strategy, alongside established controls and governance.</p>
       </section>
@@ -600,7 +600,7 @@
               <span class="chev" aria-hidden="true"></span>
             </summary>
             <div class="drop-body">
-              <p>No. It does not filter traffic, inspect payloads, or enforce policy. It operates alongside existing security controls to help maintain predictable behaviour during stress.</p>
+              <p>No. It does not filter traffic, inspect payloads or enforce policy. It operates alongside existing security controls to help maintain predictable behaviour during stress.</p>
             </div>
           </details>
 
@@ -626,7 +626,7 @@
               <span class="chev" aria-hidden="true"></span>
             </summary>
             <div class="drop-body">
-              <p>It targets timing driven cascade behaviour such as retry amplification, tail latency propagation, and queue or dependency collapse which often causes loss of access even when infrastructure remains online.</p>
+              <p>It targets timing driven cascade behaviour such as retry amplification, tail latency propagation and queue or dependency collapse which often causes loss of access even when infrastructure remains online.</p>
             </div>
           </details>
 
@@ -639,7 +639,7 @@
               <span class="chev" aria-hidden="true"></span>
             </summary>
             <div class="drop-body">
-              <p>No. It does not modify payloads, business logic, or authoritative timestamps.</p>
+              <p>No. It does not modify payloads, business logic or authoritative timestamps.</p>
             </div>
           </details>
 
@@ -665,7 +665,7 @@
               <span class="chev" aria-hidden="true"></span>
             </summary>
             <div class="drop-body">
-              <p>Measure access success rates for critical paths, tail latency under stress, retry amplification behaviour, queue stability, and time to recovery after burst events.</p>
+              <p>Measure access success rates for critical paths, tail latency under stress, retry amplification behaviour, queue stability and time to recovery after burst events.</p>
             </div>
           </details>
         </div>
