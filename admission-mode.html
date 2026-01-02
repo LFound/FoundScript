@@ -5,12 +5,18 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>Admission mode | Keep services usable during incidents, load and attack conditions</title>
+  <title>Admission mode | an operating mode of the FoundScript Timing Layer</title>
 
-  <meta name="description" content="Admission mode helps keep services usable during traffic spikes, incidents and attack conditions by stabilising execution timing and tail behaviour across retries, queues and dependent services. Lightweight API or sidecar with clear rollback." />
+  <meta name="description" content="Admission mode is an operating mode of the FoundScript Timing Layer that keeps services usable during incidents and load by stabilising tail behaviour across retries, queues and dependencies. API or sidecar, reversible by design." />
   <meta name="author" content="FoundScript Ltd" />
   <meta name="color-scheme" content="dark light" />
   <link rel="canonical" href="https://foundscript.com/admission-mode.html" />
+  <meta name="robots" content="index,follow" />
+
+  <!-- Geo and language hints -->
+  <meta name="geo.region" content="GB" />
+  <meta name="geo.placename" content="United Kingdom" />
+  <meta name="language" content="en-GB" />
 
   <!-- Favicons -->
   <link rel="icon" href="/favicon.ico" />
@@ -19,10 +25,15 @@
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Admission mode | Keep services usable during incidents, load and attack conditions" />
-  <meta property="og:description" content="Maintains predictable behaviour during incidents and load by stabilising execution timing and tail behaviour. Lightweight API or sidecar with clear rollback." />
+  <meta property="og:title" content="Admission mode | FoundScript Timing Layer operating mode" />
+  <meta property="og:description" content="Keeps services usable during incidents and load by stabilising tail behaviour across retries, queues and dependencies. API or sidecar, reversible by design." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://foundscript.com/admission-mode.html" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Admission mode | FoundScript Timing Layer operating mode" />
+  <meta name="twitter:description" content="Keeps services usable during incidents and load by stabilising tail behaviour across retries, queues and dependencies." />
 
   <!-- Structured data: WebPage -->
   <script type="application/ld+json">
@@ -30,7 +41,7 @@
     "@context":"https://schema.org",
     "@type":"WebPage",
     "name":"Admission mode",
-    "description":"Admission mode helps keep services usable during traffic spikes, incidents and attack conditions by stabilising execution timing and tail behaviour across retries, queues and dependent services. Lightweight API or sidecar with clear rollback.",
+    "description":"Admission mode is an operating mode of the FoundScript Timing Layer that keeps services usable during incidents and load by stabilising tail behaviour across retries, queues and dependencies.",
     "url":"https://foundscript.com/admission-mode.html",
     "publisher":{
       "@type":"Organization",
@@ -48,18 +59,18 @@
     "mainEntity":[
       {
         "@type":"Question",
-        "name":"Does Admission mode block attacks or replace security controls?",
+        "name":"Is Admission mode a separate product?",
         "acceptedAnswer":{
           "@type":"Answer",
-          "text":"No. Admission mode does not filter traffic, inspect payloads or enforce security policy. It operates alongside existing security controls to help maintain predictable behaviour during stress."
+          "text":"No. Admission mode is an operating mode of the FoundScript Timing Layer, applied at entry and admission points to keep behaviour predictable during stress."
         }
       },
       {
         "@type":"Question",
-        "name":"Is Admission mode a compliance solution?",
+        "name":"Does Admission mode block attacks or replace security controls?",
         "acceptedAnswer":{
           "@type":"Answer",
-          "text":"No. Compliance is broader than any single component. Admission mode may support operational resilience evidence by helping keep critical services usable during severe but plausible scenarios."
+          "text":"No. It does not filter traffic, inspect payloads or enforce policy. It operates alongside existing controls to help maintain predictable behaviour during stress."
         }
       },
       {
@@ -75,7 +86,7 @@
         "name":"How is Admission mode deployed and how reversible is it?",
         "acceptedAnswer":{
           "@type":"Answer",
-          "text":"Admission mode is delivered as a lightweight API or sidecar service with clear rollback behaviour designed to minimise operational risk during evaluation."
+          "text":"It is delivered as a lightweight API or sidecar service with clear rollback behaviour designed to minimise operational risk during evaluation."
         }
       },
       {
@@ -159,7 +170,7 @@
 
     .hero{
       position:relative;
-      padding: clamp(46px, 7vw, 84px) 16px 28px;
+      padding: clamp(46px, 7vw, 84px) 16px 26px;
       border-bottom: 1px solid var(--rule);
       background:
         radial-gradient(900px 520px at 70% -10%, rgba(107,47,255,0.26), transparent 62%),
@@ -212,7 +223,7 @@
       margin: 10px 0 0;
       font-size: clamp(1.02rem, 1.35vw, 1.12rem);
       color: var(--fg-dim);
-      max-width: 900px;
+      max-width: 920px;
     }
 
     .hero-ctas{
@@ -264,6 +275,15 @@
       border-color:var(--accent);
       background: rgba(47,183,255,0.10);
     }
+
+    .backlink{
+      display:inline-block;
+      margin-top: 10px;
+      font-weight: 650;
+      color: var(--fg-dim);
+      text-decoration:none;
+    }
+    .backlink:hover{ color: var(--accent); }
 
     main{ padding: 22px 16px 80px; }
     .wrap{ max-width: 1120px; margin: 0 auto; }
@@ -425,7 +445,8 @@
 
 <body id="top">
   <nav class="topnav" aria-label="Primary">
-    <a href="/index.html">Home</a>
+    <a href="/index.html">Timing layer</a>
+    <a href="#howitworks">How it works</a>
     <a href="#faq">FAQ</a>
     <a href="#support">Support</a>
   </nav>
@@ -434,19 +455,22 @@
     <div class="hero-inner">
       <div>
         <h1>Admission mode <span class="mode-chip">Operating mode</span></h1>
-        <p class="tagline">Keeps services usable during traffic spikes, incidents and attack conditions by stabilising execution timing and tail behaviour.</p>
+        <p class="tagline">
+          An operating mode of the FoundScript Timing Layer that helps keep services usable during traffic spikes, incidents and attack conditions by stabilising tail behaviour across retries, queues and dependencies.
+        </p>
 
         <div class="hero-ctas">
+          <a class="ghost" href="/index.html">Back to Timing layer</a>
           <a class="cta" href="mailto:info@foundscript.com?subject=Admission%20mode%20Evaluation">Discuss an Admission mode evaluation</a>
-          <a class="ghost" href="https://marketplace.microsoft.com/en-us/product/saas/foundscript.foundscript-dtl?tab=Overview" target="_blank" rel="noopener">View on Microsoft Marketplace</a>
+          <a class="ghost" href="https://marketplace.microsoft.com/en-us/product/saas/foundscript.foundscript-timing-layer?tab=Overview" target="_blank" rel="noopener">View on Microsoft Marketplace</a>
         </div>
       </div>
 
       <div class="panel" aria-label="One minute summary">
         <h2>Quick summary</h2>
         <p>Many outages are not hard failures. Infrastructure may still be online but access is lost when retries, queues and dependent services fall out of sync and tail latency dominates recovery.</p>
-        <p>Admission mode is designed to dampen these cascades by stabilising execution timing so critical workflows remain usable under stress.</p>
-        <p>It does not block attacks or replace security controls. It keeps behaviour predictable when conditions become unstable.</p>
+        <p>Admission mode dampens these cascades by stabilising execution timing at the points where systems admit work, retry, queue and fan out to dependencies.</p>
+        <p>It does not block attacks or replace security controls. It helps keep behaviour predictable when conditions become unstable.</p>
       </div>
     </div>
   </header>
@@ -456,29 +480,37 @@
       <section class="grid" aria-labelledby="whatitdoes">
         <div class="panel">
           <h2 id="whatitdoes">What it does</h2>
-          <p>Helps maintain access and availability during extreme load by stabilising execution timing and tail behaviour across retries, queues and dependent services.</p>
-          <p>Targets tail latency amplification, jitter and drift that commonly lead to cascading failure during incidents.</p>
-          <p>Admission mode does not replace security controls. It can support incident response by helping services remain usable during stress and recovery.</p>
+          <p>Admission mode applies timing stabilisation at entry and admission points to keep critical services usable during stress.</p>
+          <p>It targets tail latency amplification, jitter and drift that commonly lead to cascading failure, especially when retries and dependency chains begin to dominate behaviour.</p>
+          <p>It is designed to preserve baseline performance characteristics while reducing the probability of timing driven collapse under severe but plausible conditions.</p>
         </div>
 
         <div class="panel">
           <h2 id="deployment">How it is deployed</h2>
           <p>Delivered as a lightweight API or sidecar service that sits alongside your stack.</p>
           <p>Does not modify payloads, business logic or authoritative timestamps.</p>
-          <p>Designed to be straightforward to trial, with clear rollback behaviour and minimal operational risk.</p>
+          <p>Designed to be straightforward to trial with clear rollback behaviour and minimal operational risk.</p>
         </div>
       </section>
 
-      <section class="panel" id="regulatory" style="margin-top:16px;" aria-labelledby="regulatory-title">
-        <h2 id="regulatory-title">Operational resilience context</h2>
-        <p>Operational resilience guidance emphasises maintaining access to critical services during incidents and severe but plausible scenarios.</p>
-        <p>These approaches focus on outcomes such as availability, graceful degradation and predictable behaviour rather than prescribing specific technical controls.</p>
-        <p>Admission mode is designed to address timing driven failure modes that commonly cause loss of access during incidents. It can be used as part of a broader operational resilience and cyber security strategy, alongside established controls and governance.</p>
+      <section class="panel" id="howitworks" style="margin-top:16px;" aria-labelledby="howitworks-title">
+        <h2 id="howitworks-title">How it works in practice</h2>
+        <p>Admission mode is typically applied at points where systems decide what to accept next and how to recover when the tail dominates.</p>
+        <p>That often includes request admission, worker scheduling, retry coordination, queue behaviour and dependency call patterns.</p>
+        <p>We work with your engineering team to identify the highest impact start and end points and define a safe evaluation plan.</p>
+      </section>
+
+      <section class="panel" id="resilience" style="margin-top:16px;" aria-labelledby="resilience-title">
+        <h2 id="resilience-title">Operational resilience context</h2>
+        <p>Regulatory guidance on operational resilience emphasises maintaining access to critical services during incidents and severe but plausible scenarios.</p>
+        <p>In the UK and EU, regulators such as the FCA and PRA increasingly focus on whether firms can sustain access to critical services under stress, rather than on the presence of specific technical controls.</p>
+        <p>These approaches prioritise outcomes such as availability, graceful degradation and predictable behaviour during disruption.</p>
+        <p>Admission mode is designed to address timing driven failure modes that commonly cause loss of access during incidents. It is intended to operate alongside existing security controls, governance and incident response processes.</p>
       </section>
 
       <section class="panel" id="failuremodes" style="margin-top:16px;" aria-labelledby="failuremodes-title">
         <h2 id="failuremodes-title">Common causes of access loss during incidents</h2>
-        <p>Short, practical patterns seen in real distributed systems under stress.</p>
+        <p>Short patterns seen in real distributed systems under stress.</p>
 
         <div class="dropgrid">
           <details class="drop">
@@ -560,6 +592,19 @@
           <details class="drop">
             <summary>
               <span class="sum-left">
+                <span class="sum-title">Is Admission mode a separate product?</span>
+                <span class="sum-sub">No, it is an operating mode</span>
+              </span>
+              <span class="chev" aria-hidden="true"></span>
+            </summary>
+            <div class="drop-body">
+              <p>No. Admission mode is an operating mode of the FoundScript Timing Layer, applied at entry and admission points to keep behaviour predictable during stress.</p>
+            </div>
+          </details>
+
+          <details class="drop">
+            <summary>
+              <span class="sum-left">
                 <span class="sum-title">Does Admission mode block attacks or replace security controls?</span>
                 <span class="sum-sub">Security is still required</span>
               </span>
@@ -573,20 +618,7 @@
           <details class="drop">
             <summary>
               <span class="sum-left">
-                <span class="sum-title">Is Admission mode a compliance solution?</span>
-                <span class="sum-sub">Supports evidence, not compliance</span>
-              </span>
-              <span class="chev" aria-hidden="true"></span>
-            </summary>
-            <div class="drop-body">
-              <p>No. Compliance is broader than any single component. Admission mode may support operational resilience evidence by helping keep critical services usable during severe but plausible scenarios.</p>
-            </div>
-          </details>
-
-          <details class="drop">
-            <summary>
-              <span class="sum-left">
-                <span class="sum-title">Does Admission mode change application logic, data, or authoritative timestamps?</span>
+                <span class="sum-title">Does Admission mode change application logic, data or authoritative timestamps?</span>
                 <span class="sum-sub">No payload or logic changes</span>
               </span>
               <span class="chev" aria-hidden="true"></span>
@@ -605,7 +637,7 @@
               <span class="chev" aria-hidden="true"></span>
             </summary>
             <div class="drop-body">
-              <p>Admission mode is delivered as a lightweight API or sidecar service with clear rollback behaviour designed to minimise operational risk during evaluation.</p>
+              <p>It is delivered as a lightweight API or sidecar service with clear rollback behaviour designed to minimise operational risk during evaluation.</p>
             </div>
           </details>
 
@@ -637,7 +669,7 @@
   </main>
 
   <footer>
-    © 2025 FoundScript Ltd. Registered in England &amp; Wales. All rights reserved.<br />
+    © 2026 FoundScript Ltd. Registered in England &amp; Wales. All rights reserved.<br />
     <a href="/privacy.html">Privacy Policy</a> ·
     <a href="/terms.html">Service Terms</a>
   </footer>
