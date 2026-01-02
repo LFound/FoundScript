@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>FoundScript | Deterministic Timing Layer (DTL)</title>
-  <meta name="description" content="FoundScript develops a deterministic timing layer (DTL) for distributed and real time systems. External, lightweight API that stabilises drift, jitter and tail behaviour without touching application data or core logic." />
+  <title>FoundScript | Timing layer</title>
+  <meta name="description" content="FoundScript develops a timing layer for distributed and real time systems. External lightweight API that stabilises drift, jitter and tail behaviour without touching application data or core logic." />
   <meta name="author" content="FoundScript Ltd" />
   <meta name="color-scheme" content="dark light" />
 
-    <!-- Favicons -->
+  <!-- Favicons -->
   <link rel="icon" href="/favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -22,7 +22,7 @@
       --accent: #2FB7FF;           /* Electric Blue */
       --violet-a: #6B2FFF;         /* Gradient start */
       --violet-b: #D64DFF;         /* Gradient end */
-      --panel: rgba(255,255,255,0.08); /* slightly more glass */
+      --panel: rgba(255,255,255,0.08);
       --rule: rgba(255,255,255,0.14);
       --ring: rgba(47,183,255,0.10);
       --shadow: 0 10px 30px rgba(0,0,0,0.35);
@@ -30,9 +30,9 @@
       --radius-xl: 18px;
     }
 
-    /* Base */
     html, body { height: 100%; scroll-behavior: smooth; }
     * { box-sizing: border-box; }
+
     body{
       margin:0; color:var(--fg);
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
@@ -64,11 +64,9 @@
       text-decoration:none;
       font-weight:500;
     }
-    .topnav a:hover{
-      color:var(--accent);
-    }
+    .topnav a:hover{ color:var(--accent); }
 
-    /* --- HERO --- */
+    /* Hero */
     .hero{
       position:relative; isolation:isolate;
       padding: clamp(56px, 8vw, 96px) 20px 56px;
@@ -80,25 +78,43 @@
         linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0) 35%);
     }
 
-    .hero h1{
-      margin: 0 0 8px; font-size: clamp(2.2rem, 5.8vw, 4rem);
-      letter-spacing: 0.3px; font-weight: 700;
+    .hero-title{
+      margin: 0 0 8px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap: 6px;
+    }
+
+    .hero-title .brand{
+      font-size: clamp(2.2rem, 5.8vw, 4rem);
+      letter-spacing: 0.3px;
+      font-weight: 750;
       text-shadow: 0 0 18px rgba(47,183,255,0.18);
+      line-height: 1.05;
+    }
+
+    .hero-title .product{
+      font-size: clamp(1.05rem, 2.2vw, 1.35rem);
+      color: var(--fg-dim);
+      font-weight: 650;
+      letter-spacing: 0.02em;
+      line-height: 1.15;
     }
 
     .tagline{
       font-size: clamp(1.05rem, 2.2vw, 1.25rem);
-      margin: 10px auto 10px;
-      max-width: 900px;
+      margin: 14px auto 10px;
+      max-width: 920px;
     }
+
     .subline{
       color:var(--fg-dim);
       font-style: italic;
-      max-width: 860px;
+      max-width: 900px;
       margin: 0 auto 22px;
     }
 
-    /* CTA block */
     .hero-ctas{
       display:flex;
       flex-direction:column;
@@ -113,8 +129,8 @@
       display:inline-flex; align-items:center; justify-content:center; gap:10px;
       padding: 12px 24px; border-radius: 999px; border:1px solid rgba(255,255,255,0.16);
       background: linear-gradient(90deg, var(--violet-a), var(--violet-b));
-      color:#09111E; font-weight: 700; text-decoration:none; box-shadow: var(--shadow);
-      min-width: 280px; /* align with marketplace button */
+      color:#09111E; font-weight: 750; text-decoration:none; box-shadow: var(--shadow);
+      min-width: 280px;
       max-width: 92vw;
       white-space: nowrap;
     }
@@ -130,7 +146,7 @@
       font-weight:600;
       font-size:0.95rem;
       text-decoration:none;
-      min-width: 280px; /* match CTA */
+      min-width: 280px;
       max-width: 92vw;
       white-space: nowrap;
     }
@@ -140,7 +156,6 @@
       background: rgba(47,183,255,0.10);
     }
 
-    /* Innovate UK support badge */
     .support-badge{
       margin-top: 18px;
       display:flex;
@@ -149,21 +164,18 @@
       gap:14px;
       opacity:0.85;
     }
-
     .support-badge .support-text{
       font-size:0.85rem;
       letter-spacing:0.08em;
       text-transform:uppercase;
       color:var(--fg-dim);
     }
-
     .support-badge img{
       height:36px;
       width:auto;
       max-width:92vw;
     }
 
-    /* Lattice backdrop (SVG) */
     .lattice{
       position:absolute; inset:0; z-index:-1; opacity: 0.45; pointer-events:none;
       background-image: url('data:image/svg+xml;utf8,\
@@ -191,7 +203,6 @@
       mask-image: radial-gradient(1200px 520px at 50% 20%, black 35%, transparent 70%);
     }
 
-    /* --- SECTIONS --- */
     main{ padding: 36px 18px 80px; }
 
     .grid{
@@ -199,29 +210,22 @@
       grid-template-columns: repeat(12, 1fr);
     }
 
-    /* Glass cards */
     .card{
       grid-column: span 12;
       padding: 22px 20px;
       border-radius: var(--radius-xl);
       border: 1px solid var(--rule);
-      background:
-        linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
+      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
       backdrop-filter: blur(6px) saturate(115%);
       -webkit-backdrop-filter: blur(6px) saturate(115%);
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,0.08),
-        var(--shadow);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), var(--shadow);
       transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
     }
 
-    /* Optional: restrained hover lift */
     @media (hover:hover){
       .card:hover{
         transform: translateY(-2px);
-        box-shadow:
-          inset 0 1px 0 rgba(255,255,255,0.10),
-          var(--shadow-strong);
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.10), var(--shadow-strong);
         border-color: rgba(255,255,255,0.18);
       }
     }
@@ -237,7 +241,6 @@
     h2{ margin: 6px 0 8px; font-size: clamp(1.3rem, 2.4vw, 1.6rem); }
     p{ margin: 10px 0; color: var(--fg-dim); }
 
-    /* Focus tiles */
     .tiles{ display:grid; gap:16px; grid-template-columns: repeat(12, 1fr); margin-top: 10px; }
     .tile{
       grid-column: span 12;
@@ -247,14 +250,11 @@
       background: rgba(255,255,255,0.06);
       backdrop-filter: blur(6px) saturate(115%);
       -webkit-backdrop-filter: blur(6px) saturate(115%);
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,0.08),
-        0 8px 18px rgba(0,0,0,0.22);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 8px 18px rgba(0,0,0,0.22);
     }
     .tile h3{ margin: 6px 0 6px; font-size: 1.05rem; }
     .tile ul{ padding-left: 18px; margin: 6px 0 0; color: var(--fg-dim); }
 
-    /* Contact panel */
     .contact{
       display:grid; gap:14px; grid-template-columns: 1fr;
       align-items:center; text-align:center;
@@ -264,9 +264,7 @@
       background: rgba(255,255,255,0.06);
       backdrop-filter: blur(6px) saturate(115%);
       -webkit-backdrop-filter: blur(6px) saturate(115%);
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,0.08),
-        0 8px 18px rgba(0,0,0,0.22);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 8px 18px rgba(0,0,0,0.22);
     }
     .contact a.btn{
       display:inline-block;
@@ -281,7 +279,6 @@
       background: rgba(47,183,255,0.16);
     }
 
-    /* Footer */
     footer{
       border-top:1px solid var(--rule);
       color:#9AA3B2;
@@ -292,7 +289,6 @@
     footer a{ color:#9AA3B2; }
     footer a:hover{ color: var(--accent); }
 
-    /* Responsive */
     @media (min-width: 720px){
       .card.col-6{ grid-column: span 6; }
       .tile.col-4{ grid-column: span 4; }
@@ -300,7 +296,6 @@
       .hero-ctas{ max-width: 520px; margin-left:auto; margin-right:auto; }
     }
 
-    /* Motion */
     @media (prefers-reduced-motion: no-preference){
       .hero{ animation: fadeDown .6s ease-out both; }
       .lattice{ animation: shimmer 18s ease-in-out infinite alternate; }
@@ -313,25 +308,32 @@
 </head>
 
 <body id="top">
-  <nav class="topnav">
-    <a href="/dtl-access.html">DTL Access</a>
+  <nav class="topnav" aria-label="Primary">
+    <a href="#top">Home</a>
+    <a href="/admission-mode.html">Admission mode</a>
     <a href="#support">Support</a>
   </nav>
 
   <header class="hero">
     <div class="lattice" aria-hidden="true"></div>
-    <h1>FOUNDSCRIPT DTL</h1>
-    <p class="tagline">Deterministic timing layer for distributed and real time systems.</p>
-    <p class="subline">External timing layer that improves latency and execution consistency and supports stable access under load, without touching your data or application logic. Lightweight API, designed to sit cleanly alongside regulatory, safety and operational constraints.</p>
+
+    <div class="hero-title">
+      <div class="brand">FOUNDSCRIPT</div>
+      <div class="product">Timing layer</div>
+    </div>
+
+    <p class="tagline">External timing layer for distributed and real time systems.</p>
+    <p class="subline">
+      Improves latency and execution consistency and supports stable access under load, without touching your data or application logic. Lightweight API, designed to sit cleanly alongside regulatory, safety and operational constraints.
+    </p>
 
     <div class="hero-ctas">
-      <a class="cta" href="mailto:info@foundscript.com?subject=FoundScript%20DTL">Discuss a DTL evaluation</a>
+      <a class="cta" href="mailto:info@foundscript.com?subject=FoundScript%20Timing%20Layer%20evaluation">Discuss an evaluation</a>
       <a class="marketplace-cta" href="https://marketplace.microsoft.com/en-us/product/saas/foundscript.foundscript-dtl?tab=Overview" target="_blank" rel="noopener">
         View on Microsoft Marketplace
       </a>
     </div>
 
-    <!-- Innovate UK support -->
     <div class="support-badge" aria-label="Supported by Innovate UK Business Growth">
       <span class="support-text">Supported by</span>
       <img
@@ -341,7 +343,6 @@
         decoding="async"
       />
     </div>
-
   </header>
 
   <main>
@@ -349,14 +350,14 @@
       <article class="card col-6">
         <span class="kicker">Approach</span>
         <h2 id="why">External, lightweight and non invasive</h2>
-        <p>The deterministic timing layer sits outside your existing stack and wraps around processes and execution paths. It observes and stabilises how events move through the system, without modifying payloads, business logic or authoritative timestamps.</p>
-        <p>DTL is delivered as a low weight API or sidecar service. Integration is designed to be reversible and straightforward to trial, with clear rollback behaviour and minimal operational risk.</p>
+        <p>The timing layer sits outside your existing stack and wraps around processes and execution paths. It observes and stabilises how events move through the system, without modifying payloads, business logic or authoritative timestamps.</p>
+        <p>It is delivered as a low weight API or sidecar service. Integration is designed to be reversible and straightforward to trial, with clear rollback behaviour and minimal operational risk.</p>
       </article>
 
       <article class="card col-6">
         <span class="kicker">Behaviour</span>
         <h2>Drift, jitter and tail behaviour</h2>
-        <p>DTL focuses on timing behaviour between events. It targets drift, jitter and long tail latency, aiming to keep flows inside a tighter and more predictable window under load.</p>
+        <p>The timing layer focuses on timing behaviour between events. It targets drift, jitter and long tail latency, aiming to keep flows inside a tighter and more predictable window under load.</p>
         <p>Benchmarks show reductions in variance and tail heaviness while keeping medians unchanged. Full result packs and test notes are available under NDA where needed.</p>
       </article>
     </section>
@@ -364,7 +365,7 @@
     <section class="grid" aria-labelledby="focus">
       <article class="card" style="margin-top: 8px;">
         <span class="kicker">Deployment and use</span>
-        <h2 id="focus">Where DTL is being applied and evaluated</h2>
+        <h2 id="focus">Where the timing layer is being applied and evaluated</h2>
 
         <div class="tiles">
           <div class="tile col-4">
@@ -402,7 +403,7 @@
             <strong>info@foundscript.com</strong><br />
             Typical response time is one to two business days.
           </div>
-          <a class="btn" href="mailto:info@foundscript.com?subject=FoundScript%20DTL%20Support">Email support</a>
+          <a class="btn" href="mailto:info@foundscript.com?subject=FoundScript%20Timing%20Layer%20support">Email support</a>
         </div>
       </article>
     </section>
