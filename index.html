@@ -1,18 +1,19 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en-GB">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>FoundScript Timing Layer | stabilise latency variance and tail behaviour under load</title>
-  <meta name="description" content="FoundScript Timing Layer stabilises latency variance and tail behaviour under load. Reduces drift, jitter and long tail timing variance without changing application logic, payloads or authoritative timestamps." />
+  <title>FoundScript timing layer | predictive stability control under load</title>
+  <meta name="description" content="FoundScript provides a predictive stability control layer that keeps systems usable under load. Reduces tail latency amplification, retries and drift without changing application logic, payloads or authoritative timestamps." />
   <meta name="author" content="FoundScript Ltd" />
   <meta name="color-scheme" content="dark light" />
 
   <link rel="canonical" href="https://foundscript.com/" />
   <meta name="robots" content="index,follow" />
 
-  <!-- Geo and language hints (harmless even if not used by search engines) -->
+  <!-- Geo and language hints -->
   <meta name="geo.region" content="GB" />
   <meta name="geo.placename" content="United Kingdom" />
   <meta name="language" content="en-GB" />
@@ -24,15 +25,15 @@
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="FoundScript Timing Layer" />
-  <meta property="og:description" content="Stabilises latency variance and tail behaviour under load. Reduces drift, jitter and long tail timing variance without changing application logic, payloads or authoritative timestamps." />
+  <meta property="og:title" content="FoundScript timing layer" />
+  <meta property="og:description" content="Predictive stability control that keeps systems usable under load. Reduces tail latency amplification, retries and drift without changing application logic, payloads or authoritative timestamps." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://foundscript.com/" />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="FoundScript Timing Layer" />
-  <meta name="twitter:description" content="Stabilises latency variance and tail behaviour under load without changing application logic, payloads or authoritative timestamps." />
+  <meta name="twitter:title" content="FoundScript timing layer" />
+  <meta name="twitter:description" content="Predictive stability control that keeps systems usable under load. Reduces tail latency amplification, retries and drift without changing application logic, payloads or authoritative timestamps." />
 
   <!-- Structured data: Organisation -->
   <script type="application/ld+json">
@@ -53,8 +54,8 @@
   {
     "@context":"https://schema.org",
     "@type":"WebPage",
-    "name":"FoundScript Timing Layer",
-    "description":"Stabilises latency variance and tail behaviour under load. Reduces drift, jitter and long tail timing variance without changing application logic, payloads or authoritative timestamps.",
+    "name":"FoundScript timing layer",
+    "description":"FoundScript provides a predictive stability control layer that keeps systems usable under load. Reduces tail latency amplification, retries and drift without changing application logic, payloads or authoritative timestamps.",
     "url":"https://foundscript.com/"
   }
   </script>
@@ -418,17 +419,24 @@
     <div class="lattice" aria-hidden="true"></div>
 
     <div class="hero-title">
-      <div class="brand">FOUNDSCRIPT Timing Layer</div>
+      <div class="brand">FOUNDSCRIPT timing layer</div>
     </div>
 
-    <p class="tagline">Stabilises latency variance and tail behaviour under load.</p>
+    <p class="tagline">Predictive stability control for high variance systems under load.</p>
 
     <p class="subline">
       <em>
-        Applies wherever timing behaviour, retries or tail latency determine system outcomes across software, compute and control infrastructure.
+        Applies wherever load, retries and tail behaviour determine outcomes across software, compute and control infrastructure.
         Delivered via API or sidecar without changing application logic, payloads or authoritative timestamps.
       </em>
     </p>
+
+    <ul class="hero-bullets" aria-label="High level positioning">
+      <li><strong>What it is:</strong> a stability control layer that shapes admission and execution to reduce tail amplification and cascade risk.</li>
+      <li><strong>Where it fits:</strong> boundary points where systems decide what to accept next, how to queue, how to retry and how to recover under stress.</li>
+      <li><strong>Where it applies:</strong> hybrid compute workflows (including quantum), high throughput pipelines (including biotech) and incident conditions where reactive controls benefit from stabilising support.</li>
+      <li><strong>What it is not:</strong> it does not inspect payloads, enforce policy or replace security controls. It aims to keep behaviour predictable when conditions become unstable.</li>
+    </ul>
 
     <div class="hero-ctas">
       <a class="marketplace-cta" href="https://marketplace.microsoft.com/en-us/product/saas/foundscript.foundscript-timing-layer?tab=Overview" target="_blank" rel="noopener">
@@ -453,19 +461,19 @@
       <section class="panel" aria-label="Details">
         <h2>Details</h2>
           <p class="cta-note">
-            We work with engineering teams to identify where timing stabilisation delivers the highest impact in complex production systems.
+            We work with engineering teams to identify where stability control delivers the highest impact in complex production systems.
           </p>
 
         <details class="drop">
           <summary>
             <span class="sum-left">
               <span class="sum-title">What this does</span>
-              <span class="sum-sub">Stabilises execution timing between events</span>
+              <span class="sum-sub">Keeps behaviour predictable during stress</span>
             </span>
             <span class="chev" aria-hidden="true"></span>
           </summary>
           <div class="drop-body">
-            <p>The timing layer stabilises timing behaviour between events in distributed systems, reducing drift, jitter and long tail variance that dominate behaviour under load. It operates outside application logic and does not modify payloads or authoritative timestamps.</p>
+            <p>The timing layer provides predictive stability control at system boundaries, reducing tail latency amplification, drift and retry cascades that dominate behaviour under load. It operates outside application logic and does not modify payloads or authoritative timestamps.</p>
           </div>
         </details>
 
@@ -500,6 +508,7 @@
               <li>Real time pipelines and control paths</li>
               <li>Latency sensitive inference and rendering</li>
               <li>Systems with retries, queues or dependency cascades</li>
+              <li>Incident and attack conditions where reactive controls need stabilising support</li>
             </ul>
           </div>
         </details>
@@ -514,8 +523,8 @@
           </summary>
           <div class="drop-body">
             <ul>
+              <li>Service usability and critical path success rate during burst conditions</li>
               <li>Tail latency under stress, variance and tail heaviness</li>
-              <li>Access success rate for critical paths during bursts</li>
               <li>Retry amplification behaviour and queue stability</li>
               <li>Time to recovery after incident like conditions</li>
             </ul>
