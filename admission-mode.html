@@ -5,9 +5,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>Admission mode | an operating mode of the FoundScript Timing Layer</title>
+  <title>Admission mode | predictive stability control for incident conditions</title>
 
-  <meta name="description" content="Admission mode is an operating mode of the FoundScript Timing Layer that keeps services usable during incidents and load by stabilising tail behaviour across retries, queues and dependencies. API or sidecar, reversible by design." />
+  <meta name="description" content="Admission mode is an operating mode of the FoundScript timing layer that keeps services usable during incidents and load by applying predictive stability control across retries, queues and dependencies. API or sidecar, reversible by design." />
   <meta name="author" content="FoundScript Ltd" />
   <meta name="color-scheme" content="dark light" />
   <link rel="canonical" href="https://foundscript.com/admission-mode.html" />
@@ -25,15 +25,15 @@
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Admission mode | FoundScript Timing Layer operating mode" />
-  <meta property="og:description" content="Keeps services usable during incidents and load by stabilising tail behaviour across retries, queues and dependencies. API or sidecar, reversible by design." />
+  <meta property="og:title" content="Admission mode | FoundScript timing layer operating mode" />
+  <meta property="og:description" content="Keeps services usable during incidents and load by applying predictive stability control across retries, queues and dependencies. API or sidecar, reversible by design." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://foundscript.com/admission-mode.html" />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Admission mode | FoundScript Timing Layer operating mode" />
-  <meta name="twitter:description" content="Keeps services usable during incidents and load by stabilising tail behaviour across retries, queues and dependencies." />
+  <meta name="twitter:title" content="Admission mode | FoundScript timing layer operating mode" />
+  <meta name="twitter:description" content="Keeps services usable during incidents and load by applying predictive stability control across retries, queues and dependencies." />
 
   <!-- Structured data: WebPage -->
   <script type="application/ld+json">
@@ -41,7 +41,7 @@
     "@context":"https://schema.org",
     "@type":"WebPage",
     "name":"Admission mode",
-    "description":"Admission mode is an operating mode of the FoundScript Timing Layer that keeps services usable during incidents and load by stabilising tail behaviour across retries, queues and dependencies.",
+    "description":"Admission mode is an operating mode of the FoundScript timing layer that keeps services usable during incidents and load by applying predictive stability control across retries, queues and dependencies.",
     "url":"https://foundscript.com/admission-mode.html",
     "publisher":{
       "@type":"Organization",
@@ -62,7 +62,7 @@
         "name":"Is Admission mode a separate product?",
         "acceptedAnswer":{
           "@type":"Answer",
-          "text":"No. Admission mode is an operating mode of the FoundScript Timing Layer, applied at entry and admission points to keep behaviour predictable during stress."
+          "text":"No. Admission mode is an operating mode of the FoundScript timing layer, applied at entry and admission points to keep behaviour predictable during stress."
         }
       },
       {
@@ -276,15 +276,6 @@
       background: rgba(47,183,255,0.10);
     }
 
-    .backlink{
-      display:inline-block;
-      margin-top: 10px;
-      font-weight: 650;
-      color: var(--fg-dim);
-      text-decoration:none;
-    }
-    .backlink:hover{ color: var(--accent); }
-
     main{ padding: 22px 16px 80px; }
     .wrap{ max-width: 1120px; margin: 0 auto; }
 
@@ -455,7 +446,7 @@
       <div>
         <h1>Admission mode <span class="mode-chip">Operating mode</span></h1>
         <p class="tagline">
-          An operating mode of the FoundScript Timing Layer that helps keep services usable during traffic spikes, incidents and attack conditions by stabilising tail behaviour across retries, queues and dependencies.
+          An operating mode of the FoundScript timing layer that helps keep services usable during traffic spikes, incidents and attack conditions by applying predictive stability control across retries, queues and dependencies.
         </p>
 
         <div class="hero-ctas">
@@ -467,7 +458,7 @@
       <div class="panel" aria-label="One minute summary">
         <h2>Quick summary</h2>
         <p>Many outages are not hard failures. Infrastructure may still be online but access is lost when retries, queues and dependent services fall out of sync and tail latency dominates recovery.</p>
-        <p>Admission mode dampens these cascades by stabilising execution timing at the points where systems admit work, retry, queue and fan out to dependencies.</p>
+        <p>Admission mode dampens these cascades by applying predictive stability control at the points where systems admit work, retry, queue and fan out to dependencies.</p>
         <p>It does not block attacks or replace security controls. It helps keep behaviour predictable when conditions become unstable.</p>
       </div>
     </div>
@@ -478,7 +469,7 @@
       <section class="grid" aria-labelledby="whatitdoes">
         <div class="panel">
           <h2 id="whatitdoes">What it does</h2>
-          <p>Admission mode applies timing stabilisation at entry and admission points to keep critical services usable during stress.</p>
+          <p>Admission mode applies stability control at entry and admission points to keep critical services usable during stress.</p>
           <p>It targets tail latency amplification, jitter and drift that commonly lead to cascading failure, especially when retries and dependency chains begin to dominate behaviour.</p>
           <p>It is designed to preserve baseline performance characteristics while reducing the probability of timing driven collapse under severe but plausible conditions.</p>
         </div>
@@ -596,7 +587,7 @@
               <span class="chev" aria-hidden="true"></span>
             </summary>
             <div class="drop-body">
-              <p>No. Admission mode is an operating mode of the FoundScript Timing Layer, applied at entry and admission points to keep behaviour predictable during stress.</p>
+              <p>No. Admission mode is an operating mode of the FoundScript timing layer, applied at entry and admission points to keep behaviour predictable during stress.</p>
             </div>
           </details>
 
