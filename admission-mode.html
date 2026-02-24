@@ -5,9 +5,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>Admission mode | predictive stability control for incident conditions</title>
+  <title>Admission mode | predictive stability control for stress and high-variance conditions</title>
 
-  <meta name="description" content="Admission mode is an operating mode of the FoundScript timing layer that keeps services usable during incidents and load by applying predictive stability control across retries, queues and dependencies. API or sidecar, reversible by design." />
+  <meta name="description" content="Admission mode is an operating mode of the FoundScript timing layer that keeps systems usable during stress and high-variance conditions by applying predictive stability control across retries, queues and iterative workflows. API or sidecar, reversible by design." />
   <meta name="author" content="FoundScript Ltd" />
   <meta name="color-scheme" content="dark light" />
   <link rel="canonical" href="https://foundscript.com/admission-mode.html" />
@@ -446,7 +446,7 @@
       <div>
         <h1>Admission mode <span class="mode-chip">Operating mode</span></h1>
         <p class="tagline">
-          An operating mode of the FoundScript timing layer that helps keep services usable during traffic spikes, incidents and attack conditions by applying predictive stability control across retries, queues and dependencies.
+          An operating mode of the FoundScript timing layer that helps keep systems usable during stress, burst and high-variance conditions by applying predictive stability control across retries, queues, dependencies and iterative workflows.
         </p>
 
         <div class="hero-ctas">
@@ -457,7 +457,7 @@
 
       <div class="panel" aria-label="One minute summary">
         <h2>Quick summary</h2>
-        <p>Many outages are not hard failures. Infrastructure may still be online but access is lost when retries, queues and dependent services fall out of sync and tail latency dominates recovery.</p>
+        <p>Many failures are not hard outages. Systems may remain online but become unstable when retries, queues, dependent services or iterative execution loops fall out of sync and tail behaviour dominates recovery.</p>
         <p>Admission mode dampens these cascades by applying predictive stability control at the points where systems admit work, retry, queue and fan out to dependencies.</p>
         <p>It does not block attacks or replace security controls. It helps keep behaviour predictable when conditions become unstable.</p>
       </div>
@@ -470,7 +470,7 @@
         <div class="panel">
           <h2 id="whatitdoes">What it does</h2>
           <p>Admission mode applies stability control at entry and admission points to keep critical services usable during stress.</p>
-          <p>It targets tail latency amplification, jitter and drift that commonly lead to cascading failure, especially when retries and dependency chains begin to dominate behaviour.</p>
+          <p>It targets tail amplification, jitter and drift that commonly lead to cascading instability, especially when retries, dependency chains or iterative optimisation steps begin to dominate behaviour.</p>
           <p>It is designed to preserve baseline performance characteristics while reducing the probability of timing driven collapse under severe but plausible conditions.</p>
         </div>
 
@@ -485,7 +485,7 @@
       <section class="panel" id="howitworks" style="margin-top:16px;" aria-labelledby="howitworks-title">
         <h2 id="howitworks-title">How it works in practice</h2>
         <p>Admission mode is typically applied at points where systems decide what to accept next and how to recover when the tail dominates.</p>
-        <p>That often includes request admission, worker scheduling, retry coordination, queue behaviour and dependency call patterns.</p>
+        <p>That often includes request admission, worker scheduling, retry coordination, queue behaviour, dependency call patterns and iterative execution control in optimisation-driven systems.</p>
         <p>We work with your engineering team to identify the highest impact start and end points and define a safe evaluation plan.</p>
       </section>
 
@@ -499,7 +499,7 @@
 
       <section class="panel" id="failuremodes" style="margin-top:16px;" aria-labelledby="failuremodes-title">
         <h2 id="failuremodes-title">Common causes of access loss during incidents</h2>
-        <p>Short patterns seen in real distributed systems under stress.</p>
+        <p>Short patterns seen in distributed and iterative compute systems under stress.</p>
 
         <div class="dropgrid">
           <details class="drop">
@@ -639,7 +639,7 @@
               <span class="chev" aria-hidden="true"></span>
             </summary>
             <div class="drop-body">
-              <p>Measure access success rates for critical paths, tail latency under stress, retry amplification behaviour, queue stability and time to recovery after burst events.</p>
+              <p>Measure access success rates for critical paths, tail amplification under stress, retry amplification behaviour, queue stability, convergence stability in iterative workflows and time to recovery after burst or variance-driven events.</p>
             </div>
           </details>
         </div>
