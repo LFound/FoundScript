@@ -3,92 +3,169 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <title>FoundScript | Privacy Policy</title>
-  <meta name="description" content="Privacy Policy for FoundScript Ltd and the Deterministic Timing Layer (DTL) service." />
+  <meta
+    name="description"
+    content="Privacy Policy for FoundScript Ltd and the FoundScript Stability Layer service."
+  />
   <meta name="author" content="FoundScript Ltd" />
   <meta name="color-scheme" content="dark light" />
 
-  <!-- Favicons -->
-<link rel="icon" href="/favicon.ico">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="canonical" href="https://foundscript.com/privacy.html" />
+  <meta name="robots" content="index,follow" />
+
+  <meta property="og:title" content="FoundScript | Privacy Policy" />
+  <meta property="og:description" content="Privacy Policy for FoundScript Ltd." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://foundscript.com/privacy.html" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="FoundScript | Privacy Policy" />
+  <meta name="twitter:description" content="Privacy Policy for FoundScript Ltd." />
+
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
   <style>
     :root{
-      --bg: #0A0E2A;
-      --fg: #E8E8E8;
-      --fg-dim: #C9CED8;
-      --accent: #2FB7FF;
-      --violet-a: #6B2FFF;
-      --violet-b: #D64DFF;
-      --panel: rgba(255,255,255,0.06);
-      --rule: rgba(255,255,255,0.12);
-      --shadow: 0 10px 30px rgba(0,0,0,0.35);
-      --radius-xl: 18px;
+      --bg:#091126;
+      --bg-2:#0d1734;
+      --fg:#eef3fa;
+      --fg-strong:#e6edf7;
+      --fg-dim:#c9d3e3;
+      --fg-soft:#93a3bc;
+      --line:rgba(255,255,255,0.10);
+      --line-strong:rgba(255,255,255,0.16);
+      --panel:rgba(255,255,255,0.045);
+      --blue:#36b8ff;
+      --shadow:0 18px 50px rgba(0,0,0,0.26);
+      --radius:22px;
+      --nav-h:64px;
+      --max:1200px;
     }
 
-    html, body { height: 100%; scroll-behavior: smooth; }
-    * { box-sizing: border-box; }
+    *{ box-sizing:border-box; }
+    html, body{ height:100%; scroll-behavior:smooth; }
 
     body{
       margin:0;
       color:var(--fg);
-      background:var(--bg);
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-      line-height:1.75;
-      padding-top:52px;
-    }
-
-    a{ color:var(--accent); text-underline-offset:3px; }
-    a:hover{ opacity:0.85; }
-
-    /* NAV */
-    .topnav{
-      width:100%;
-      position:fixed;
-      top:0; left:0;
-      padding:10px 20px;
-      background: rgba(10,14,42,0.75);
-      backdrop-filter: blur(10px) saturate(140%);
-      display:flex; gap:24px;
-      border-bottom:1px solid var(--rule);
-      z-index:999;
-      font-size:0.95rem;
-    }
-    .topnav a{
-      color:var(--fg-dim);
-      text-decoration:none;
-      font-weight:500;
-    }
-    .topnav a:hover{ color:var(--accent); }
-
-    /* WRAPPER */
-    .wrap{
-      max-width: 820px;
-      margin: 72px auto 60px;
-      padding: 32px 26px;
-      border-radius: var(--radius-xl);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      line-height:1.6;
       background:
-        radial-gradient(600px 300px at 80% 0%, rgba(107,47,255,0.18), transparent 60%),
-        radial-gradient(520px 260px at 0% 40%, rgba(214,77,255,0.12), transparent 55%),
-        rgba(8,10,32,0.96);
-      border:1px solid var(--rule);
+        radial-gradient(900px 500px at 85% -10%, rgba(161,77,255,0.12), transparent 60%),
+        radial-gradient(700px 420px at -5% 20%, rgba(54,184,255,0.09), transparent 58%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
+      overflow-x:hidden;
+      padding-top:var(--nav-h);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+    a{
+      color:var(--fg-strong);
+      text-decoration:none;
+      text-underline-offset:3px;
+    }
+
+    a:hover,
+    a:focus{
+      color:var(--blue);
+      outline:none;
+    }
+
+    .shell{
+      width:min(var(--max), calc(100% - 28px));
+      margin:0 auto;
+    }
+
+    .topnav{
+      position:fixed;
+      inset:0 0 auto 0;
+      height:var(--nav-h);
+      z-index:1000;
+      background:rgba(9,17,38,0.62);
+      backdrop-filter:blur(12px) saturate(145%);
+      -webkit-backdrop-filter:blur(12px) saturate(145%);
+      border-bottom:1px solid rgba(255,255,255,0.06);
+    }
+
+    .topnav .shell{
+      height:100%;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+    }
+
+    .brand{
+      font-size:0.95rem;
+      font-weight:780;
+      letter-spacing:0.18em;
+      color:var(--fg-strong);
+      white-space:nowrap;
+    }
+
+    .navlinks{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      flex-wrap:wrap;
+    }
+
+    .navlinks a{
+      color:var(--fg-dim);
+      font-size:0.94rem;
+      font-weight:600;
+      padding:9px 12px;
+      border-radius:10px;
+    }
+
+    .navlinks a:hover{
+      background:rgba(255,255,255,0.04);
+      color:var(--blue);
+    }
+
+    .content{
+      width:min(820px, calc(100% - 28px));
+      margin:36px auto 60px;
+      padding:36px 30px;
+      border-radius:var(--radius);
+      background:var(--panel);
+      border:1px solid var(--line-strong);
       box-shadow:var(--shadow);
     }
 
     h1{
-      margin-top:0;
-      font-size: clamp(1.8rem, 3vw, 2.2rem);
-      font-weight:700;
-      text-shadow:0 0 14px rgba(47,183,255,0.18);
+      margin:0;
+      color:var(--fg);
+      font-size:clamp(2rem, 4vw, 2.4rem);
+      line-height:1.05;
+      letter-spacing:-0.02em;
+      font-weight:780;
+    }
+
+    .meta{
+      margin:14px 0 0;
+      color:var(--fg-soft);
+      font-size:0.95rem;
+    }
+
+    .intro{
+      margin-top:22px;
+      color:var(--fg-dim);
     }
 
     h2{
-      margin-top:26px;
-      font-size:1.35rem;
-      font-weight:600;
-      color:var(--fg);
+      margin:30px 0 10px;
+      color:var(--fg-strong);
+      font-size:1.2rem;
+      line-height:1.2;
+      font-weight:650;
+      letter-spacing:-0.01em;
     }
 
     p, li{
@@ -96,99 +173,159 @@
       margin:10px 0;
     }
 
-    ul{ padding-left:20px; }
+    ul{
+      margin:10px 0 0;
+      padding-left:20px;
+    }
+
+    strong{
+      color:var(--fg-strong);
+      font-weight:650;
+    }
 
     footer{
-      border-top:1px solid var(--rule);
+      border-top:1px solid rgba(255,255,255,0.08);
+      padding:18px 0 28px;
+      color:var(--fg-soft);
+      font-size:0.92rem;
       text-align:center;
-      padding:18px 12px 20px;
-      color:#9AA3B2;
-      font-size:.95rem;
+    }
+
+    footer a{
+      color:var(--fg-soft);
+    }
+
+    footer a:hover{
+      color:var(--blue);
+    }
+
+    @media (max-width: 640px){
+      .shell,
+      .content{
+        width:min(820px, calc(100% - 22px));
+      }
+
+      .content{
+        padding:28px 22px;
+      }
+
+      .navlinks a{
+        padding:8px 9px;
+        font-size:0.9rem;
+      }
     }
   </style>
 </head>
 
 <body>
-
-  <nav class="topnav">
-    <a href="/">Home</a>
-    <a href="/#support">Support</a>
+  <nav class="topnav" aria-label="Primary">
+    <div class="shell">
+      <a class="brand" href="/index.html">FOUNDSCRIPT</a>
+      <div class="navlinks">
+        <a href="/about.html">About</a>
+        <a href="mailto:info@foundscript.com?subject=FoundScript%20support">Contact</a>
+      </div>
+    </div>
   </nav>
 
   <main>
-    <div class="wrap">
-      <h1>Privacy Policy</h1>
-      <p><em>Last updated: December 2025</em></p>
+    <section class="content" aria-labelledby="privacy-title">
+      <h1 id="privacy-title">Privacy Policy</h1>
+      <p class="meta">Last updated: March 2026</p>
+      <p class="meta"><strong>FoundScript Ltd</strong>, registered in England and Wales.</p>
 
-      <p>
-        FoundScript Ltd (“FoundScript”, “we”) is committed to protecting your privacy.
-        We collect minimal personal information and process it only for purposes you have requested.
+      <p class="intro">
+        FoundScript Ltd (“FoundScript”, “we”, “us”) is committed to protecting your privacy.
+        We collect only the minimum personal information necessary and process it only for legitimate business purposes related to enquiries, support, evaluation and service delivery.
       </p>
 
-      <h2>1. Information we collect</h2>
+      <h2>1. Data controller</h2>
       <p>
-        We do not use cookies, analytics tools, tracking scripts or third-party data collectors.
-        We do not automatically collect personal information when you visit our website.
+        FoundScript Ltd is the data controller responsible for the processing of personal data described in this policy.
+      </p>
+
+      <h2>2. Information we collect</h2>
+      <p>
+        We do not use analytics tools, advertising trackers or profiling tools on this website.
+        We do not intentionally collect personal information automatically when you visit our website.
       </p>
       <p>
-        The only personal information we process is information <strong>you voluntarily provide</strong>,
-        including when you:
+        The personal information we process is limited to information you voluntarily provide, including when you:
       </p>
       <ul>
         <li>email us directly</li>
         <li>request support or assistance</li>
-        <li>enquire about a DTL pilot, evaluation or integration</li>
+        <li>enquire about an evaluation, pilot, deployment or integration</li>
       </ul>
 
-      <h2>2. How we use your information</h2>
-      <p>We use voluntarily provided information solely to:</p>
+      <h2>3. How we use your information</h2>
+      <p>We use personal information you provide only to:</p>
       <ul>
         <li>respond to enquiries</li>
-        <li>provide operational or technical support</li>
-        <li>manage evaluation or pilot discussions</li>
-        <li>fulfil contractual or regulatory obligations (if applicable)</li>
+        <li>provide technical or operational support</li>
+        <li>manage evaluations, pilots or deployment discussions</li>
+        <li>fulfil contractual, legal or regulatory obligations where applicable</li>
       </ul>
-      <p>We do not sell, rent or share your information with third parties.</p>
-
-      <h2>3. Legal basis for processing (UK GDPR / GDPR)</h2>
-      <p>We process your data only where:</p>
-      <ul>
-        <li>you have given explicit consent; or</li>
-        <li>it is necessary to respond to your request; or</li>
-        <li>it is required for legitimate business purposes such as support or pilot configuration.</li>
-      </ul>
-
-      <h2>4. Data storage</h2>
       <p>
-        Email correspondence may be securely stored within our company email systems.
-        Reasonable technical and organisational measures are used to protect this data.
+        We do not sell or rent personal information. We do not share personal information for advertising purposes.
       </p>
 
-      <h2>5. Your rights</h2>
-      <p>You may request at any time to:</p>
+      <h2>4. Legal basis for processing</h2>
+      <p>Where UK GDPR or GDPR applies, we process personal data only where:</p>
+      <ul>
+        <li>you have given consent</li>
+        <li>processing is necessary to respond to your request</li>
+        <li>processing is necessary for legitimate business purposes, including support, evaluation and service delivery</li>
+        <li>processing is necessary to comply with legal obligations</li>
+      </ul>
+
+      <h2>5. Data storage and security</h2>
+      <p>
+        Correspondence and related business records may be stored within our company email and business systems.
+        We use reasonable technical and organisational measures to protect personal data against unauthorised access, loss, misuse or disclosure.
+      </p>
+
+      <h2>6. Data retention</h2>
+      <p>
+        We retain personal data only for as long as necessary to fulfil the purposes described in this policy, including support, evaluation and business record-keeping, or as required to comply with legal obligations.
+      </p>
+
+      <h2>7. Your rights</h2>
+      <p>Subject to applicable law, you may request to:</p>
       <ul>
         <li>access the personal data we hold about you</li>
-        <li>request correction or deletion</li>
-        <li>withdraw consent to processing</li>
+        <li>request correction of inaccurate personal data</li>
+        <li>request deletion of personal data</li>
+        <li>withdraw consent where processing is based on consent</li>
       </ul>
-      <p>To exercise these rights, contact: <strong>info@foundscript.com</strong></p>
+      <p>
+        To exercise these rights, contact <strong>info@foundscript.com</strong>.
+      </p>
 
-      <h2>6. Children’s privacy</h2>
-      <p>Our services are not intended for children and we do not knowingly collect data from individuals under 16.</p>
+      <h2>8. Children’s privacy</h2>
+      <p>
+        Our services are not intended for children, and we do not knowingly collect personal data from individuals under 16.
+      </p>
 
-      <h2>7. Changes to this policy</h2>
-      <p>Updates to this policy will be posted on this page with an updated revision date.</p>
+      <h2>9. Changes to this policy</h2>
+      <p>
+        We may update this Privacy Policy from time to time. Any updates will be posted on this page together with the revised date.
+      </p>
 
-      <h2>8. Contact</h2>
-      <p>If you have any questions about this policy or privacy practices, contact:</p>
+      <h2>10. Contact</h2>
+      <p>
+        If you have any questions about this Privacy Policy or our privacy practices, contact:
+      </p>
       <p><strong>info@foundscript.com</strong></p>
-    </div>
+    </section>
   </main>
 
   <footer>
-    © 2025 FoundScript Ltd. All rights reserved.<br />
-    Email: <a href="mailto:info@foundscript.com">info@foundscript.com</a>
+    <div class="shell">
+      © 2026 FoundScript Ltd. Registered in England &amp; Wales. All rights reserved.<br />
+      <a href="/privacy.html">Privacy Policy</a> ·
+      <a href="/terms.html">Service Terms</a>
+    </div>
   </footer>
-
 </body>
 </html>
