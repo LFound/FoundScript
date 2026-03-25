@@ -502,7 +502,7 @@
     <div class="shell">
       <h1>Stability control for systems where variance shapes behaviour.</h1>
       <p class="hero-sub">
-        FoundScript focuses on high-variance environments where burstiness, retries and delayed feedback compound across execution paths.
+        FoundScript focuses on high-variance environments where burstiness, retries and delayed feedback compound across execution paths, leading to less predictable, harder-to-reproduce outcomes.
       </p>
     </div>
   </header>
@@ -514,8 +514,7 @@
         <h2>What this is</h2>
       </div>
       <p class="intro">
-        FoundScript develops stability control for distributed, hybrid and iterative environments. The current implementation, the Stability Layer, is designed to reduce instability before it compounds into degraded execution, retry cascades or heavy tail behaviour.
-      </p>
+        FoundScript develops stability control for distributed, hybrid and iterative environments. The current implementation, the Stability Layer, is designed to reduce instability before it compounds into degraded execution, retry cascades and heavy-tail behaviour.
     </section>
 
     <section class="section grid-2">
@@ -524,6 +523,9 @@
           <div class="section-kicker">Placement</div>
           <h2 class="panel-title">Where it sits in the stack</h2>
         </div>
+        <p class="intro">
+          The Stability Layer sits between orchestration and execution, applying control before instability propagates across the system.
+        </p>
         <div class="panel-body">
           <div class="stack" aria-label="Stack placement">
             <div class="stack-node">
@@ -533,7 +535,7 @@
             <div class="stack-arrow">↓</div>
             <div class="stack-node highlight">
               <strong>FoundScript Stability Layer</strong>
-              <span>Predictive control applied across submission and execution paths</span>
+              <span>Predictive control across submission and execution paths</span>
             </div>
             <div class="stack-arrow">↓</div>
             <div class="stack-node">
@@ -586,11 +588,11 @@
       <div class="bullet-grid">
         <div class="bullet-card">
           <strong>Reduce tail amplification</strong>
-          <p>Limit the long-tail effects that dominate under unstable conditions.</p>
+          <p>Limit the extreme latency effects that dominate under unstable conditions.</p>
         </div>
         <div class="bullet-card">
           <strong>Limit retry cascades</strong>
-          <p>Dampen self-reinforcing submission and recovery behaviour.</p>
+          <p>Prevent small slowdowns from triggering self-reinforcing submission and recovery behaviour.</p>
         </div>
         <div class="bullet-card">
           <strong>Stabilise execution</strong>
@@ -634,9 +636,8 @@
         <h2>What early evaluation suggests</h2>
       </div>
       <p class="note">
-        Early evaluation indicates reduced variability, tighter tail latency and more predictable behaviour under burst conditions. Further evaluation is ongoing in larger-scale and production-like environments.
+        Early evaluation shows reduced variability, tighter tail latency and more predictable behaviour under burst conditions. Further evaluation is ongoing in larger-scale and production-like environments.
       </p>
-
       <div class="contact">
         <div class="contact-copy">
           <strong>Support & evaluation</strong><br />
