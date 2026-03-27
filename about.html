@@ -502,7 +502,7 @@
     <div class="shell">
       <h1>Stability control for systems where variance shapes behaviour.</h1>
       <p class="hero-sub">
-        FoundScript focuses on high-variance environments where burstiness, retries and delayed feedback compound across execution paths, leading to less predictable, harder-to-reproduce outcomes.
+        Reducing latency spikes, retry cascades and unpredictable behaviour in high-variance systems.
       </p>
     </div>
   </header>
@@ -514,7 +514,7 @@
         <h2>What this is</h2>
       </div>
       <p class="intro">
-        FoundScript develops stability control for distributed, hybrid and iterative environments. The current implementation, the Stability Layer, is designed to reduce instability before it compounds into degraded execution, retry cascades and heavy-tail behaviour.
+        FoundScript develops stability control for distributed, hybrid and iterative environments. The current implementation, the Stability Layer, is designed to reduce instability before it turns into latency spikes, retry cascades and degraded execution.
     </section>
 
     <section class="section grid-2">
@@ -523,7 +523,7 @@
           <div class="section-kicker">Placement</div>
           <h2 class="panel-title">Where it sits in the stack</h2>
           <p class="panel-sub">
-            The Stability Layer sits between orchestration and execution, applying control before instability propagates across the system.
+            The Stability Layer sits at the submission boundary, just before tasks are dispatched into execution, applying control before instability propagates across the system.
           </p>
         </div>
         <div class="panel-body">
@@ -588,7 +588,7 @@
       <div class="bullet-grid">
         <div class="bullet-card">
           <strong>Reduce tail amplification</strong>
-          <p>Limit the extreme latency effects that dominate under unstable conditions.</p>
+          <p>Limit extreme latency spikes under load and burst conditions.</p>
         </div>
         <div class="bullet-card">
           <strong>Limit retry cascades</strong>
@@ -596,7 +596,7 @@
         </div>
         <div class="bullet-card">
           <strong>Stabilise execution</strong>
-          <p>Keep system behaviour more predictable under burst, pressure and drift.</p>
+          <p>Keep execution more predictable under burst, pressure and drift.</p>
         </div>
         <div class="bullet-card">
           <strong>Complement existing controls</strong>
@@ -625,7 +625,7 @@
         </div>
         <div class="bullet-card">
           <strong>Higher-variance operating conditions</strong>
-          <p>Where reactive controls alone may not be sufficient.</p>
+          <p>Where reactive controls alone struggle to maintain stability.</p>
         </div>
       </div>
     </section>
@@ -636,7 +636,7 @@
         <h2>What early evaluation suggests</h2>
       </div>
       <p class="note">
-        Early evaluation shows reduced variability, tighter tail latency and more predictable behaviour under burst conditions. Further evaluation is ongoing in larger-scale and production-like environments.
+        Early evaluation shows reduced variability, tighter tail latency and fewer latency spikes under burst conditions. Further evaluation is ongoing in larger-scale and production-like environments.
       </p>
       <div class="contact">
         <div class="contact-copy">
