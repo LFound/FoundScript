@@ -22,9 +22,22 @@
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="About | FoundScript" />
-  <meta name="twitter:description" content="Stability in distributed systems." />
+  <meta name="twitter:description" content="Stability in distributed and high-variance systems." />
 
   <link rel="icon" href="/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebPage",
+    "name":"About | FoundScript",
+    "description":"FoundScript works on stability in distributed and high-variance systems, reducing latency spikes, retry cascades and unpredictable behaviour under load.",
+    "url":"https://foundscript.com/about.html"
+  }
+  </script>
 
   <style>
     :root{
@@ -36,26 +49,44 @@
       --fg-soft:#93a3bc;
       --line:rgba(255,255,255,0.10);
       --line-strong:rgba(255,255,255,0.16);
+      --panel:rgba(255,255,255,0.045);
+      --panel-2:rgba(255,255,255,0.06);
       --blue:#36b8ff;
       --violet:#a14dff;
       --shadow:0 18px 50px rgba(0,0,0,0.26);
+      --radius:22px;
       --nav-h:64px;
       --max:1200px;
     }
 
     *{ box-sizing:border-box; }
-    html, body{ height:100%; }
+    html, body{ height:100%; scroll-behavior:smooth; }
 
     body{
       margin:0;
       color:var(--fg);
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
       line-height:1.5;
       background:
         radial-gradient(900px 500px at 85% -10%, rgba(161,77,255,0.12), transparent 60%),
         radial-gradient(700px 420px at -5% 20%, rgba(54,184,255,0.09), transparent 58%),
         linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
+      overflow-x:hidden;
       padding-top:var(--nav-h);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+    a{
+      color:var(--fg-strong);
+      text-decoration:none;
+      text-underline-offset:3px;
+    }
+
+    a:hover,
+    a:focus{
+      color:var(--blue);
+      outline:none;
     }
 
     .shell{
@@ -67,10 +98,11 @@
       position:fixed;
       inset:0 0 auto 0;
       height:var(--nav-h);
-      background:rgba(9,17,38,0.65);
-      backdrop-filter:blur(10px);
-      border-bottom:1px solid rgba(255,255,255,0.06);
       z-index:1000;
+      background:rgba(9,17,38,0.62);
+      backdrop-filter:blur(12px) saturate(145%);
+      -webkit-backdrop-filter:blur(12px) saturate(145%);
+      border-bottom:1px solid rgba(255,255,255,0.06);
     }
 
     .topnav .shell{
@@ -78,219 +110,563 @@
       display:flex;
       align-items:center;
       justify-content:space-between;
+      gap:20px;
     }
 
     .brand{
-      font-weight:700;
-      letter-spacing:0.12em;
+      font-size:0.95rem;
+      font-weight:780;
+      letter-spacing:0.18em;
+      color:var(--fg-strong);
+      white-space:nowrap;
+    }
+
+    .navlinks{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      flex-wrap:wrap;
     }
 
     .navlinks a{
-      margin-left:12px;
       color:var(--fg-dim);
+      font-size:0.94rem;
+      font-weight:600;
+      padding:9px 12px;
+      border-radius:10px;
     }
 
+    .navlinks a:hover,
     .navlinks a.active{
+      background:rgba(255,255,255,0.04);
       color:var(--blue);
     }
 
     .hero{
-      padding:88px 0 40px;
       position:relative;
+      overflow:hidden;
+      isolation:isolate;
+      padding:76px 0 38px;
+    }
+
+    .hero-bg{
+      position:absolute;
+      inset:0;
+      z-index:-2;
+      pointer-events:none;
+      opacity:0.74;
+    }
+
+    .hero-bg svg{
+      width:100%;
+      height:100%;
+      display:block;
+    }
+
+    .hero::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      z-index:-1;
+      background:
+        radial-gradient(900px 420px at 70% 16%, rgba(255,255,255,0.04), transparent 58%),
+        linear-gradient(180deg, rgba(9,17,38,0.18), rgba(9,17,38,0.72) 82%, rgba(9,17,38,0.88));
+      pointer-events:none;
+    }
+
+    .hero-copy{
+      max-width:900px;
     }
 
     h1{
       margin:0;
-      font-size:clamp(2.6rem, 6vw, 4.6rem);
-      line-height:1;
+      max-width:900px;
+      font-size:clamp(2.6rem, 6vw, 4.8rem);
+      line-height:0.96;
+      letter-spacing:-0.04em;
+      font-weight:790;
+      color:var(--fg);
     }
 
     .hero-sub{
-      margin-top:16px;
-      color:var(--fg-dim);
-      max-width:720px;
+      margin:18px 0 0;
+      max-width:760px;
+      font-size:clamp(1.08rem, 1.8vw, 1.34rem);
+      line-height:1.42;
+      color:#d6deec;
+      font-weight:560;
     }
 
-    main{
+    main.shell{
       position:relative;
     }
 
-    /* subtle continuation background */
-    main::before{
+    main.shell::before{
       content:"";
       position:absolute;
       inset:0;
       pointer-events:none;
       background:
-        radial-gradient(600px 300px at 80% 0%, rgba(54,184,255,0.04), transparent 60%),
-        radial-gradient(500px 260px at 10% 20%, rgba(161,77,255,0.04), transparent 60%);
+        radial-gradient(680px 300px at 88% 0%, rgba(54,184,255,0.04), transparent 60%),
+        radial-gradient(560px 260px at 6% 18%, rgba(161,77,255,0.04), transparent 60%);
       z-index:-1;
     }
 
     .section{
-      padding:24px 0;
+      padding:22px 0;
+    }
+
+    .section-head{
+      margin-bottom:18px;
     }
 
     .section-kicker{
-      font-size:0.75rem;
       color:var(--fg-soft);
+      font-size:0.78rem;
       text-transform:uppercase;
+      letter-spacing:0.08em;
       margin-bottom:8px;
     }
 
     h2{
       margin:0;
-      font-size:1.4rem;
+      color:var(--fg);
+      font-size:1.5rem;
+      letter-spacing:-0.02em;
+      line-height:1.15;
     }
 
     .intro{
-      max-width:760px;
+      max-width:800px;
       color:var(--fg-dim);
+      font-size:1.02rem;
+      line-height:1.65;
     }
 
     .grid-2{
       display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:20px;
+      grid-template-columns:1.1fr 0.9fr;
+      gap:22px;
+      align-items:start;
     }
 
     .panel{
       border:1px solid var(--line-strong);
-      border-radius:20px;
-      background:rgba(255,255,255,0.03);
-      padding:20px;
+      border-radius:24px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.03));
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+
+    .panel-head{
+      padding:20px 22px 0;
+    }
+
+    .panel-body{
+      padding:18px 22px 22px;
+    }
+
+    .panel-title{
+      margin:0;
+      color:var(--fg);
+      font-size:1.2rem;
+      letter-spacing:-0.02em;
     }
 
     .panel-sub{
-      margin-top:10px;
+      margin:10px 0 0;
       color:var(--fg-dim);
+      line-height:1.58;
+      max-width:520px;
+    }
+
+    .stack{
+      margin-top:8px;
+      display:grid;
+      gap:10px;
+    }
+
+    .stack-node{
+      position:relative;
+      padding:14px 16px;
+      border:1px solid rgba(255,255,255,0.10);
+      border-radius:16px;
+      background:rgba(255,255,255,0.03);
+    }
+
+    .stack-node strong{
+      display:block;
+      color:var(--fg-strong);
+      font-size:0.98rem;
+      margin-bottom:3px;
+    }
+
+    .stack-node span{
+      color:var(--fg-dim);
+      font-size:0.95rem;
+    }
+
+    .stack-node.highlight{
+      border-color:rgba(54,184,255,0.26);
+      background:linear-gradient(180deg, rgba(54,184,255,0.09), rgba(161,77,255,0.06));
+    }
+
+    .stack-arrow{
+      text-align:center;
+      color:var(--fg-soft);
+      font-size:1.1rem;
+      line-height:1;
+      opacity:0.85;
     }
 
     .bullet-grid{
       display:grid;
-      grid-template-columns:1fr 1fr;
+      grid-template-columns:repeat(2, minmax(0, 1fr));
       gap:14px;
+    }
+
+    .bullet-card{
+      border-top:1px solid rgba(255,255,255,0.10);
+      padding-top:12px;
     }
 
     .bullet-card strong{
       display:block;
       margin-bottom:6px;
+      color:var(--fg-strong);
+      font-size:0.98rem;
+    }
+
+    .bullet-card p{
+      margin:0;
+      color:var(--fg-dim);
+      line-height:1.55;
+    }
+
+    .signal-list{
+      display:grid;
+      gap:12px;
+    }
+
+    .signal-item{
+      border-top:1px solid rgba(255,255,255,0.10);
+      padding-top:12px;
+      color:var(--fg-dim);
+      line-height:1.55;
+    }
+
+    .signal-item strong{
+      color:var(--fg-strong);
+      display:block;
+      margin-bottom:5px;
     }
 
     .note{
+      border-top:1px solid rgba(255,255,255,0.10);
+      padding-top:14px;
       color:var(--fg-dim);
+      max-width:840px;
+      line-height:1.62;
+    }
+
+    .contact{
+      margin-top:10px;
+      border-top:1px solid rgba(255,255,255,0.10);
+      padding-top:18px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+      flex-wrap:wrap;
+    }
+
+    .contact-copy{
+      color:var(--fg-dim);
+      line-height:1.55;
+    }
+
+    .contact-copy strong{
+      color:var(--fg-strong);
+    }
+
+    .btn-secondary{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:48px;
+      padding:0 18px;
+      border-radius:999px;
+      color:var(--fg-strong);
+      border:1px solid var(--line);
+      background:rgba(255,255,255,0.035);
+      font-weight:700;
+      transition:
+        transform .14s ease,
+        background .14s ease,
+        color .14s ease,
+        border-color .14s ease;
+    }
+
+    .btn-secondary:hover{
+      color:var(--blue);
+      border-color:rgba(54,184,255,0.36);
+      background:rgba(54,184,255,0.07);
+      transform:translateY(-1px);
     }
 
     footer{
-      margin-top:40px;
-      padding:20px 0;
-      text-align:center;
-      color:var(--fg-soft);
       border-top:1px solid rgba(255,255,255,0.08);
+      padding:18px 0 28px;
+      color:var(--fg-soft);
+      font-size:0.92rem;
+      text-align:center;
+      margin-top:24px;
     }
 
-    @media (max-width: 900px){
-      .grid-2, .bullet-grid{
+    footer a{
+      color:var(--fg-soft);
+    }
+
+    footer a:hover{
+      color:var(--blue);
+    }
+
+    @media (max-width: 980px){
+      .grid-2,
+      .bullet-grid{
         grid-template-columns:1fr;
       }
+
+      .hero{
+        padding-top:60px;
+        padding-bottom:32px;
+      }
+    }
+
+    @media (max-width: 640px){
+      .shell{
+        width:min(var(--max), calc(100% - 22px));
+      }
+
+      .navlinks a{
+        padding:8px 9px;
+        font-size:0.9rem;
+      }
+
+      .btn-secondary{
+        width:100%;
+      }
+    }
+
+    @media (prefers-reduced-motion: no-preference){
+      .hero-bg{
+        animation: drift 22s ease-in-out infinite alternate;
+      }
+    }
+
+    @keyframes drift{
+      from{ transform:scale(1.01) translate3d(0,0,0); }
+      to{ transform:scale(1.04) translate3d(0,-8px,0); }
     }
   </style>
 </head>
 
 <body>
-
-<nav class="topnav">
-  <div class="shell">
-    <div class="brand">FOUNDSCRIPT</div>
-    <div class="navlinks">
-      <a class="active" href="/about.html">About</a>
-      <a href="mailto:info@foundscript.com">Contact</a>
+  <nav class="topnav" aria-label="Primary">
+    <div class="shell">
+      <a class="brand" href="/index.html">FOUNDSCRIPT</a>
+      <div class="navlinks">
+        <a href="/index.html">Home</a>
+        <a class="active" href="/about.html">About</a>
+        <a href="mailto:info@foundscript.com?subject=FoundScript%20support">Contact</a>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
 
-<header class="hero">
-  <div class="shell">
-    <h1>Stability for systems where latency, retries and queueing shape behaviour.</h1>
-    <p class="hero-sub">
-      Reducing latency spikes, retry cascades and unpredictable behaviour under load.
-    </p>
-  </div>
-</header>
+  <header class="hero">
+    <div class="hero-bg" aria-hidden="true">
+      <svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="waveA" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#36b8ff" stop-opacity="0.72"/>
+            <stop offset="100%" stop-color="#a14dff" stop-opacity="0.72"/>
+          </linearGradient>
+          <linearGradient id="waveB" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#a14dff" stop-opacity="0.38"/>
+            <stop offset="100%" stop-color="#36b8ff" stop-opacity="0.16"/>
+          </linearGradient>
+        </defs>
 
-<main class="shell">
+        <g opacity="0.56">
+          <path d="M-60 170 C 220 10, 470 18, 770 120 S 1320 270, 1660 120" fill="none" stroke="url(#waveB)" stroke-width="2"/>
+          <path d="M-80 208 C 220 48, 500 52, 790 145 S 1310 296, 1670 155" fill="none" stroke="url(#waveB)" stroke-width="2"/>
+          <path d="M-100 246 C 220 88, 520 95, 812 170 S 1310 330, 1680 190" fill="none" stroke="url(#waveB)" stroke-width="2"/>
+          <path d="M-120 284 C 220 130, 535 138, 826 196 S 1320 360, 1700 225" fill="none" stroke="url(#waveB)" stroke-width="2"/>
+        </g>
 
-<section class="section">
-  <div class="section-kicker">Overview</div>
-  <h2>What this is</h2>
-  <p class="intro">
-    In distributed and high-variance systems, small delays can quickly turn into latency spikes, retry cascades and unpredictable behaviour. These effects often emerge before they are clearly visible in standard metrics.
-    <br><br>
-    FoundScript works on how this instability forms and how it can be reduced. The current runtime implementation, the Stability Layer, is designed to limit these effects before they propagate across execution.
-  </p>
-</section>
-
-<section class="section grid-2">
-
-  <div class="panel">
-    <div class="section-kicker">Placement</div>
-    <h2>Where it sits in the stack</h2>
-    <p class="panel-sub">
-      The Stability Layer sits at the submission boundary, applying control before delays, retries and queueing effects propagate across the system.
-    </p>
-  </div>
-
-  <div class="panel">
-    <div class="section-kicker">Deployment</div>
-    <h2>Why deployment is low risk</h2>
-    <p class="panel-sub">
-      Introduced via API or sidecar, without modifying application logic or existing infrastructure.
-    </p>
-  </div>
-
-</section>
-
-<section class="section">
-  <div class="section-kicker">Intent</div>
-  <h2>What it aims to do</h2>
-
-  <div class="bullet-grid">
-    <div class="bullet-card">
-      <strong>Reduce tail amplification</strong>
-      Limit extreme latency spikes under load.
+        <g opacity="0.82">
+          <path d="M-40 760 L200 640 L360 700 L540 600 L730 660 L940 560 L1170 640 L1400 570 L1640 650" fill="none" stroke="url(#waveA)" stroke-width="3"/>
+          <path d="M-40 760 L90 690 L260 740 L390 640 L560 680 L720 610 L880 700 L1080 610 L1260 710 L1500 630" fill="none" stroke="url(#waveA)" stroke-width="2.2" opacity="0.8"/>
+        </g>
+      </svg>
     </div>
-    <div class="bullet-card">
-      <strong>Limit retry cascades</strong>
-      Prevent self-reinforcing retries and queue build-up.
-    </div>
-    <div class="bullet-card">
-      <strong>Stabilise execution</strong>
-      Keep systems predictable under pressure.
-    </div>
-    <div class="bullet-card">
-      <strong>Complement existing controls</strong>
-      Works alongside existing schedulers and runtimes.
-    </div>
-  </div>
-</section>
 
-<section class="section">
-  <div class="section-kicker">Early signal</div>
-  <h2>What early evaluation suggests</h2>
-  <p class="note">
-    Early evaluation shows reduced variability, tighter tail latency and fewer latency spikes under burst conditions.
-  </p>
-</section>
+    <div class="shell">
+      <div class="hero-copy">
+        <h1>Stability for systems where latency, retries and queueing shape behaviour.</h1>
+        <p class="hero-sub">
+          Reducing latency spikes, retry cascades and unpredictable behaviour under load.
+        </p>
+      </div>
+    </div>
+  </header>
 
- <div class="contact">
-          <div class="contact-copy">
-            <strong>Technical and evaluation enquiries</strong><br />
-            For technical, operational or evaluation enquiries: <strong>info@foundscript.com</strong>
-          </div>
-          <a class="btn-secondary" href="mailto:info@foundscript.com?subject=FoundScript%20support%20or%20evaluation">Email FoundScript</a>
+  <main class="shell">
+    <section class="section">
+      <div class="section-head">
+        <div class="section-kicker">Overview</div>
+        <h2>What this is</h2>
+      </div>
+      <p class="intro">
+        In distributed and high-variance systems, small delays can quickly turn into latency spikes, retry cascades and unpredictable behaviour. These effects often emerge before they are clearly visible in standard metrics.
+        <br><br>
+        FoundScript works on how this instability forms and how it can be reduced. The current runtime implementation, the Stability Layer, is designed to limit these effects before they propagate across execution.
+      </p>
+    </section>
+
+    <section class="section grid-2">
+      <div class="panel">
+        <div class="panel-head">
+          <div class="section-kicker">Placement</div>
+          <h2 class="panel-title">Where it sits in the stack</h2>
+          <p class="panel-sub">
+            The Stability Layer sits at the submission boundary just before tasks are dispatched into execution, applying control before delays, retries and queueing effects propagate across the system.
+          </p>
         </div>
-      </section>
-    </main>
+        <div class="panel-body">
+          <div class="stack" aria-label="Stack placement">
+            <div class="stack-node">
+              <strong>Workflow / client layer</strong>
+              <span>Job submission, orchestration and iterative control</span>
+            </div>
+            <div class="stack-arrow">↓</div>
+            <div class="stack-node highlight">
+              <strong>FoundScript Stability Layer</strong>
+              <span>Predictive control across submission and execution paths</span>
+            </div>
+            <div class="stack-arrow">↓</div>
+            <div class="stack-node">
+              <strong>Queue / scheduler / runtime</strong>
+              <span>Existing infrastructure remains authoritative</span>
+            </div>
+            <div class="stack-arrow">↓</div>
+            <div class="stack-node">
+              <strong>Execution environment</strong>
+              <span>Distributed, hybrid and iterative compute</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head">
+          <div class="section-kicker">Deployment</div>
+          <h2 class="panel-title">Why deployment is low risk</h2>
+          <p class="panel-sub">
+            Introduced via API or sidecar without modifying application logic, while existing schedulers, queues and runtimes remain authoritative.
+          </p>
+        </div>
+        <div class="panel-body">
+          <div class="signal-list">
+            <div class="signal-item">
+              <strong>Non-invasive by default</strong>
+              Introduced via API or sidecar without modifying application logic.
+            </div>
+            <div class="signal-item">
+              <strong>No payload inspection</strong>
+              Operates on system behaviour rather than application contents.
+            </div>
+            <div class="signal-item">
+              <strong>Authoritative systems remain in place</strong>
+              Existing schedulers, queues and runtimes continue to govern execution.
+            </div>
+            <div class="signal-item">
+              <strong>Clear rollback path</strong>
+              Designed to be evaluated safely before any deeper integration.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div class="section-kicker">Intent</div>
+        <h2>What it aims to do</h2>
+      </div>
+
+      <div class="bullet-grid">
+        <div class="bullet-card">
+          <strong>Reduce tail amplification</strong>
+          <p>Limit extreme latency spikes under load and burst conditions.</p>
+        </div>
+        <div class="bullet-card">
+          <strong>Limit retry cascades</strong>
+          <p>Prevent small slowdowns from triggering self-reinforcing retries and queue build-up.</p>
+        </div>
+        <div class="bullet-card">
+          <strong>Stabilise execution</strong>
+          <p>Keep execution more predictable under burst, pressure and drift.</p>
+        </div>
+        <div class="bullet-card">
+          <strong>Complement existing controls</strong>
+          <p>Work alongside current schedulers, runtimes and operational mechanisms.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div class="section-kicker">Applicability</div>
+        <h2>Where it is relevant</h2>
+      </div>
+      <div class="bullet-grid">
+        <div class="bullet-card">
+          <strong>Distributed and event-driven systems</strong>
+          <p>Where burstiness, queue contention and retries shape outcomes.</p>
+        </div>
+        <div class="bullet-card">
+          <strong>Iterative and optimisation workflows</strong>
+          <p>Where delayed feedback and repeated execution affect stability.</p>
+        </div>
+        <div class="bullet-card">
+          <strong>Cloud and hybrid environments</strong>
+          <p>Where coordination, queueing and execution timing shape behaviour.</p>
+        </div>
+        <div class="bullet-card">
+          <strong>High-throughput and burst-driven systems</strong>
+          <p>Where load, contention and execution timing create instability under pressure.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div class="section-kicker">Early signal</div>
+        <h2>What early evaluation suggests</h2>
+      </div>
+      <p class="note">
+        Early evaluation shows reduced variability, tighter tail latency and fewer latency spikes under burst conditions. Further evaluation is ongoing in larger-scale and production-like environments.
+      </p>
+      <div class="contact">
+        <div class="contact-copy">
+          <strong>Technical and evaluation enquiries</strong><br />
+          For technical, operational or evaluation enquiries: <strong>info@foundscript.com</strong>
+        </div>
+        <a class="btn-secondary" href="mailto:info@foundscript.com?subject=FoundScript%20support%20or%20evaluation">Email FoundScript</a>
+      </div>
+    </section>
+  </main>
 
   <footer>
     <div class="shell">
