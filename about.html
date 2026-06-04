@@ -7,7 +7,7 @@
   <title>About | FoundScript</title>
   <meta
     name="description"
-    content="FoundScript works on stability in distributed and high-variance systems, reducing latency spikes, retry cascades and unpredictable behaviour under load."
+    content="FoundScript develops control, observability and predictive infrastructure for complex systems, helping organisations identify instability, bottlenecks and operational drift before they become costly."
   />
   <meta name="author" content="FoundScript Ltd" />
   <meta name="color-scheme" content="dark light" />
@@ -16,13 +16,13 @@
   <meta name="robots" content="index,follow" />
 
   <meta property="og:title" content="About | FoundScript" />
-  <meta property="og:description" content="Stability in distributed and high-variance systems." />
+  <meta property="og:description" content="Control, observability and predictive infrastructure for complex systems." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://foundscript.com/about.html" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="About | FoundScript" />
-  <meta name="twitter:description" content="Stability in distributed and high-variance systems." />
+  <meta name="twitter:description" content="Control, observability and predictive infrastructure for complex systems." />
 
   <link rel="icon" href="/favicon.ico" />
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
@@ -34,7 +34,7 @@
     "@context":"https://schema.org",
     "@type":"WebPage",
     "name":"About | FoundScript",
-    "description":"FoundScript works on stability in distributed and high-variance systems, reducing latency spikes, retry cascades and unpredictable behaviour under load.",
+    "description":"FoundScript develops control, observability and predictive infrastructure for complex systems, helping organisations identify instability, bottlenecks and operational drift before they become costly.",
     "url":"https://foundscript.com/about.html"
   }
   </script>
@@ -511,198 +511,200 @@
       </svg>
     </div>
 
-    <div class="shell">
-      <div class="hero-copy">
-        <h1>Deterministic stability architecture for distributed systems.</h1>
-    
-        <p class="hero-sub">
-          Control and predictive infrastructure for systems where latency, contention, retries and queueing shape operational behaviour under stress.
-        </p>
-      </div>
-    </div>
-    </header>
-    
-    <main class="shell">
-      <section class="section">
-        <div class="section-head">
-          <div class="section-kicker">Overview</div>
-          <h2>What this is</h2>
-        </div>
-    
-        <p class="intro">
-          In distributed and high-variance systems, small delays can quickly compound into retry cascades, queue amplification and unpredictable behaviour. These effects often emerge before they are clearly visible in standard operational metrics.
-          <br><br>
-          FoundScript develops deterministic stability and control infrastructure designed to identify, govern and reduce instability before it propagates across execution paths. The current runtime implementation, the Stability Layer, applies timing, admission and degradation control at critical coordination boundaries.
-        </p>
-      </section>
-    
-      <section class="section grid-2">
-        <div class="panel">
-          <div class="panel-head">
-            <div class="section-kicker">Placement</div>
-    
-            <h2 class="panel-title">Where it sits in the stack</h2>
-    
-            <p class="panel-sub">
-              The Stability Layer sits at the submission and coordination boundary before work is dispatched into execution, applying deterministic control before contention, retries and queue amplification propagate across the system.
-            </p>
-          </div>
-    
-          <div class="panel-body">
-            <div class="stack" aria-label="Stack placement">
-              <div class="stack-node">
-                <strong>Workflow / client layer</strong>
-                <span>Job submission, orchestration and iterative control</span>
-              </div>
-    
-              <div class="stack-arrow">↓</div>
-    
-              <div class="stack-node highlight">
-                <strong>FoundScript Stability Layer</strong>
-                <span>Timing, admission and predictive stability control across execution paths</span>
-              </div>
-    
-              <div class="stack-arrow">↓</div>
-    
-              <div class="stack-node">
-                <strong>Queue / scheduler / runtime</strong>
-                <span>Existing infrastructure remains authoritative</span>
-              </div>
-    
-              <div class="stack-arrow">↓</div>
-    
-              <div class="stack-node">
-                <strong>Execution environment</strong>
-                <span>Distributed, cloud, hybrid and iterative compute</span>
-              </div>
-            </div>
-          </div>
-        </div>
-    
-        <div class="panel">
-          <div class="panel-head">
-            <div class="section-kicker">Deployment</div>
-    
-            <h2 class="panel-title">Why deployment is low risk</h2>
-    
-            <p class="panel-sub">
-              Introduced via API or sidecar without replacing application logic, schedulers or runtime infrastructure.
-            </p>
-          </div>
-    
-          <div class="panel-body">
-            <div class="signal-list">
-              <div class="signal-item">
-                <strong>Non-invasive by default</strong>
-                Introduced via API or sidecar without modifying application logic.
-              </div>
-    
-              <div class="signal-item">
-                <strong>No payload inspection</strong>
-                Operates on behavioural and coordination signals rather than application contents.
-              </div>
-    
-              <div class="signal-item">
-                <strong>Existing infrastructure remains authoritative</strong>
-                Current schedulers, queues and runtimes continue to govern execution.
-              </div>
-    
-              <div class="signal-item">
-                <strong>Clear rollback path</strong>
-                Designed for safe staged evaluation before deeper integration.
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    
-      <section class="section">
-        <div class="section-head">
-          <div class="section-kicker">Capabilities</div>
-          <h2>What it aims to do</h2>
-        </div>
-    
-        <div class="bullet-grid">
-          <div class="bullet-card">
-            <strong>Reduce tail amplification</strong>
-            <p>Limit extreme latency spikes and amplification effects under load and burst conditions.</p>
-          </div>
-    
-          <div class="bullet-card">
-            <strong>Control retry cascades</strong>
-            <p>Prevent local slowdowns from triggering self-reinforcing retries and queue instability.</p>
-          </div>
-    
-          <div class="bullet-card">
-            <strong>Protect critical paths</strong>
-            <p>Prioritise critical execution and access paths during contention and degraded operation.</p>
-          </div>
-    
-          <div class="bullet-card">
-            <strong>Enable predictive triage</strong>
-            <p>Provide operational visibility into instability formation, contention and degradation behaviour.</p>
-          </div>
-        </div>
-      </section>
-    
-      <section class="section">
-        <div class="section-head">
-          <div class="section-kicker">Applicability</div>
-          <h2>Where it is relevant</h2>
-        </div>
-    
-        <div class="bullet-grid">
-          <div class="bullet-card">
-            <strong>Distributed and event-driven systems</strong>
-            <p>Where burstiness, contention and retries shape operational outcomes.</p>
-          </div>
-    
-          <div class="bullet-card">
-            <strong>Cloud and hybrid environments</strong>
-            <p>Where coordination timing and queue behaviour influence system stability.</p>
-          </div>
-    
-          <div class="bullet-card">
-            <strong>Iterative and optimisation workflows</strong>
-            <p>Where delayed feedback and repeated execution create instability under pressure.</p>
-          </div>
-    
-          <div class="bullet-card">
-            <strong>AI and real-time systems</strong>
-            <p>Where latency variance, contention and degraded coordination impact reliability.</p>
-          </div>
-        </div>
-      </section>
-    
-      <section class="section">
-        <div class="section-head">
-          <div class="section-kicker">Early evaluation</div>
-          <h2>What current evaluation suggests</h2>
-        </div>
-    
-        <p class="note">
-          Early evaluation indicates reduced variability, improved tail-latency stability and more controlled behaviour under burst and degraded conditions. Further evaluation is ongoing across larger-scale and production-like environments.
-        </p>
-    
-        <div class="contact">
-          <div class="contact-copy">
-            <strong>Technical and evaluation enquiries</strong><br />
-            For technical, operational or evaluation enquiries: <strong>info@foundscript.com</strong>
-          </div>
-    
-          <a class="btn-secondary" href="mailto:info@foundscript.com?subject=FoundScript%20support%20or%20evaluation">
-            Email FoundScript
-          </a>
-        </div>
-      </section>
-    </main>
-  
-  <footer>
-    <div class="shell">
-      © 2026 FoundScript Ltd. Registered in England &amp; Wales. All rights reserved.<br />
-      <a href="/privacy.html">Privacy Policy</a> ·
-      <a href="/terms.html">Service Terms</a>
-    </div>
-  </footer>
+	<div class="shell">
+	  <div class="hero-copy">
+		<h1>Control, observability and predictive infrastructure for complex systems.</h1>
+
+		<p class="hero-sub">
+		  Infrastructure and decision-support tooling for environments where load, uncertainty, workflow drift and operational instability shape system behaviour.
+		</p>
+	  </div>
+	</div>
+	</header>
+
+	<main class="shell">
+	  <section class="section">
+		<div class="section-head">
+		  <div class="section-kicker">Overview</div>
+		  <h2>What this is</h2>
+		</div>
+
+		<p class="intro">
+		  FoundScript develops control, observability and predictive infrastructure for complex operational and technical systems.
+		  <br><br>
+		  Our work focuses on how instability, bottlenecks, ambiguity and operational drift emerge before they are clearly visible through standard reporting or system metrics.
+		  <br><br>
+		  Current work spans predictive operational intelligence, workflow observability, runtime control and AI-enabled systems. The FoundScript Stability Layer is one implementation of this approach, applying timing, admission and degradation control at critical coordination boundaries.
+		</p>
+	  </section>
+
+	  <section class="section grid-2">
+		<div class="panel">
+		  <div class="panel-head">
+			<div class="section-kicker">Placement</div>
+
+			<h2 class="panel-title">Where runtime control sits in the stack</h2>
+
+			<p class="panel-sub">
+			  The Stability Layer sits at the submission and coordination boundary before work is dispatched into execution, applying control before contention, retries and queue amplification propagate across the system.
+			</p>
+		  </div>
+
+		  <div class="panel-body">
+			<div class="stack" aria-label="Stack placement">
+			  <div class="stack-node">
+				<strong>Workflow / client layer</strong>
+				<span>Job submission, orchestration and iterative control</span>
+			  </div>
+
+			  <div class="stack-arrow">↓</div>
+
+			  <div class="stack-node highlight">
+				<strong>FoundScript Stability Layer</strong>
+				<span>Timing, admission and predictive stability control across execution paths</span>
+			  </div>
+
+			  <div class="stack-arrow">↓</div>
+
+			  <div class="stack-node">
+				<strong>Queue / scheduler / runtime</strong>
+				<span>Existing infrastructure remains authoritative</span>
+			  </div>
+
+			  <div class="stack-arrow">↓</div>
+
+			  <div class="stack-node">
+				<strong>Execution environment</strong>
+				<span>Distributed, cloud, hybrid and iterative compute</span>
+			  </div>
+			</div>
+		  </div>
+		</div>
+
+		<div class="panel">
+		  <div class="panel-head">
+			<div class="section-kicker">Deployment</div>
+
+			<h2 class="panel-title">Why deployment is low risk</h2>
+
+			<p class="panel-sub">
+			  Introduced via API or sidecar without replacing application logic, schedulers or runtime infrastructure.
+			</p>
+		  </div>
+
+		  <div class="panel-body">
+			<div class="signal-list">
+			  <div class="signal-item">
+				<strong>Non-invasive by default</strong>
+				Introduced via API or sidecar without modifying application logic.
+			  </div>
+
+			  <div class="signal-item">
+				<strong>No payload inspection</strong>
+				Operates on behavioural and coordination signals rather than application contents.
+			  </div>
+
+			  <div class="signal-item">
+				<strong>Existing infrastructure remains authoritative</strong>
+				Current schedulers, queues and runtimes continue to govern execution.
+			  </div>
+
+			  <div class="signal-item">
+				<strong>Clear rollback path</strong>
+				Designed for safe staged evaluation before deeper integration.
+			  </div>
+			</div>
+		  </div>
+		</div>
+	  </section>
+
+	  <section class="section">
+		<div class="section-head">
+		  <div class="section-kicker">Capabilities</div>
+		  <h2>What this work aims to do</h2>
+		</div>
+
+		<div class="bullet-grid">
+		  <div class="bullet-card">
+			<strong>Reduce tail amplification</strong>
+			<p>Limit extreme latency spikes and amplification effects under load and burst conditions.</p>
+		  </div>
+
+		  <div class="bullet-card">
+			<strong>Control retry cascades</strong>
+			<p>Prevent local slowdowns from triggering self-reinforcing retries and queue instability.</p>
+		  </div>
+
+		  <div class="bullet-card">
+			<strong>Protect critical paths</strong>
+			<p>Prioritise critical execution and access paths during contention and degraded operation.</p>
+		  </div>
+
+		  <div class="bullet-card">
+			<strong>Enable predictive triage</strong>
+			<p>Provide operational visibility into instability formation, contention and degradation behaviour.</p>
+		  </div>
+		</div>
+	  </section>
+
+	  <section class="section">
+		<div class="section-head">
+		  <div class="section-kicker">Applicability</div>
+		  <h2>Where it is relevant</h2>
+		</div>
+
+		<div class="bullet-grid">
+		  <div class="bullet-card">
+			<strong>Distributed and event-driven systems</strong>
+			<p>Where burstiness, contention and retries shape operational outcomes.</p>
+		  </div>
+
+		  <div class="bullet-card">
+			<strong>Cloud and hybrid environments</strong>
+			<p>Where coordination timing and queue behaviour influence system stability.</p>
+		  </div>
+
+		  <div class="bullet-card">
+			<strong>Iterative and optimisation workflows</strong>
+			<p>Where delayed feedback and repeated execution create instability under pressure.</p>
+		  </div>
+
+		  <div class="bullet-card">
+			<strong>AI, data and decision workflows</strong>
+			<p>Where incomplete context, delayed feedback, repeated execution or degraded coordination impact reliability and decision quality.</p>
+		  </div>
+		</div>
+	  </section>
+
+	  <section class="section">
+		<div class="section-head">
+		  <div class="section-kicker">Early evaluation</div>
+		  <h2>What current evaluation suggests</h2>
+		</div>
+
+		<p class="note">
+		  Early evaluation across current projects indicates improved visibility into instability formation, reduced workflow waste and more controlled behaviour under degraded or underspecified conditions. Further evaluation is ongoing across AI workflow, operational intelligence and distributed system environments.
+		</p>
+
+		<div class="contact">
+		  <div class="contact-copy">
+			<strong>Technical and evaluation enquiries</strong><br />
+			For technical, operational or evaluation enquiries: <strong>info@foundscript.com</strong>
+		  </div>
+
+		  <a class="btn-secondary" href="mailto:info@foundscript.com?subject=FoundScript%20support%20or%20evaluation">
+			Email FoundScript
+		  </a>
+		</div>
+	  </section>
+	</main>
+
+	<footer>
+	  <div class="shell">
+		© 2026 FoundScript Ltd. Registered in England &amp; Wales. All rights reserved.<br />
+		<a href="/privacy.html">Privacy Policy</a> ·
+		<a href="/terms.html">Service Terms</a>
+	  </div>
+	</footer>
 </body>
 </html>
