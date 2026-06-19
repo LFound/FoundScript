@@ -344,6 +344,17 @@
       box-shadow:var(--shadow);
       overflow:hidden;
     }
+	
+    .hero-panels{
+      display:flex;
+      flex-direction:column;
+      gap:16px;
+      align-self:center;
+    }
+
+    .spec-panel-secondary{
+      margin-top:0;
+    }
 
     .spec-panel::before{
       content:"";
@@ -663,7 +674,8 @@
           />
         </div>
         </div>
-        
+	
+	<div class="hero-panels">        
         <aside class="spec-panel" aria-label="Marketplace product summary">
           <button
             class="spec-toggle"
@@ -701,6 +713,44 @@
             </dl>
           </div>
         </aside>
+        <aside class="spec-panel spec-panel-secondary" aria-label="Observability Controller beta summary">
+          <button
+            class="spec-toggle"
+            id="controllerToggle"
+            aria-expanded="false"
+            aria-controls="controllerBody"
+            type="button"
+          >
+            <div>
+              <div class="spec-kicker">Private Beta API</div>
+              <h2 class="spec-title">Observability Controller</h2>
+              <p class="spec-sub">Detect underspecified support, operational and workflow requests before AI workflows begin.</p>
+            </div>
+            <span class="spec-icon" aria-hidden="true"></span>
+          </button>
+
+          <div class="spec-body" id="controllerBody" hidden>
+            <dl class="spec-inner">
+              <div class="spec-row">
+                <dt>Scope</dt>
+                <dd>LLM, RAG, support, customer service and agent workflows</dd>
+              </div>
+              <div class="spec-row">
+                <dt>Evidence</dt>
+                <dd>107 labelled evaluations across 4 benchmark families</dd>
+              </div>
+              <div class="spec-row">
+                <dt>Result</dt>
+                <dd>97.3% real-world benchmark and 43% workflow token reduction</dd>
+              </div>
+              <div class="spec-row">
+                <dt>Access</dt>
+                <dd><a href="/observability-controller.html">Learn more about the beta</a></dd>
+              </div>
+            </dl>
+          </div>
+        </aside>
+		</div>
         </div>
         </header>
 
@@ -714,46 +764,49 @@
 
   <script>
     (function () {
-      const panel = document.querySelector('.spec-panel');
-      const toggle = document.getElementById('specToggle');
-      const body = document.getElementById('specBody');
+      function setupPanel(panel) {
+        const toggle = panel.querySelector('.spec-toggle');
+        const body = panel.querySelector('.spec-body');
 
-      if (!panel || !toggle || !body) return;
+        if (!toggle || !body) return;
 
-      function openPanel() {
-        body.hidden = false;
-        const fullHeight = body.scrollHeight;
-        body.style.maxHeight = fullHeight + 'px';
-        toggle.setAttribute('aria-expanded', 'true');
-        panel.classList.add('is-open');
-      }
+        function openPanel() {
+          body.hidden = false;
+          const fullHeight = body.scrollHeight;
+          body.style.maxHeight = fullHeight + 'px';
+          toggle.setAttribute('aria-expanded', 'true');
+          panel.classList.add('is-open');
+        }
 
-      function closePanel() {
-        body.style.maxHeight = body.scrollHeight + 'px';
-        requestAnimationFrame(() => {
-          body.style.maxHeight = '0px';
-        });
-        toggle.setAttribute('aria-expanded', 'false');
-        panel.classList.remove('is-open');
-        setTimeout(() => {
-          if (toggle.getAttribute('aria-expanded') === 'false') {
-            body.hidden = true;
+        function closePanel() {
+          body.style.maxHeight = body.scrollHeight + 'px';
+          requestAnimationFrame(() => {
+            body.style.maxHeight = '0px';
+          });
+          toggle.setAttribute('aria-expanded', 'false');
+          panel.classList.remove('is-open');
+          setTimeout(() => {
+            if (toggle.getAttribute('aria-expanded') === 'false') {
+              body.hidden = true;
+            }
+          }, 260);
+        }
+
+        toggle.addEventListener('click', () => {
+          const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+          if (isOpen) {
+            closePanel();
+          } else {
+            openPanel();
           }
-        }, 260);
-      }
+        });
 
-      toggle.addEventListener('click', () => {
-        const isOpen = toggle.getAttribute('aria-expanded') === 'true';
-        if (isOpen) {
-          closePanel();
-        } else {
+        if (window.matchMedia('(min-width: 981px)').matches) {
           openPanel();
         }
-      });
-
-      if (window.matchMedia('(min-width: 981px)').matches) {
-        openPanel();
       }
+
+      document.querySelectorAll('.spec-panel').forEach(setupPanel);
     })();
   </script>
 </body>
