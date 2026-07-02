@@ -1,710 +1,996 @@
 <!DOCTYPE html>
 <html lang="en-GB">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <title>About | FoundScript</title>
-  <meta
-    name="description"
-    content="FoundScript develops control, observability and predictive infrastructure for complex systems, helping organisations identify instability, bottlenecks and operational drift before they become costly."
-  />
-  <meta name="author" content="FoundScript Ltd" />
-  <meta name="color-scheme" content="dark light" />
-
-  <link rel="canonical" href="https://foundscript.com/about.html" />
-  <meta name="robots" content="index,follow" />
-
-  <meta property="og:title" content="About | FoundScript" />
-  <meta property="og:description" content="Control, observability and predictive infrastructure for complex systems." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://foundscript.com/about.html" />
-
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="About | FoundScript" />
-  <meta name="twitter:description" content="Control, observability and predictive infrastructure for complex systems." />
-
-  <link rel="icon" href="/favicon.ico" />
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"WebPage",
-    "name":"About | FoundScript",
-    "description":"FoundScript develops control, observability and predictive infrastructure for complex systems, helping organisations identify instability, bottlenecks and operational drift before they become costly.",
-    "url":"https://foundscript.com/about.html"
-  }
-  </script>
-
-  <style>
-    :root{
-      --bg:#091126;
-      --bg-2:#0d1734;
-      --fg:#eef3fa;
-      --fg-strong:#e6edf7;
-      --fg-dim:#c9d3e3;
-      --fg-soft:#93a3bc;
-      --line:rgba(255,255,255,0.10);
-      --line-strong:rgba(255,255,255,0.16);
-      --panel:rgba(255,255,255,0.045);
-      --panel-2:rgba(255,255,255,0.06);
-      --blue:#36b8ff;
-      --violet:#a14dff;
-      --shadow:0 18px 50px rgba(0,0,0,0.26);
-      --radius:22px;
-      --nav-h:64px;
-      --max:1200px;
-    }
-
-    *{ box-sizing:border-box; }
-    html, body{ height:100%; scroll-behavior:smooth; }
-
-    body{
-      margin:0;
-      color:var(--fg);
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-      line-height:1.5;
-      background:
-        radial-gradient(900px 500px at 85% -10%, rgba(161,77,255,0.12), transparent 60%),
-        radial-gradient(700px 420px at -5% 20%, rgba(54,184,255,0.09), transparent 58%),
-        linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
-      overflow-x:hidden;
-      padding-top:var(--nav-h);
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-    }
-
-    a{
-      color:var(--fg-strong);
-      text-decoration:none;
-      text-underline-offset:3px;
-    }
-
-    a:hover,
-    a:focus{
-      color:var(--blue);
-      outline:none;
-    }
-
-    .shell{
-      width:min(var(--max), calc(100% - 28px));
-      margin:0 auto;
-    }
-
-    .topnav{
-      position:fixed;
-      inset:0 0 auto 0;
-      height:var(--nav-h);
-      z-index:1000;
-      background:rgba(9,17,38,0.62);
-      backdrop-filter:blur(12px) saturate(145%);
-      -webkit-backdrop-filter:blur(12px) saturate(145%);
-      border-bottom:1px solid rgba(255,255,255,0.06);
-    }
-
-    .topnav .shell{
-      height:100%;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:20px;
-    }
-
-    .brand{
-      font-size:0.95rem;
-      font-weight:780;
-      letter-spacing:0.18em;
-      color:var(--fg-strong);
-      white-space:nowrap;
-    }
-
-    .navlinks{
-      display:flex;
-      align-items:center;
-      gap:8px;
-      flex-wrap:wrap;
-    }
-
-    .navlinks a{
-      color:var(--fg-dim);
-      font-size:0.94rem;
-      font-weight:600;
-      padding:9px 12px;
-      border-radius:10px;
-    }
-
-    .navlinks a:hover,
-    .navlinks a.active{
-      background:rgba(255,255,255,0.04);
-      color:var(--blue);
-    }
-
-    .hero{
-      position:relative;
-      overflow:hidden;
-      isolation:isolate;
-      padding:76px 0 38px;
-    }
-
-    .hero-bg{
-      position:absolute;
-      inset:0;
-      z-index:-2;
-      pointer-events:none;
-      opacity:0.74;
-    }
-
-    .hero-bg svg{
-      width:100%;
-      height:100%;
-      display:block;
-    }
-
-    .hero::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      z-index:-1;
-      background:
-        radial-gradient(900px 420px at 70% 16%, rgba(255,255,255,0.04), transparent 58%),
-        linear-gradient(180deg, rgba(9,17,38,0.18), rgba(9,17,38,0.72) 82%, rgba(9,17,38,0.88));
-      pointer-events:none;
-    }
-
-    .hero-copy{
-      max-width:900px;
-    }
-
-    h1{
-      margin:0;
-      max-width:900px;
-      font-size:clamp(2.6rem, 6vw, 4.8rem);
-      line-height:0.96;
-      letter-spacing:-0.04em;
-      font-weight:790;
-      color:var(--fg);
-    }
-
-    .hero-sub{
-      margin:18px 0 0;
-      max-width:760px;
-      font-size:clamp(1.08rem, 1.8vw, 1.34rem);
-      line-height:1.42;
-      color:#d6deec;
-      font-weight:560;
-    }
-
-    main.shell{
-      position:relative;
-    }
-
-    main.shell::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      pointer-events:none;
-      background:
-        radial-gradient(680px 300px at 88% 0%, rgba(54,184,255,0.04), transparent 60%),
-        radial-gradient(560px 260px at 6% 18%, rgba(161,77,255,0.04), transparent 60%);
-      z-index:-1;
-    }
-
-    .section{
-      padding:22px 0;
-    }
-
-    .section-head{
-      margin-bottom:18px;
-    }
-
-    .section-kicker{
-      color:var(--fg-soft);
-      font-size:0.78rem;
-      text-transform:uppercase;
-      letter-spacing:0.08em;
-      margin-bottom:8px;
-    }
-
-    h2{
-      margin:0;
-      color:var(--fg);
-      font-size:1.5rem;
-      letter-spacing:-0.02em;
-      line-height:1.15;
-    }
-
-    .intro{
-      max-width:800px;
-      color:var(--fg-dim);
-      font-size:1.02rem;
-      line-height:1.65;
-    }
-
-    .grid-2{
-      display:grid;
-      grid-template-columns:1.1fr 0.9fr;
-      gap:22px;
-      align-items:start;
-    }
-
-    .panel{
-      border:1px solid var(--line-strong);
-      border-radius:24px;
-      background:linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.03));
-      box-shadow:var(--shadow);
-      overflow:hidden;
-    }
-
-    .panel-head{
-      padding:20px 22px 0;
-    }
-
-    .panel-body{
-      padding:18px 22px 22px;
-    }
-
-    .panel-title{
-      margin:0;
-      color:var(--fg);
-      font-size:1.2rem;
-      letter-spacing:-0.02em;
-    }
-
-    .panel-sub{
-      margin:10px 0 0;
-      color:var(--fg-dim);
-      line-height:1.58;
-      max-width:520px;
-    }
-
-    .stack{
-      margin-top:8px;
-      display:grid;
-      gap:10px;
-    }
-
-    .stack-node{
-      position:relative;
-      padding:14px 16px;
-      border:1px solid rgba(255,255,255,0.10);
-      border-radius:16px;
-      background:rgba(255,255,255,0.03);
-    }
-
-    .stack-node strong{
-      display:block;
-      color:var(--fg-strong);
-      font-size:0.98rem;
-      margin-bottom:3px;
-    }
-
-    .stack-node span{
-      color:var(--fg-dim);
-      font-size:0.95rem;
-    }
-
-    .stack-node.highlight{
-      border-color:rgba(54,184,255,0.26);
-      background:linear-gradient(180deg, rgba(54,184,255,0.09), rgba(161,77,255,0.06));
-    }
-
-    .stack-arrow{
-      text-align:center;
-      color:var(--fg-soft);
-      font-size:1.1rem;
-      line-height:1;
-      opacity:0.85;
-    }
-
-    .bullet-grid{
-      display:grid;
-      grid-template-columns:repeat(2, minmax(0, 1fr));
-      gap:14px;
-    }
-
-    .bullet-card{
-      border-top:1px solid rgba(255,255,255,0.10);
-      padding-top:12px;
-    }
-
-    .bullet-card strong{
-      display:block;
-      margin-bottom:6px;
-      color:var(--fg-strong);
-      font-size:0.98rem;
-    }
-
-    .bullet-card p{
-      margin:0;
-      color:var(--fg-dim);
-      line-height:1.55;
-    }
-
-    .signal-list{
-      display:grid;
-      gap:12px;
-    }
-
-    .signal-item{
-      border-top:1px solid rgba(255,255,255,0.10);
-      padding-top:12px;
-      color:var(--fg-dim);
-      line-height:1.55;
-    }
-
-    .signal-item strong{
-      color:var(--fg-strong);
-      display:block;
-      margin-bottom:5px;
-    }
-
-    .note{
-      border-top:1px solid rgba(255,255,255,0.10);
-      padding-top:14px;
-      color:var(--fg-dim);
-      max-width:840px;
-      line-height:1.62;
-    }
-
-    .contact{
-      margin-top:10px;
-      border-top:1px solid rgba(255,255,255,0.10);
-      padding-top:18px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:18px;
-      flex-wrap:wrap;
-    }
-
-    .contact-copy{
-      color:var(--fg-dim);
-      line-height:1.55;
-    }
-
-    .contact-copy strong{
-      color:var(--fg-strong);
-    }
-
-    .btn-secondary{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      min-height:48px;
-      padding:0 18px;
-      border-radius:999px;
-      color:var(--fg-strong);
-      border:1px solid var(--line);
-      background:rgba(255,255,255,0.035);
-      font-weight:700;
-      transition:
-        transform .14s ease,
-        background .14s ease,
-        color .14s ease,
-        border-color .14s ease;
-    }
-
-    .btn-secondary:hover{
-      color:var(--blue);
-      border-color:rgba(54,184,255,0.36);
-      background:rgba(54,184,255,0.07);
-      transform:translateY(-1px);
-    }
-
-    footer{
-      border-top:1px solid rgba(255,255,255,0.08);
-      padding:18px 0 28px;
-      color:var(--fg-soft);
-      font-size:0.92rem;
-      text-align:center;
-      margin-top:24px;
-    }
-
-    footer a{
-      color:var(--fg-soft);
-    }
-
-    footer a:hover{
-      color:var(--blue);
-    }
-
-    @media (max-width: 980px){
-      .grid-2,
-      .bullet-grid{
-        grid-template-columns:1fr;
-      }
-
-      .hero{
-        padding-top:60px;
-        padding-bottom:32px;
-      }
-    }
-
-    @media (max-width: 640px){
-      .shell{
-        width:min(var(--max), calc(100% - 22px));
-      }
-
-      .navlinks a{
-        padding:8px 9px;
-        font-size:0.9rem;
-      }
-
-      .btn-secondary{
-        width:100%;
-      }
-    }
-
-    @media (prefers-reduced-motion: no-preference){
-      .hero-bg{
-        animation: drift 22s ease-in-out infinite alternate;
-      }
-    }
-
-    @keyframes drift{
-      from{ transform:scale(1.01) translate3d(0,0,0); }
-      to{ transform:scale(1.04) translate3d(0,-8px,0); }
-    }
-  </style>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+	<title>About | FoundScript</title>
+
+	<meta
+	name="description"
+	content="FoundScript builds infrastructure for AI systems that need to reason, remain stable and be observable in production."
+	/>
+
+	<meta name="author" content="FoundScript Ltd" />
+	<meta name="color-scheme" content="dark light" />
+
+	<link rel="canonical" href="https://foundscript.com/about.html" />
+	<meta name="robots" content="index,follow" />
+
+	<meta property="og:title" content="About | FoundScript" />
+	<meta property="og:description" content="Infrastructure for reasoning, runtime control and workflow observability across production AI and software systems." />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://foundscript.com/about.html" />
+
+	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:title" content="About | FoundScript" />
+	<meta name="twitter:description" content="Infrastructure for reasoning, runtime control and workflow observability across production AI and software systems." />
+
+	<link rel="icon" href="/favicon.ico" />
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+	<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+	<script type="application/ld+json">
+	{
+	"@context":"https://schema.org",
+	"@type":"Organization",
+	"name":"FoundScript Ltd",
+	"url":"https://foundscript.com",
+	"email":"info@foundscript.com",
+	"sameAs":[
+	  "https://marketplace.microsoft.com/en-us/product/saas/foundscript.foundscript-timing-layer?tab=Overview"
+	]
+	}
+	</script>
+
+	<script type="application/ld+json">
+	{
+	"@context":"https://schema.org",
+	"@type":"WebPage",
+	"name":"About | FoundScript",
+	"description":"FoundScript builds infrastructure for AI systems that need to reason, remain stable and be observable in production.",
+	"url":"https://foundscript.com/about.html"
+	}
+	</script>
+
+	<style>
+		:root{
+		  --bg:#08111B;
+
+		  --fg:#EEF3FA;
+		  --fg-strong:#E7EDF5;
+		  --fg-dim:#C7D1DD;
+		  --fg-soft:#8D9CAD;
+
+		  --line:rgba(255,255,255,0.08);
+		  --line-strong:rgba(255,255,255,0.14);
+
+		  --blue:#4A86B8;
+		  --violet:#7B719C;
+
+		  --shadow:0 18px 50px rgba(0,0,0,0.24);
+
+		  --radius:24px;
+		  --nav-h:64px;
+		  --max:1180px;
+		}
+
+	  *{ box-sizing:border-box; }
+
+	  html, body{
+		height:100%;
+		scroll-behavior:smooth;
+	  }
+
+	  body{
+		margin:0;
+		color:var(--fg);
+		font-family:Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+		line-height:1.45;
+		background:var(--bg);
+		overflow-x:hidden;
+		padding-top:var(--nav-h);
+		-webkit-font-smoothing:antialiased;
+		-moz-osx-font-smoothing:grayscale;
+	  }
+
+	  a{
+		color:var(--fg-strong);
+		text-decoration:none;
+		text-underline-offset:3px;
+	  }
+
+	  a:hover,
+	  a:focus{
+		color:var(--blue);
+		outline:none;
+	  }
+
+	  .shell{
+		width:min(var(--max), calc(100% - 32px));
+		margin:0 auto;
+	  }
+
+	  .topnav{
+		position:fixed;
+		inset:0 0 auto 0;
+		height:var(--nav-h);
+		z-index:1000;
+		background:rgba(4,9,15,0.86);
+		backdrop-filter:blur(12px) saturate(130%);
+		-webkit-backdrop-filter:blur(12px) saturate(130%);
+		border-bottom:1px solid rgba(255,255,255,0.05);
+	  }
+
+	  .topnav .shell{
+		height:100%;
+		display:flex;
+		align-items:center;
+		justify-content:space-between;
+		gap:20px;
+	  }
+
+	  .brand{
+		font-size:0.95rem;
+		font-weight:780;
+		letter-spacing:0.18em;
+		color:var(--fg-strong);
+		white-space:nowrap;
+	  }
+
+	  .navlinks{
+		display:flex;
+		align-items:center;
+		gap:8px;
+		flex-wrap:wrap;
+	  }
+
+	  .navlinks a{
+		color:var(--fg-dim);
+		font-size:0.94rem;
+		font-weight:600;
+		padding:9px 12px;
+		border-radius:10px;
+	  }
+
+	  .navlinks a:hover{
+		background:rgba(255,255,255,0.04);
+		color:var(--blue);
+	  }
+
+	.page-bg{
+	  position:fixed;
+	  inset:0;
+	  z-index:-2;
+	  pointer-events:none;
+	  opacity:0.72;
+	}
+
+	.page-bg svg{
+	  width:100%;
+	  height:100%;
+	  display:block;
+	}
+
+	.doc{
+	  width:min(880px, calc(100% - 32px));
+	  margin:0 auto;
+	  padding:72px 0 96px;
+	}
+
+	.doc-header{
+	  padding:36px 0 42px;
+	  border-bottom:1px solid var(--line);
+	}
+
+	.doc-kicker{
+	  color:var(--fg-soft);
+	  font-size:0.76rem;
+	  font-weight:700;
+	  letter-spacing:0.08em;
+	  text-transform:uppercase;
+	  margin-bottom:14px;
+	}
+
+	.doc h1{
+	  margin:0;
+	  max-width:820px;
+	  font-size:clamp(2.4rem, 5.5vw, 4.4rem);
+	  line-height:1;
+	  letter-spacing:-0.05em;
+	  color:var(--fg);
+	}
+
+	.doc-lead{
+	  margin:22px 0 0;
+	  max-width:760px;
+	  color:var(--fg-dim);
+	  font-size:1.16rem;
+	  line-height:1.65;
+	}
+
+	.doc-section{
+	  padding:38px 0;
+	  border-bottom:1px solid var(--line);
+	}
+
+	.doc-section h2{
+	  margin:0 0 16px;
+	  color:var(--fg);
+	  font-size:clamp(1.45rem, 3vw, 2rem);
+	  line-height:1.15;
+	  letter-spacing:-0.03em;
+	}
+
+	.doc-section p{
+	  margin:0 0 16px;
+	  color:var(--fg-dim);
+	  font-size:1.03rem;
+	  line-height:1.72;
+	}
+
+	.doc-list{
+	  display:grid;
+	  gap:18px;
+	  margin-top:18px;
+	}
+
+	.doc-item{
+	  padding-top:16px;
+	  border-top:1px solid rgba(255,255,255,0.08);
+	}
+
+	.doc-item:first-child{
+	  border-top:0;
+	  padding-top:0;
+	}
+
+	.doc-item strong{
+	  display:block;
+	  color:var(--fg-strong);
+	  font-size:1rem;
+	  margin-bottom:6px;
+	}
+
+	.doc-item span{
+	  display:block;
+	  color:var(--fg-dim);
+	  line-height:1.65;
+	}
+
+	.qa{
+	  display:grid;
+	  gap:18px;
+	  margin-top:18px;
+	}
+
+	.qa-item{
+	  padding-top:18px;
+	  border-top:1px solid rgba(255,255,255,0.08);
+	}
+
+	.qa-item:first-child{
+	  border-top:0;
+	  padding-top:0;
+	}
+
+	.qa-item h3{
+	  margin:0 0 8px;
+	  color:var(--fg-strong);
+	  font-size:1.05rem;
+	}
+
+	.qa-item p{
+	  margin:0;
+	}
+
+	.doc-cta{
+	  margin-top:26px;
+	  display:flex;
+	  flex-wrap:wrap;
+	  gap:12px;
+	}
+
+	.btn,
+	.btn-secondary{
+	  display:inline-flex;
+	  align-items:center;
+	  justify-content:center;
+	  min-height:48px;
+	  padding:0 18px;
+	  border-radius:999px;
+	  font-weight:720;
+	  transition:transform .14s ease, background .14s ease, color .14s ease, border-color .14s ease;
+	}
+
+	.btn{
+	  background:linear-gradient(90deg, var(--blue), var(--violet));
+	  color:#09111E;
+	  box-shadow:var(--shadow);
+	}
+
+	.btn:hover{
+	  color:#09111E;
+	  transform:translateY(-1px);
+	  filter:brightness(1.04);
+	}
+
+	.btn-secondary{
+	  color:var(--fg-strong);
+	  border:1px solid var(--line);
+	  background:rgba(255,255,255,0.035);
+	}
+
+	.btn-secondary:hover{
+	  color:var(--blue);
+	  border-color:rgba(74,134,184,0.36);
+	  background:rgba(74,134,184,0.07);
+	  transform:translateY(-1px);
+	}
+	
+	.use-table{
+	  margin-top:22px;
+	  border:1px solid var(--line);
+	  border-radius:18px;
+	  overflow:hidden;
+	  background:rgba(255,255,255,0.025);
+	}
+
+	.use-row{
+	  display:grid;
+	  grid-template-columns:0.9fr 1.15fr 1.15fr;
+	  gap:18px;
+	  padding:16px 18px;
+	  border-top:1px solid var(--line);
+	  color:var(--fg-dim);
+	  line-height:1.55;
+	}
+
+	.use-row:first-child{
+	  border-top:0;
+	}
+
+	.use-head{
+	  color:var(--fg-strong);
+	  font-size:0.78rem;
+	  font-weight:700;
+	  letter-spacing:0.08em;
+	  text-transform:uppercase;
+	  background:rgba(255,255,255,0.035);
+	}
+
+	.split-section{
+	  display:grid;
+	  grid-template-columns:1fr 0.85fr;
+	  gap:42px;
+	  align-items:start;
+	}
+
+	.capability-list{
+	  display:grid;
+	  gap:12px;
+	}
+
+	.capability-list div{
+	  padding:16px 18px;
+	  border:1px solid var(--line);
+	  border-radius:16px;
+	  background:rgba(255,255,255,0.025);
+	}
+
+	.capability-list strong{
+	  display:block;
+	  color:var(--fg-strong);
+	  margin-bottom:6px;
+	}
+
+	.capability-list span{
+	  color:var(--fg-dim);
+	  line-height:1.55;
+	}
+
+	.platform-brief{
+	  margin-top:22px;
+	  display:grid;
+	  gap:14px;
+	}
+
+	.platform-brief > div{
+	  padding:18px 0;
+	  border-top:1px solid var(--line);
+	}
+
+	.platform-brief span{
+	  display:block;
+	  color:var(--fg-soft);
+	  font-size:0.75rem;
+	  font-weight:700;
+	  letter-spacing:0.08em;
+	  text-transform:uppercase;
+	  margin-bottom:6px;
+	}
+
+	.platform-brief strong{
+	  display:block;
+	  color:var(--fg-strong);
+	  font-size:1.08rem;
+	}
+
+	.platform-brief p{
+	  margin:8px 0 0;
+	}
+
+	.platform-brief a{
+	  display:inline-flex;
+	  margin-top:8px;
+	  font-weight:700;
+	}
+	
+	.platform-cards{
+	  margin-top:28px;
+	  display:grid;
+	  gap:18px;
+	}
+
+	.platform-card-wide{
+	  display:grid;
+	  grid-template-columns:2fr 280px;
+	  gap:32px;
+	  padding:28px 32px;
+	  border:1px solid var(--line);
+	  border-radius:22px;
+	  background:rgba(255,255,255,0.03);
+	  backdrop-filter:blur(6px);
+	  align-items:center;
+	}
+
+	.platform-main h3{
+	  margin:14px 0 12px;
+	  font-size:1.7rem;
+	  color:var(--fg-strong);
+	}
+
+	.platform-main p{
+	  margin:0 0 20px;
+	  max-width:640px;
+	  line-height:1.65;
+	  color:var(--fg-dim);
+	}
+
+	.platform-main a{
+	  font-weight:700;
+	}
+
+	.platform-evidence{
+	  border-left:1px solid var(--line);
+	  padding-left:28px;
+	  display:flex;
+	  flex-direction:column;
+	  gap:8px;
+	}
+
+	.platform-evidence span{
+	  font-size:.78rem;
+	  text-transform:uppercase;
+	  letter-spacing:.08em;
+	  color:var(--fg-soft);
+	  font-weight:700;
+	}
+
+	.platform-evidence strong{
+	  font-size:2rem;
+	  line-height:1;
+	  color:var(--fg);
+	}
+
+	.platform-evidence small{
+	  font-size:.95rem;
+	  color:var(--fg-dim);
+	  margin-bottom:10px;
+	}
+
+	.platform-status{
+	  display:inline-flex;
+	  align-items:center;
+	  padding:6px 12px;
+	  border-radius:999px;
+	  font-size:.78rem;
+	  font-weight:700;
+	  letter-spacing:.08em;
+	  text-transform:uppercase;
+	}
+
+	.platform-status.available{
+	  background:rgba(54,184,255,.10);
+	  border:1px solid rgba(54,184,255,.20);
+	}
+
+	.platform-status.beta{
+	  background:rgba(123,113,156,.14);
+	  border:1px solid rgba(123,113,156,.24);
+	}
+
+	.platform-status.research{
+	  background:rgba(255,255,255,.06);
+	  border:1px solid rgba(255,255,255,.12);
+	}
+
+	.evaluation-note{
+		margin-top:28px;
+		text-align:center;
+		font-size:.92rem;
+		font-style:italic;
+		color:var(--fg-soft);
+	}
+	
+	.eval-flow{
+	  margin-top:30px;
+	  padding:18px;
+	  border:1px solid var(--line);
+	  border-radius:18px;
+	  background:rgba(255,255,255,0.025);
+	  display:flex;
+	  align-items:center;
+	  justify-content:space-between;
+	  gap:14px;
+	  color:var(--fg-dim);
+	}
+
+	.eval-flow div{
+	  flex:1;
+	  text-align:center;
+	  color:var(--fg-strong);
+	  font-weight:700;
+	}
+
+	.eval-flow span{
+	  color:var(--fg-soft);
+	}
+	
+	.faq{
+	  margin-top:28px;
+	}
+
+	.faq-item{
+	  margin-bottom:14px;
+	  border:1px solid var(--line);
+	  border-radius:18px;
+	  background:rgba(255,255,255,0.025);
+	  overflow:hidden;
+	}
+
+	.faq-item summary{
+	  list-style:none;
+	  cursor:pointer;
+	  padding:20px 24px;
+	  font-weight:650;
+	  color:var(--fg-strong);
+	  display:flex;
+	  justify-content:space-between;
+	  align-items:center;
+	  transition:background .15s ease;
+	}
+
+	.faq-item summary:hover{
+	  background:rgba(255,255,255,0.03);
+	}
+
+	.faq-item summary::-webkit-details-marker{
+	  display:none;
+	}
+
+	.faq-item summary::after{
+	  content:"⌄";
+	  font-size:1.4rem;
+	  color:var(--fg-soft);
+	  transition:transform .2s ease;
+	}
+
+	.faq-item[open] summary::after{
+		transform:rotate(180deg);
+	}
+
+	.faq-item p{
+	  margin:0;
+	  padding:0 24px 22px;
+	  color:var(--fg-dim);
+	  line-height:1.65;
+	}
+
+	footer{
+	  border-top:1px solid rgba(255,255,255,0.08);
+	  padding:18px 0 28px;
+	  color:var(--fg-soft);
+	  font-size:0.92rem;
+	  text-align:center;
+	}
+
+	footer a{
+	  color:var(--fg-soft);
+	}
+
+	footer a:hover{
+	  color:var(--blue);
+	}
+
+	@media (max-width: 640px){
+	  .shell,
+	  .doc{
+		width:min(var(--max), calc(100% - 22px));
+	  }
+
+	  .navlinks a{
+		padding:8px 9px;
+		font-size:0.9rem;
+	  }
+
+	  .doc{
+		padding:48px 0 72px;
+	  }
+
+	  .doc-header{
+		padding:24px 0 34px;
+	  }
+
+	  .doc h1{
+		font-size:clamp(2.25rem, 12vw, 3.5rem);
+	  }
+
+	  .btn,
+	  .btn-secondary{
+		width:100%;
+	  }
+
+	  .doc-cta{
+		flex-direction:column;
+	  }
+	  
+		.use-row,
+		.split-section{
+		  grid-template-columns:1fr;
+		}
+
+		.use-head{
+		  display:none;
+		}
+		
+		.platform-card-wide{
+		  grid-template-columns:1fr;
+		}
+
+		.platform-evidence{
+		  border-left:0;
+		  border-top:1px solid var(--line);
+		  padding-left:0;
+		  padding-top:20px;
+		}
+		.eval-flow{
+		  flex-direction:column;
+		  align-items:stretch;
+		}
+
+		.eval-flow span{
+		  transform:rotate(90deg);
+		}
+	}
+
+	@media (prefers-reduced-motion: no-preference){
+	  .page-bg{
+		animation:drift 22s ease-in-out infinite alternate;
+	  }
+	}
+
+	@keyframes drift{
+	  from{ transform:scale(1.01) translate3d(0,0,0); }
+	  to{ transform:scale(1.045) translate3d(0,-8px,0); }
+	}
+	
+	</style>
 </head>
 
-<body>
+<body id="top">
+  <div class="page-bg" aria-hidden="true">
+		<svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+		  <defs>
+
+			<linearGradient id="waveA" x1="0" y1="0" x2="1" y2="0">
+			  <stop offset="0%" stop-color="#4A86B8" stop-opacity="0.52"/>
+			  <stop offset="100%" stop-color="#7B719C" stop-opacity="0.52"/>
+			</linearGradient>
+
+			<linearGradient id="waveB" x1="0" y1="0" x2="1" y2="1">
+			  <stop offset="0%" stop-color="#7B719C" stop-opacity="0.22"/>
+			  <stop offset="100%" stop-color="#4A86B8" stop-opacity="0.12"/>
+			</linearGradient>
+
+			<filter id="softGlow" x="-30%" y="-30%" width="160%" height="160%">
+			  <feGaussianBlur stdDeviation="5" result="blur"/>
+			  <feMerge>
+				<feMergeNode in="blur"/>
+				<feMergeNode in="SourceGraphic"/>
+			  </feMerge>
+			</filter>
+
+		  </defs>
+
+		  <g opacity="0.35">
+			<path d="M-60 170 C 220 10, 470 18, 770 120 S 1320 270, 1660 120" fill="none" stroke="url(#waveB)" stroke-width="2"/>
+			<path d="M-80 208 C 220 48, 500 52, 790 145 S 1310 296, 1670 155" fill="none" stroke="url(#waveB)" stroke-width="2"/>
+			<path d="M-100 246 C 220 88, 520 95, 812 170 S 1310 330, 1680 190" fill="none" stroke="url(#waveB)" stroke-width="2"/>
+			<path d="M-120 284 C 220 130, 535 138, 826 196 S 1320 360, 1700 225" fill="none" stroke="url(#waveB)" stroke-width="2"/>
+			<path d="M-140 322 C 220 170, 548 176, 840 222 S 1325 392, 1710 260" fill="none" stroke="url(#waveB)" stroke-width="2"/>
+		  </g>
+
+		  <g opacity="0.68" filter="url(#softGlow)">
+			<path d="M-40 760 L200 640 L360 700 L540 600 L730 660 L940 560 L1170 640 L1400 570 L1640 650"
+				  fill="none"
+				  stroke="url(#waveA)"
+				  stroke-width="2.5"/>
+
+			<path d="M-40 760 L90 690 L260 740 L390 640 L560 680 L720 610 L880 700 L1080 610 L1260 710 L1500 630"
+				  fill="none"
+				  stroke="url(#waveA)"
+				  stroke-width="1.8"
+				  opacity="0.75"/>
+
+			<path d="M0 720 L210 650 L390 690 L585 615 L760 650 L965 590 L1150 650 L1360 610 L1560 670"
+				  fill="none"
+				  stroke="#9FB7CB"
+				  stroke-opacity="0.35"
+				  stroke-width="1.4"/>
+		  </g>
+
+		  <g opacity="0.30">
+			<circle cx="200" cy="640" r="4" fill="#8DAFC9"/>
+			<circle cx="360" cy="700" r="4" fill="#9A8EB8"/>
+			<circle cx="540" cy="600" r="4" fill="#A3BDD3"/>
+			<circle cx="730" cy="660" r="4" fill="#9088AD"/>
+			<circle cx="940" cy="560" r="4" fill="#95B6D0"/>
+			<circle cx="1170" cy="640" r="4" fill="#9A8EB8"/>
+			<circle cx="1400" cy="570" r="4" fill="#8DAFC9"/>
+
+			<circle cx="90" cy="690" r="3.5" fill="#7FABC8"/>
+			<circle cx="390" cy="640" r="3.5" fill="#978CB5"/>
+			<circle cx="720" cy="610" r="3.5" fill="#9FB8CF"/>
+			<circle cx="1080" cy="610" r="3.5" fill="#928AAE"/>
+			<circle cx="1500" cy="630" r="3.5" fill="#8DAFC9"/>
+		  </g>
+
+		</svg>
+  </div>
+
   <nav class="topnav" aria-label="Primary">
     <div class="shell">
       <a class="brand" href="/index.html">FOUNDSCRIPT</a>
       <div class="navlinks">
         <a href="/index.html">Home</a>
         <a class="active" href="/about.html">About</a>
-        <a href="mailto:info@foundscript.com?subject=FoundScript%20support">Contact</a>
+        <a href="mailto:info@foundscript.com?subject=FoundScript%20enquiry">Contact</a>
       </div>
     </div>
   </nav>
 
-  <header class="hero">
-    <div class="hero-bg" aria-hidden="true">
-      <svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <linearGradient id="waveA" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stop-color="#36b8ff" stop-opacity="0.72"/>
-            <stop offset="100%" stop-color="#a14dff" stop-opacity="0.72"/>
-          </linearGradient>
-          <linearGradient id="waveB" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stop-color="#a14dff" stop-opacity="0.38"/>
-            <stop offset="100%" stop-color="#36b8ff" stop-opacity="0.16"/>
-          </linearGradient>
-        </defs>
+  <main class="doc">
+    <header class="doc-header">
+      <div class="doc-kicker">About FoundScript</div>
 
-        <g opacity="0.56">
-          <path d="M-60 170 C 220 10, 470 18, 770 120 S 1320 270, 1660 120" fill="none" stroke="url(#waveB)" stroke-width="2"/>
-          <path d="M-80 208 C 220 48, 500 52, 790 145 S 1310 296, 1670 155" fill="none" stroke="url(#waveB)" stroke-width="2"/>
-          <path d="M-100 246 C 220 88, 520 95, 812 170 S 1310 330, 1680 190" fill="none" stroke="url(#waveB)" stroke-width="2"/>
-          <path d="M-120 284 C 220 130, 535 138, 826 196 S 1320 360, 1700 225" fill="none" stroke="url(#waveB)" stroke-width="2"/>
-        </g>
+      <h1>Infrastructure for reliable AI systems.</h1>
 
-        <g opacity="0.82">
-          <path d="M-40 760 L200 640 L360 700 L540 600 L730 660 L940 560 L1170 640 L1400 570 L1640 650" fill="none" stroke="url(#waveA)" stroke-width="3"/>
-          <path d="M-40 760 L90 690 L260 740 L390 640 L560 680 L720 610 L880 700 L1080 610 L1260 710 L1500 630" fill="none" stroke="url(#waveA)" stroke-width="2.2" opacity="0.8"/>
-        </g>
-      </svg>
-    </div>
+      <p class="doc-lead">
+        FoundScript builds tools for AI and software systems that need to reason, remain stable and be observable in production.
+      </p>
 
-	<div class="shell">
-	  <div class="hero-copy">
-		<h1>Control, observability and predictive infrastructure for complex systems.</h1>
+      <p class="doc-lead">
+        The company is focused on a simple problem: as systems become more automated, distributed and agentic, engineers need better ways to understand state, control behaviour and recover from failure.
+      </p>
+    </header>
 
-		<p class="hero-sub">
-		  Infrastructure and decision-support tooling for environments where load, uncertainty, workflow drift and operational instability shape system behaviour.
+    <section class="doc-section">
+	  <h2>Where reliability breaks down</h2>
+
+	  <p>
+		FoundScript focuses on failure points that appear when AI, software and operational workflows become too complex to manage through dashboards or prompt changes alone.
+	  </p>
+
+	  <div class="use-table">
+		<div class="use-row use-head">
+		  <div>Environment</div>
+		  <div>Common challenge</div>
+		  <div>Why it matters</div>
+		</div>
+
+		<div class="use-row">
+		  <div>AI agents and LLM workflows</div>
+		  <div>Missing context, repeated tool calls and weak state tracking.</div>
+		  <div>Workflows fail, drift or require unnecessary human review.</div>
+		</div>
+
+		<div class="use-row">
+		  <div>Distributed systems</div>
+		  <div>Retry cascades, burst load and unpredictable tail behaviour.</div>
+		  <div>Small failures can become system-wide instability.</div>
+		</div>
+
+		<div class="use-row">
+		  <div>High reliability workflows</div>
+		  <div>Limited auditability over decisions, access and degradation.</div>
+		  <div>Teams need explainable behaviour when systems are under stress.</div>
+		</div>
+	  </div>
+	</section>
+
+	<section class="doc-section split-section">
+	  <div>
+		<h2>How FoundScript approaches the problem</h2>
+
+		<p>
+		  Modern AI systems are becoming more capable, but also more difficult to inspect and control. Long running workflows can lose context, agents can act on incomplete information and failures can propagate before engineering teams understand what changed.
+		</p>
+
+		<p>
+		  Rather than focusing solely on outputs, FoundScript develops infrastructure that makes system behaviour easier to understand while workflows are running through explicit reasoning state, runtime control and workflow observability.
 		</p>
 	  </div>
+
+	  <div class="capability-list">
+		<div>
+		  <strong>Reason</strong>
+		  <span>Track assumptions, transitions and reasoning state across complex workflows.</span>
+		</div>
+
+		<div>
+		  <strong>Control</strong>
+		  <span>Apply deterministic control before instability propagates through connected systems.</span>
+		</div>
+
+		<div>
+		  <strong>Observe</strong>
+		  <span>Surface ambiguity, missing context and workflow drift before execution.</span>
+		</div>
+	  </div>
+	</section>
+
+	<section class="doc-section">
+	  <h2>Platform components</h2>
+
+	  <div class="platform-cards">
+		<article class="platform-card-wide">
+		  <div class="platform-main">
+			<span class="platform-status research">Research Preview</span>
+			<h3>Dynamic State Reasoner</h3>
+			<p>
+			  Explicit reasoning state across long horizon AI workflows, making state transitions inspectable rather than opaque.
+			</p>
+			<a href="#">Evaluation roadmap coming soon</a>
+		  </div>
+
+		  <div class="platform-evidence">
+			<span>Current stage</span>
+			<strong>Packaging</strong>
+			<strong>Capability benchmarking</strong>
+		  </div>
+		</article>
+
+		<article class="platform-card-wide">
+		  <div class="platform-main">
+			<span class="platform-status available">Available</span>
+			<h3>Stability Layer</h3>
+			<p>
+			  Runtime control for timing, admission and controlled degradation across critical execution paths.
+			</p>
+			<a href="https://marketplace.microsoft.com/en-us/product/saas/foundscript.foundscript-timing-layer?tab=Overview" target="_blank" rel="noopener">
+			  Microsoft Marketplace
+			</a>
+		  </div>
+
+		  <div class="platform-evidence">
+			<span>Controlled evaluation</span>
+			<strong>50–80%</strong>
+			<small>Tail compression</small>
+			<strong>&lt;1%</strong>
+			<small>Access failures under stress</small>
+		  </div>
+		</article>
+
+		<article class="platform-card-wide">
+		  <div class="platform-main">
+			<span class="platform-status beta">Private Beta</span>
+			<h3>Observability Controller</h3>
+			<p>
+			  Detects missing information before LLM, RAG, support and agent workflows begin.
+			</p>
+			<a href="/observability-controller.html">Product overview</a>
+		  </div>
+
+		  <div class="platform-evidence">
+			<span>Controlled evaluation</span>
+			<strong>97.3%</strong>
+			<small>Workflow benchmark</small>
+			<strong>43%</strong>
+			<small>Workflow token reduction</small>
+		  </div>
+		</article>
+	  </div>
+
+	  <p class="evaluation-note">
+		Results shown are from controlled evaluation environments. Independent production validation is ongoing.
+	  </p>
+	</section>
+
+	<section class="doc-section">
+	  <h2>Frequently asked questions</h2>
+
+	<div class="faq">
+
+	  <details class="faq-item">
+		<summary>What does a technical evaluation look like?</summary>
+		<p>
+		  Every engagement starts with understanding your environment and the problem you are trying to solve. Depending on the product, evaluations may use a representative sandbox, a customer-provided test environment or a staged deployment against a non-production workload.
+		</p>
+	  </details>
+
+	  <details class="faq-item">
+		<summary>How are FoundScript products implemented?</summary>
+		<p>
+		  Products are designed to be lightweight and non-invasive. Depending on the product, deployment may be through APIs, sidecars, standalone services or deeper integration where appropriate. Existing systems remain authoritative throughout deployment.
+		</p>
+	  </details>
+
+	  <details class="faq-item">
+		<summary>Do we need to replace our existing systems?</summary>
+		<p>
+		  No. FoundScript products are designed to complement existing infrastructure rather than replace it. Initial evaluations are intended to minimise operational risk and can typically be rolled back without affecting existing systems.
+		</p>
+	  </details>
+
+	  <details class="faq-item">
+		<summary>Where are FoundScript products applicable?</summary>
+		<p>
+		  FoundScript products are designed for AI workflows, distributed systems, operational software, optimisation pipelines and other environments where reasoning, runtime behaviour or workflow observability become operational challenges.
+		</p>
+	  </details>
+
+	  <details class="faq-item">
+		<summary>How long does a typical evaluation take?</summary>
+		<p>
+		  This depends on the product and environment, but most evaluations begin with a short technical discussion followed by a representative proof of concept or controlled evaluation before any production deployment.
+		</p>
+	  </details>
+
+	  <details class="faq-item">
+		<summary>How is commercial engagement structured?</summary>
+		<p>
+		  Initial technical discussions are exploratory. Commercial engagement depends on the product, evaluation scope and deployment requirements and is agreed before any formal project begins.
+		</p>
+	  </details>
+
+	  <details class="faq-item">
+		<summary>Are benchmark results available?</summary>
+		<p>
+		  Controlled evaluation summaries are published where available. Independent production validation continues as products mature and additional evidence becomes available.
+		</p>
+	  </details>
+
 	</div>
-	</header>
 
-	<main class="shell">
-	  <section class="section">
-		<div class="section-head">
-		  <div class="section-kicker">Overview</div>
-		  <h2>What this is</h2>
-		</div>
+	  <div class="doc-cta">
+		<a class="btn" href="mailto:info@foundscript.com?subject=FoundScript%20technical%20evaluation">
+		  Discuss an evaluation
+		</a>
 
-		<p class="intro">
-		  FoundScript develops control, observability and predictive infrastructure for complex operational and technical systems.
-		  <br><br>
-		  Our work focuses on how instability, bottlenecks, ambiguity and operational drift emerge before they are clearly visible through standard reporting or system metrics.
-		  <br><br>
-		  Current work spans predictive operational intelligence, workflow observability, runtime control and AI-enabled systems. The FoundScript Stability Layer is one implementation of this approach, applying timing, admission and degradation control at critical coordination boundaries.
-		</p>
-	  </section>
-
-	  <section class="section grid-2">
-		<div class="panel">
-		  <div class="panel-head">
-			<div class="section-kicker">Placement</div>
-
-			<h2 class="panel-title">Where runtime control sits in the stack</h2>
-
-			<p class="panel-sub">
-			  The Stability Layer sits at the submission and coordination boundary before work is dispatched into execution, applying control before contention, retries and queue amplification propagate across the system.
-			</p>
-		  </div>
-
-		  <div class="panel-body">
-			<div class="stack" aria-label="Stack placement">
-			  <div class="stack-node">
-				<strong>Workflow / client layer</strong>
-				<span>Job submission, orchestration and iterative control</span>
-			  </div>
-
-			  <div class="stack-arrow">↓</div>
-
-			  <div class="stack-node highlight">
-				<strong>FoundScript Stability Layer</strong>
-				<span>Timing, admission and predictive stability control across execution paths</span>
-			  </div>
-
-			  <div class="stack-arrow">↓</div>
-
-			  <div class="stack-node">
-				<strong>Queue / scheduler / runtime</strong>
-				<span>Existing infrastructure remains authoritative</span>
-			  </div>
-
-			  <div class="stack-arrow">↓</div>
-
-			  <div class="stack-node">
-				<strong>Execution environment</strong>
-				<span>Distributed, cloud, hybrid and iterative compute</span>
-			  </div>
-			</div>
-		  </div>
-		</div>
-
-		<div class="panel">
-		  <div class="panel-head">
-			<div class="section-kicker">Deployment</div>
-
-			<h2 class="panel-title">Why deployment is low risk</h2>
-
-			<p class="panel-sub">
-			  Introduced via API or sidecar without replacing application logic, schedulers or runtime infrastructure.
-			</p>
-		  </div>
-
-		  <div class="panel-body">
-			<div class="signal-list">
-			  <div class="signal-item">
-				<strong>Non-invasive by default</strong>
-				Introduced via API or sidecar without modifying application logic.
-			  </div>
-
-			  <div class="signal-item">
-				<strong>No payload inspection</strong>
-				Operates on behavioural and coordination signals rather than application contents.
-			  </div>
-
-			  <div class="signal-item">
-				<strong>Existing infrastructure remains authoritative</strong>
-				Current schedulers, queues and runtimes continue to govern execution.
-			  </div>
-
-			  <div class="signal-item">
-				<strong>Clear rollback path</strong>
-				Designed for safe staged evaluation before deeper integration.
-			  </div>
-			</div>
-		  </div>
-		</div>
-	  </section>
-
-	  <section class="section">
-		<div class="section-head">
-		  <div class="section-kicker">Capabilities</div>
-		  <h2>What this work aims to do</h2>
-		</div>
-
-		<div class="bullet-grid">
-		  <div class="bullet-card">
-			<strong>Reduce tail amplification</strong>
-			<p>Limit extreme latency spikes and amplification effects under load and burst conditions.</p>
-		  </div>
-
-		  <div class="bullet-card">
-			<strong>Control retry cascades</strong>
-			<p>Prevent local slowdowns from triggering self-reinforcing retries and queue instability.</p>
-		  </div>
-
-		  <div class="bullet-card">
-			<strong>Protect critical paths</strong>
-			<p>Prioritise critical execution and access paths during contention and degraded operation.</p>
-		  </div>
-
-		  <div class="bullet-card">
-			<strong>Enable predictive triage</strong>
-			<p>Provide operational visibility into instability formation, contention and degradation behaviour.</p>
-		  </div>
-		</div>
-	  </section>
-
-	  <section class="section">
-		<div class="section-head">
-		  <div class="section-kicker">Applicability</div>
-		  <h2>Where it is relevant</h2>
-		</div>
-
-		<div class="bullet-grid">
-		  <div class="bullet-card">
-			<strong>Distributed and event-driven systems</strong>
-			<p>Where burstiness, contention and retries shape operational outcomes.</p>
-		  </div>
-
-		  <div class="bullet-card">
-			<strong>Cloud and hybrid environments</strong>
-			<p>Where coordination timing and queue behaviour influence system stability.</p>
-		  </div>
-
-		  <div class="bullet-card">
-			<strong>Iterative and optimisation workflows</strong>
-			<p>Where delayed feedback and repeated execution create instability under pressure.</p>
-		  </div>
-
-		  <div class="bullet-card">
-			<strong>AI, data and decision workflows</strong>
-			<p>Where incomplete context, delayed feedback, repeated execution or degraded coordination impact reliability and decision quality.</p>
-		  </div>
-		</div>
-	  </section>
-
-	  <section class="section">
-		<div class="section-head">
-		  <div class="section-kicker">Early evaluation</div>
-		  <h2>What current evaluation suggests</h2>
-		</div>
-
-		<p class="note">
-		  Early evaluation across current projects indicates improved visibility into instability formation, reduced workflow waste and more controlled behaviour under degraded or underspecified conditions. Further evaluation is ongoing across AI workflow, operational intelligence and distributed system environments.
-		</p>
-
-		<div class="contact">
-		  <div class="contact-copy">
-			<strong>Technical and evaluation enquiries</strong><br />
-			For technical, operational or evaluation enquiries: <strong>info@foundscript.com</strong>
-		  </div>
-
-		  <a class="btn-secondary" href="mailto:info@foundscript.com?subject=FoundScript%20support%20or%20evaluation">
-			Email FoundScript
-		  </a>
-		</div>
-	  </section>
-	</main>
-
-	<footer>
-	  <div class="shell">
-		© 2026 FoundScript Ltd. Registered in England &amp; Wales. All rights reserved.<br />
-		<a href="/privacy.html">Privacy Policy</a> ·
-		<a href="/terms.html">Service Terms</a>
+		<a class="btn-secondary" href="/index.html">
+		  Back to home
+		</a>
 	  </div>
-	</footer>
+	</section>
+
+  <footer>
+    <div class="shell">
+      © 2026 FoundScript Ltd. Registered in England &amp; Wales. All rights reserved.<br />
+      <a href="/privacy.html">Privacy Policy</a> ·
+      <a href="/terms.html">Service Terms</a>
+    </div>
+  </footer>
 </body>
 </html>
