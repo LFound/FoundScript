@@ -8,7 +8,7 @@
 
 	<meta
 	name="description"
-	content="Observability Controller detects missing information before LLM, RAG, support and agent workflows begin, improving workflow reliability through early clarification."
+	content="Evaluate workflow readiness before expensive reasoning, retrieval, tool use or agent execution begins."
 	/>
 
 	<meta name="author" content="FoundScript Ltd" />
@@ -20,7 +20,7 @@
 	<meta property="og:title" content="Observability Controller | FoundScript" />
 	<meta
 	property="og:description"
-	content="Workflow observability for AI systems. Detect missing information before execution begins."
+	content="Evaluate workflow readiness before expensive reasoning, retrieval, tool use or agent execution begins."
 	/>
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content="https://foundscript.com/observability-controller.html" />
@@ -29,7 +29,7 @@
 	<meta name="twitter:title" content="Observability Controller | FoundScript" />
 	<meta
 	name="twitter:description"
-	content="Detect missing information before LLM, RAG, support and agent workflows begin."
+	content="Evaluate workflow readiness before expensive reasoning, retrieval, tool use or agent execution begins."
 	/>
 
 	<link rel="icon" href="/favicon.ico" />
@@ -868,7 +868,6 @@
       <a class="brand" href="/index.html">FOUNDSCRIPT</a>
 
       <div class="navlinks">
-        <a href="/index.html">Home</a>
         <a href="/about.html">About</a>
         <a href="mailto:info@foundscript.com?subject=Observability%20Controller%20Beta">Contact</a>
       </div>
@@ -883,9 +882,15 @@
 		<div class="demo-head product-compact-head">
 		  <div>
 			<span>Private Beta</span>
+
 			<h1>Observability Controller</h1>
+
 			<p>
-			  Evaluate request sufficiency before expensive reasoning, retrieval, tool use or agent execution begins.
+			  Evaluate workflow readiness before expensive reasoning, retrieval, tool use or agent execution begins.
+			</p>
+
+			<p class="hero-meta">
+			  A lightweight infrastructure layer that sits ahead of AI models, RAG systems and agent workflows.
 			</p>
 		  </div>
 		</div>
@@ -1013,7 +1018,7 @@
 		</p>
 
 		<p>
-		The controller is <strong>model agnostic</strong> and is designed to work alongside your existing AI stack. It can be integrated ahead of AI models, RAG systems, agent workflows and internal assistants through a simple API, with controlled evaluation before wider production rollout.
+		The controller is <strong>model agnostic</strong> and works alongside existing AI infrastructure. It integrates ahead of AI models, RAG systems, agent workflows and internal assistants through a simple API, allowing controlled evaluation before wider production deployment.
 		</p>
 
     </section>
@@ -1032,7 +1037,7 @@
               Beta benchmark
             </span>
 
-            <h3>Request sufficiency evaluation</h3>
+            <h3>Request readiness evaluation</h3>
 
             <p>
               Controlled evaluation across labelled support, troubleshooting, clarification and workflow-efficiency benchmarks.
@@ -1078,7 +1083,7 @@
         <div class="use-row use-head">
           <div>Workflow</div>
           <div>Typical issue</div>
-          <div>Controller role</div>
+          <div>Outcome</div>
         </div>
 
         <div class="use-row">
@@ -1118,7 +1123,7 @@
       </p>
 
       <p>
-        The current beta API is stateless by design. It does not require conversation memory, stored prompt history or training on user data and does not intentionally retain prompts between requests.
+        The current beta API is stateless by design. It does not require conversation memory or stored prompt history and does not intentionally retain prompts between requests.
       </p>
 
     </section>

@@ -8,7 +8,7 @@
 
 	<meta
 	name="description"
-	content="FoundScript builds infrastructure for AI systems that need to reason, remain stable and be observable in production."
+	content="FoundScript builds infrastructure for AI systems that need greater stability, control and auditability."
 	/>
 
 	<meta name="author" content="FoundScript Ltd" />
@@ -18,13 +18,13 @@
 	<meta name="robots" content="index,follow" />
 
 	<meta property="og:title" content="About | FoundScript" />
-	<meta property="og:description" content="Infrastructure for reasoning, runtime control and workflow observability across production AI and software systems." />
+	<meta property="og:description" content="FoundScript builds infrastructure for AI systems that need greater stability, control and auditability." />
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content="https://foundscript.com/about.html" />
 
 	<meta name="twitter:card" content="summary" />
 	<meta name="twitter:title" content="About | FoundScript" />
-	<meta name="twitter:description" content="Infrastructure for reasoning, runtime control and workflow observability across production AI and software systems." />
+	<meta name="twitter:description" content="FoundScript builds infrastructure for AI systems that need greater stability, control and auditability." />
 
 	<link rel="icon" href="/favicon.ico" />
 	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
@@ -49,7 +49,7 @@
 	"@context":"https://schema.org",
 	"@type":"WebPage",
 	"name":"About | FoundScript",
-	"description":"FoundScript builds infrastructure for AI systems that need to reason, remain stable and be observable in production.",
+	"description":"FoundScript builds infrastructure for AI systems that need greater stability, control and auditability.",
 	"url":"https://foundscript.com/about.html"
 	}
 	</script>
@@ -646,13 +646,44 @@
 		flex-direction:column;
 	  }
 	  
-		.use-row,
 		.split-section{
 		  grid-template-columns:1fr;
 		}
 
+		.use-row{
+		  grid-template-columns:1fr;
+		  gap:8px;
+		  padding:18px;
+		}
+
 		.use-head{
 		  display:none;
+		}
+
+		.use-row:not(.use-head) div{
+		  padding-top:8px;
+		}
+
+		.use-row:not(.use-head) div::before{
+		  display:block;
+		  margin-bottom:4px;
+		  color:var(--fg-soft);
+		  font-size:.72rem;
+		  font-weight:700;
+		  letter-spacing:.08em;
+		  text-transform:uppercase;
+		}
+
+		.use-row:not(.use-head) div:nth-child(1)::before{
+		  content:"Environment";
+		}
+
+		.use-row:not(.use-head) div:nth-child(2)::before{
+		  content:"Common challenge";
+		}
+
+		.use-row:not(.use-head) div:nth-child(3)::before{
+		  content:"Why it matters";
 		}
 		
 		.platform-card-wide{
@@ -764,7 +795,6 @@
     <div class="shell">
       <a class="brand" href="/index.html">FOUNDSCRIPT</a>
       <div class="navlinks">
-        <a href="/index.html">Home</a>
         <a class="active" href="/about.html">About</a>
         <a href="mailto:info@foundscript.com?subject=FoundScript%20enquiry">Contact</a>
       </div>
@@ -775,14 +805,14 @@
     <header class="doc-header">
       <div class="doc-kicker">About FoundScript</div>
 
-      <h1>Infrastructure for reliable AI systems.</h1>
+      <h1>Infrastructure for AI systems.</h1>
 
       <p class="doc-lead">
-        FoundScript builds tools for AI and software systems that need to reason, remain stable and be observable in production.
+        FoundScript builds infrastructure for AI systems that need greater stability, control and auditability.
       </p>
 
       <p class="doc-lead">
-        The company is focused on a simple problem: as systems become more automated, distributed and agentic, engineers need better ways to understand state, control behaviour and recover from failure.
+        As AI systems become more autonomous and interconnected, engineers need better ways to understand behaviour, control execution and audit decision making.
       </p>
     </header>
 
@@ -790,7 +820,7 @@
 	  <h2>Where reliability breaks down</h2>
 
 	  <p>
-		FoundScript focuses on failure points that appear when AI, software and operational workflows become too complex to manage through dashboards or prompt changes alone.
+		Modern AI systems are increasingly complex. As workflows become longer and more autonomous, failures become harder to predict, diagnose and recover from.
 	  </p>
 
 	  <div class="use-table">
@@ -825,34 +855,30 @@
 		<h2>How FoundScript approaches the problem</h2>
 
 		<p>
-		  Modern AI systems are becoming more capable, but also more difficult to inspect and control. Long running workflows can lose context, agents can act on incomplete information and failures can propagate before engineering teams understand what changed.
-		</p>
-
-		<p>
-		  Rather than focusing solely on outputs, FoundScript develops infrastructure that makes system behaviour easier to understand while workflows are running through explicit reasoning state, runtime control and workflow observability.
+		Rather than adding more prompts, retries or orchestration, FoundScript develops infrastructure that improves how AI systems maintain state, execute workloads and determine when workflows are ready to proceed.
 		</p>
 	  </div>
 
 	  <div class="capability-list">
 		<div>
-		  <strong>Reason</strong>
-		  <span>Track assumptions, transitions and reasoning state across complex workflows.</span>
+		  <strong>Stability</strong>
+		  <span>Improve behaviour across long running AI workflows and distributed systems.</span>
 		</div>
 
 		<div>
 		  <strong>Control</strong>
-		  <span>Apply deterministic control before instability propagates through connected systems.</span>
+		  <span>Apply deterministic execution control before failures propagate.</span>
 		</div>
 
 		<div>
-		  <strong>Observe</strong>
-		  <span>Surface ambiguity, missing context and workflow drift before execution.</span>
+		  <strong>Auditability</strong>
+		  <span>Make reasoning, execution and workflow decisions easier to inspect and understand.</span>
 		</div>
 	  </div>
 	</section>
 
 	<section class="doc-section">
-	  <h2>Platform components</h2>
+	  <h2>Platform</h2>
 
 	  <div class="platform-cards">
 		<article class="platform-card-wide">
@@ -860,7 +886,7 @@
 			<span class="platform-status research">Research Preview</span>
 			<h3>Dynamic State Reasoner</h3>
 			<p>
-			  Explicit reasoning state across long horizon AI workflows, making state transitions inspectable rather than opaque.
+			  Maintain explicit reasoning state across long AI workflows with inspectable transitions, assumptions and repair.
 			</p>
 			<a href="#">Evaluation roadmap coming soon</a>
 		  </div>
@@ -877,7 +903,7 @@
 			<span class="platform-status available">Available</span>
 			<h3>Stability Layer</h3>
 			<p>
-			  Runtime control for timing, admission and controlled degradation across critical execution paths.
+			  Control runtime execution to improve stability under load and reduce cascading failures.
 			</p>
 			<a href="https://marketplace.microsoft.com/en-us/product/saas/foundscript.foundscript-timing-layer?tab=Overview" target="_blank" rel="noopener">
 			  Microsoft Marketplace
@@ -898,7 +924,7 @@
 			<span class="platform-status beta">Private Beta</span>
 			<h3>Observability Controller</h3>
 			<p>
-			  Detects missing information before LLM, RAG, support and agent workflows begin.
+			  Evaluate request readiness before LLM, RAG and agent workflows begin.
 			</p>
 			<a href="/observability-controller.html">Product overview</a>
 		  </div>
@@ -926,7 +952,7 @@
 	  <details class="faq-item">
 		<summary>What does a technical evaluation look like?</summary>
 		<p>
-		  Every engagement starts with understanding your environment and the problem you are trying to solve. Depending on the product, evaluations may use a representative sandbox, a customer-provided test environment or a staged deployment against a non-production workload.
+		  Every engagement starts by understanding your environment and the problem you are trying to solve. Depending on the product, evaluations may use a representative sandbox, a customer provided test environment or a staged deployment against a non production workload.
 		</p>
 	  </details>
 
@@ -936,6 +962,13 @@
 		  Products are designed to be lightweight and non-invasive. Depending on the product, deployment may be through APIs, sidecars, standalone services or deeper integration where appropriate. Existing systems remain authoritative throughout deployment.
 		</p>
 	  </details>
+	  
+		<details class="faq-item">
+		  <summary>Do FoundScript products work with existing AI models?</summary>
+		  <p>
+			Yes. FoundScript products are designed to complement existing AI models, agent frameworks and production workflows rather than replace them. Integration depends on the product and deployment environment.
+		  </p>
+		</details>
 
 	  <details class="faq-item">
 		<summary>Do we need to replace our existing systems?</summary>
@@ -943,14 +976,7 @@
 		  No. FoundScript products are designed to complement existing infrastructure rather than replace it. Initial evaluations are intended to minimise operational risk and can typically be rolled back without affecting existing systems.
 		</p>
 	  </details>
-
-	  <details class="faq-item">
-		<summary>Where are FoundScript products applicable?</summary>
-		<p>
-		  FoundScript products are designed for AI workflows, distributed systems, operational software, optimisation pipelines and other environments where reasoning, runtime behaviour or workflow observability become operational challenges.
-		</p>
-	  </details>
-
+	  
 	  <details class="faq-item">
 		<summary>How long does a typical evaluation take?</summary>
 		<p>
@@ -958,19 +984,12 @@
 		</p>
 	  </details>
 
-	  <details class="faq-item">
-		<summary>How is commercial engagement structured?</summary>
-		<p>
-		  Initial technical discussions are exploratory. Commercial engagement depends on the product, evaluation scope and deployment requirements and is agreed before any formal project begins.
-		</p>
-	  </details>
-
-	  <details class="faq-item">
-		<summary>Are benchmark results available?</summary>
-		<p>
-		  Controlled evaluation summaries are published where available. Independent production validation continues as products mature and additional evidence becomes available.
-		</p>
-	  </details>
+		<details class="faq-item">
+		  <summary>Are benchmark results available?</summary>
+		  <p>
+			Yes. Controlled evaluation summaries are published where available. Independent production validation continues as products mature, and additional benchmark results are released over time.
+		  </p>
+		</details>
 
 	</div>
 

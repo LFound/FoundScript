@@ -4,10 +4,10 @@
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 
-	<title>FoundScript | Infrastructure for AI and software engineers</title>
+	<title>FoundScript | Infrastructure for AI systems</title>
 	<meta
 	name="description"
-	content="FoundScript builds infrastructure for AI and software engineers, helping production systems reason, remain stable and recover from failure."
+	content="FoundScript builds infrastructure for AI systems that need greater stability, control and auditability."
 	/>
 	<meta name="author" content="FoundScript Ltd" />
 	<meta name="color-scheme" content="dark light" />
@@ -15,14 +15,14 @@
 	<link rel="canonical" href="https://foundscript.com/" />
 	<meta name="robots" content="index,follow" />
 
-	<meta property="og:title" content="FoundScript | Infrastructure for AI and software engineers" />
-	<meta property="og:description" content="Developer tools for reasoning, runtime control and workflow observability across production AI and software systems." />
+	<meta property="og:title" content="FoundScript | Infrastructure for AI systems" />
+	<meta property="og:description" content="FoundScript builds infrastructure for AI systems that need greater stability, control and auditability." />
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content="https://foundscript.com/" />
 
 	<meta name="twitter:card" content="summary" />
-	<meta name="twitter:title" content="FoundScript | Infrastructure" />
-	<meta name="twitter:description" content="Developer tools for reasoning, runtime control and workflow observability across production AI and software systems." />
+	<meta name="twitter:title" content="FoundScript | Infrastructure for AI systems" />
+	<meta name="twitter:description" content="FoundScript builds infrastructure for AI systems that need greater stability, control and auditability." />
 
 	<link rel="icon" href="/favicon.ico" />
 	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
@@ -47,7 +47,7 @@
 	"@context":"https://schema.org",
 	"@type":"WebPage",
 	"name":"FoundScript",
-	"description":"FoundScript builds infrastructure for reasoning, runtime control and workflow observability across production AI and software systems.",
+	"description":"FoundScript builds infrastructure for AI systems that need greater stability, control and auditability.",
 	"url":"https://foundscript.com/"
 	}
 	</script>
@@ -409,59 +409,59 @@
 		color:var(--blue);
 	  }
 
-	  @media (max-width: 980px){
-		.hero{
-		  min-height:auto;
-		}
-
-		.hero-inner{
-		  padding:72px 0 66px;
-		}
-
-	  @media (max-width: 640px){
-		.shell,
-		.hero-inner{
-		  width:min(var(--max), calc(100% - 22px));
-		}
-
-		.navlinks a{
-		  padding:8px 9px;
-		  font-size:0.9rem;
-		}
-
-		h1{
-		  font-size:clamp(2.75rem, 14vw, 4.2rem);
-		}
-
-		.btn,
-		.btn-secondary{
-		  width:100%;
-		}
-
-		.hero-ctas{
-		  flex-direction:column;
-		}
-
-		.hero-contact{
-		  flex-direction:column;
-		  align-items:flex-start;
-		  gap:10px;
-		}
-
-		.platform{
-		  padding:54px 0 68px;
-		}
+	@media (max-width: 980px){
+	  .hero{
+		min-height:auto;
 	  }
 
-	  @media (prefers-reduced-motion: no-preference){
-		.page-bg{
-		  animation:drift 22s ease-in-out infinite alternate;
-		}
-
-		.hero-inner{
-		  animation:fadeUp .55s ease-out both;
-		}
+	  .hero-inner{
+		padding:72px 0 66px;
 	  }
+
+	  .product-grid{
+		grid-template-columns:1fr;
+		gap:20px;
+	  }
+
+	  .product-card{
+		min-height:auto;
+	  }
+	}
+
+	@media (max-width: 640px){
+	  .shell,
+	  .hero-inner{
+		width:min(var(--max), calc(100% - 22px));
+	  }
+
+	  .navlinks a{
+		padding:8px 9px;
+		font-size:0.9rem;
+	  }
+
+	  h1{
+		font-size:clamp(2.75rem, 14vw, 4.2rem);
+	  }
+
+	  .btn,
+	  .btn-secondary{
+		width:100%;
+	  }
+
+	  .hero-ctas{
+		flex-direction:column;
+	  }
+
+	  .hero-contact{
+		flex-direction:column;
+		align-items:flex-start;
+		gap:10px;
+	  }
+
+	  .platform{
+		padding:54px 0 68px;
+	  }
+	}
 
 	  @keyframes drift{
 		from{ transform:scale(1.01) translate3d(0,0,0); }
@@ -550,7 +550,6 @@
     <div class="shell">
       <a class="brand" href="#top">FOUNDSCRIPT</a>
       <div class="navlinks">
-        <a href="#platform">Platform</a>
         <a href="/about.html">About</a>
         <a href="mailto:info@foundscript.com?subject=FoundScript%20enquiry">Contact</a>
       </div>
@@ -558,16 +557,16 @@
   </nav>
 
     <div class="hero-inner">
-      <p class="eyebrow">Reasoning · Control · Observability</p>
+      <p class="eyebrow">Stability · Control · Auditability</p>
 
-      <h1>Infrastructure for reliable AI systems.</h1>
+      <h1>Infrastructure for AI systems.</h1>
 
       <p class="hero-sub">
-        FoundScript builds tools that help AI and software systems reason, remain stable and recover from failure.
+        FoundScript builds infrastructure for AI systems that need greater stability, control and auditability.
       </p>
 
       <p class="hero-meta">
-        Runtime control, workflow observability and dynamic reasoning infrastructure for production systems.
+        Reduce unnecessary compute. Improve execution. Lower operating costs.
       </p>
 
       <div class="hero-ctas">
@@ -585,10 +584,10 @@
     <section class="platform" id="platform">
       <div class="shell">
         <div class="section-head">
-          <p class="eyebrow">Platform</p>
-          <h2>Reason. Control. Observe.</h2>
+          <p class="eyebrow">Products</p>
+          <h2>Infrastructure for production AI.</h2>
           <p>
-            FoundScript products are built around explicit reasoning, runtime stability and workflow observability.
+            Building the infrastructure layer between AI models and production systems.
           </p>
         </div>
 
@@ -597,7 +596,7 @@
             <span class="product-status">Coming soon</span>
             <h3>Dynamic State Reasoner</h3>
             <p>
-              Maintain explicit reasoning state across long horizon AI workflows with inspectable state transitions.
+              Maintain explicit reasoning state across long AI workflows with inspectable transitions, assumptions and repair.
             </p>
           </article>
 
@@ -605,7 +604,7 @@
             <span class="product-status">Available now</span>
             <h3>Stability Layer</h3>
             <p>
-              Runtime control for timing, admission and degradation across critical execution paths.
+              Control runtime execution to improve stability under load and reduce cascading failures.
             </p>
             <a href="https://marketplace.microsoft.com/en-us/product/saas/foundscript.foundscript-timing-layer?tab=Overview" target="_blank" rel="noopener">
               View on Microsoft Marketplace
@@ -616,7 +615,7 @@
             <span class="product-status">Private beta</span>
             <h3>Observability Controller</h3>
             <p>
-              Detect missing information before LLM, RAG, support and agent workflows begin.
+              Evaluate request readiness before LLM, RAG and agent workflows begin.
             </p>
             <a href="/observability-controller.html">
               Learn more
